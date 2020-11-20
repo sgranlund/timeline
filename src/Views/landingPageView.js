@@ -1,5 +1,8 @@
 export const LandingPageView = ({onText}) => (
     <div className="landing">
+        <div>
+            <img src="../images/abra.jpg" alt="abra"></img>
+        </div>
         <div className="title">
             <span>Timeline</span>
         </div>
