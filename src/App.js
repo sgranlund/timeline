@@ -8,6 +8,7 @@ import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";
 import "./css/main.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 function App({ model }) {
   return (
@@ -24,7 +25,9 @@ function App({ model }) {
           <Route path="/gameFinish">
             <GameFinish />
           </Route>
+  
           <Route path="/gameBoard">
+            <DragDropContext><div>Hej</div></DragDropContext>
             <GameBoard />
           </Route>
           <Route path="">
