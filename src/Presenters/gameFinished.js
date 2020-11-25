@@ -1,10 +1,8 @@
 import React from "react";
-import { GameFinishedView } from "../Views/gameFinishedView.js"
+import { GameFinishedView } from "../Views/gameFinishedView.js";
 
 //const h = React.createElement;
 
-export function GameFinished(){
-    return (
-       <GameFinishedView/>
-    )
+export function GameFinish() {
+  return <GameFinishedView />;
 }

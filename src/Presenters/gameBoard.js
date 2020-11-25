@@ -1,10 +1,8 @@
 import React from "react";
-import { GameBoradView } from "../Views/gameBoradView.js"
+import { GameBoardView } from "../Views/gameBoardView.js";
 
 //const h = React.createElement;
 
-export function GameBoard(){
-    return (
-       <GameBoardView/>
-    )
+export function GameBoard() {
+  return <GameBoardView />;
 }

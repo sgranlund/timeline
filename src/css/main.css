@@ -1,63 +1,83 @@
-html, body, #root {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 217, 255);
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(110, 198, 117, 0.659);
 }
-
+.title {
+  background-color: white;
+  border-style: solid;
+  border-left: 10px;
+  border-right: 10px;
+  border-width: 40px;
+}
+.botRow img,
+.topRow img {
+  height: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+  border-style: solid;
+  border-width: 20px;
+}
+.topRow,
+.botRow {
+  display: flex;
+  justify-content: center;
+}
 .landing {
-    height: 100%;
+  height: 100%;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    align-items: flex-start;
-    
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .continue {
-    display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .new {
-    display: flex;
-    width: 50%;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
-    height: 100px;
-    width: 300px;
-    background-color: white;
-    font-size: 25px;
+  height: 50px;
+  width: 100px;
+  background-color: white;
+  font-size: 12px;
 }
 
-.title, .createGame, .gameFinished {
-    font-size: 100px;
+.title,
+.createGame,
+.gameFinished {
+  font-size: 100px;
 }
 
 .gameName {
-    font-size: 18px;
-    padding: 30px;
+  font-size: 18px;
+  padding: 30px;
 }
 
 .startGame button {
-    height: 50px;
-    width: 100px;
-    background-color: white;
-    font-size: 25px;
+  height: 50px;
+  width: 100px;
+  background-color: white;
+  font-size: 25px;
 }
 
 .settings {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  justify-content: center;
 }
