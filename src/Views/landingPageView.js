@@ -4,8 +4,13 @@ import caesar from "../images/caesar.jpg";
 import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
 import pyramid from "../images/pyramid.jpg";
-
-export const LandingPageView = ({ onText, onKey }) => (
+import { signin } from "../AUTH/gameAuth";
+export const LandingPageView = ({
+  onText,
+  onFormChangeEmail,
+  onFormChangePass,
+  onFormSubmit,
+}) => (
   <div className="landing">
     <div className="topRow">
       <div>
@@ -34,13 +39,25 @@ export const LandingPageView = ({ onText, onKey }) => (
     </div>
     <div className="buttons">
       <div className="continue">
-        <button>Continue Game</button>
+        <button onClick={(event) => console.log("clicked", event.target.value)}>
+          Continue Game
+        </button>
         <div className="gameName">
-          <span>Enter game name:</span>
-          <input
-            onChange={(event) => onText(event.target.value)}
-            onKeyPress={(event) => onKey(event)}
-          ></input>
+          <form onSubmit={(e) => onFormSubmit(e)}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              onChange={(event) => onFormChangeEmail(event)}
+            ></input>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              onChange={(event) => onFormChangePass(event)}
+            ></input>
+            <button>login</button>
+          </form>
         </div>
       </div>
       <div className="new">
