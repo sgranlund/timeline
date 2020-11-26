@@ -5,9 +5,6 @@ export const CreateGameView = ({
   startYear,
   endYear,
   onName,
-  onFormChangeEmail,
-  onFormChangePass,
-  onFormSubmit,
 }) => (
   <div>
     <div className="createGame">
@@ -22,22 +19,6 @@ export const CreateGameView = ({
         </select>
       </div>
       <div className="gameSettings">
-        <form onSubmit={(e) => onFormSubmit(e)}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            onChange={(event) => onFormChangeEmail(event)}
-          ></input>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            onChange={(event) => onFormChangePass(event)}
-          ></input>
-          <button>login</button>
-        </form>
-
         <div className="range">
           <label>Year 1500</label>
           <input

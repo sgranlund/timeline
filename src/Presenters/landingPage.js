@@ -2,9 +2,11 @@ import React from "react";
 import { LandingPageView } from "../Views/landingPageView.js";
 //import { questionSource } from "../apiHandling";
 import { signin } from "../AUTH/gameAuth";
+import { signup } from "../AUTH/gameAuth";
 export function LandingPage() {
   const [email, setEmail] = React.useState("");
   const [pass, setPass] = React.useState("");
+
   return (
     <LandingPageView
       onText={(text) => {
@@ -28,10 +30,15 @@ export function LandingPage() {
         console.log(e.target.value);
         setPass(e.target.value);
       }}
-      onFormSubmit={(e) => {
+      onFormSubmitLogin={(e) => {
         e.preventDefault();
         signin(email, pass);
         console.log("loggedin");
+      }}
+      onFormSubmitCreate={(e) => {
+        e.preventDefault();
+        signup(email, pass);
+        console.log("signed up");
       }}
     />
   );

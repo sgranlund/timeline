@@ -9,7 +9,8 @@ export const LandingPageView = ({
   onText,
   onFormChangeEmail,
   onFormChangePass,
-  onFormSubmit,
+  onFormSubmitLogin,
+  onFormSubmitCreate,
 }) => (
   <div className="landing">
     <div className="topRow">
@@ -39,11 +40,9 @@ export const LandingPageView = ({
     </div>
     <div className="buttons">
       <div className="continue">
-        <button onClick={(event) => console.log("clicked", event.target.value)}>
-          Continue Game
-        </button>
         <div className="gameName">
-          <form onSubmit={(e) => onFormSubmit(e)}>
+          <span class="formHeader">Log in</span>
+          <form onSubmit={(e) => onFormSubmitLogin(e)}>
             <label htmlFor="email">Email</label>
             <input
               type="email"
@@ -60,8 +59,25 @@ export const LandingPageView = ({
           </form>
         </div>
       </div>
-      <div className="new">
-        <button>New Game</button>
+      <div className="continue">
+        <div className="gameName">
+          <span class="formHeader">Create user</span>
+          <form onSubmit={(e) => onFormSubmitCreate(e)}>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              onChange={(event) => onFormChangeEmail(event)}
+            ></input>
+            <label htmlFor="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              onChange={(event) => onFormChangePass(event)}
+            ></input>
+            <button>login</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

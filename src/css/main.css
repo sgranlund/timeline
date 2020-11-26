@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Nerko+One&display=swap");
 html,
 body,
 #root {
@@ -11,6 +12,7 @@ body,
   border-left: 10px;
   border-right: 10px;
   border-width: 40px;
+  font-family: "Lobster", cursive;
 }
 .botRow img,
 .topRow img {
@@ -38,6 +40,7 @@ body,
 .continue {
   display: flex;
   width: 50%;
+  height: 100%;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -80,4 +83,19 @@ button {
   flex-direction: row;
   height: 100%;
   justify-content: center;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-style: oblique;
+  font-size: 12px;
+}
+form button {
+  margin-top: 12px;
+  height: 10%;
+  width: 50%;
+}
+.formHeader {
+  font-family: "Nerko One";
 }
