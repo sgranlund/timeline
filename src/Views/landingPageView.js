@@ -5,7 +5,7 @@ import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
 import pyramid from "../images/pyramid.jpg";
 
-export const LandingPageView = ({ onText }) => (
+export const LandingPageView = ({ onText, onKey }) => (
   <div className="landing">
     <div className="topRow">
       <div>
@@ -37,7 +37,10 @@ export const LandingPageView = ({ onText }) => (
         <button>Continue Game</button>
         <div className="gameName">
           <span>Enter game name:</span>
-          <input onChange={(event) => onText(event.target.value)}></input>
+          <input
+            onChange={(event) => onText(event.target.value)}
+            onKeyPress={(event) => onKey(event)}
+          ></input>
         </div>
       </div>
       <div className="new">
