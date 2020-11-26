@@ -16,6 +16,10 @@ const myCharacters = [
     id: "hej",
     name: "Hallå",
   },
+  {
+    id: "test",
+    name: "test"
+  }
 ];
 
 export function GameBoard() {
