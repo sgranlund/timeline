@@ -1,0 +1,28 @@
+.columns {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.columntitle {
+    font-family: cursive;
+}
+
+.events {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+    justify-content: center;
+}
+
+.eachElement {
+    border-style: solid;
+    width: 100px;
+    height: 50px;
+    background-color: rgb(173, 204, 252);
+    
+}
+
+:active .eachElement{
+    background-color: crimson;
+}

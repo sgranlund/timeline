@@ -1,6 +1,6 @@
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-export const GameBoardView = ({ myCharacters, handleOnDragEnd }) => {
+export const GameBoardView = ({ myCharacters, handleOnDragEnd, handleOnDragEnd2, myCards }) => {
   return (
     <div>
       <div>
@@ -23,6 +23,32 @@ export const GameBoardView = ({ myCharacters, handleOnDragEnd }) => {
                           ref={provided.innerRef}
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
+                        >
+                          <p>{name}</p>
+                        </li>
+                      )}
+                    </Draggable>
+                  );
+                })}
+                {provided.placeholder}
+              </ul>
+            )}
+          </Droppable>
+          </DragDropContext>
+          <DragDropContext onDragEnd={handleOnDragEnd2}>
+          <Droppable droppableId="cards">
+            {(provided) => (
+              <ul className="cards"
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              >
+                {myCards.map(({ id, name}, index) => {
+                  return(
+                    <Draggable key={id} draggableId={id} index={index}>
+                      {(provided) => (
+                        <li ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
                         >
                           <p>{name}</p>
                         </li>
