@@ -6,17 +6,10 @@ export const questionSource = {
   },
 
   searchYear(year) {
-    //console.log(year);
-
     if (!year) {
       year = 1997;
     }
-    const x = this.apiCall(year);
 
-    x.then((year) => {
-      console.log("the year", year.text);
-    });
-
-    return x;
+    return this.apiCall(year);
   },
 };
