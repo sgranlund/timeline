@@ -9,11 +9,9 @@ import { GameModel } from "./GameModel";
 
 const model = new GameModel();
 
-
-
 ReactDOM.render(
-  <React.StrictMode>
-      <App model={model} />
-  </React.StrictMode>,
-  document.getElementById("root")
+	<React.StrictMode>
+		<App model={model} />
+	</React.StrictMode>,
+	document.getElementById("root")
 );

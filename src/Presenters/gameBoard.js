@@ -4,105 +4,106 @@ import { GameBoardView2 } from "../Views/gameBoardView2";
 import { questionSource } from "../apiHandling";
 import { GetPromise } from "../getPromise";
 import { dataDeliv } from "../dataDelivered";
+import { CreateCards } from "../createCards.js";
 
-const myData = {
-  events: {
-    event1: { id: "event1", content: "First event" },
-    event2: { id: "event2", content: "Second event" },
-    event3: { id: "event3", content: "Third event" },
-  },
-  columns: {
-    column1: {
-      id: "column1",
-      title: "Player Timeline",
-      eventIds: ["event1", "event2"],
-    },
-    column2: {
-      id: "column2",
-      title: "Card",
-      eventIds: ["event3"],
-    },
-  },
-  columnOrder: ["column1", "column2"],
-};
-
+let counter = 3;
 export function GameBoard() {
-  const [year, updateYear] = React.useState();
+	//console.log(myData);
+	const myData = CreateCards(10);
+	const [newData, updateData] = React.useState(myData);
 
-  const [promise, setPromise] = React.useState(null);
-  React.useEffect(() => setPromise(questionSource.searchYear(2000)), []);
+	//const isDragDisabled = myData.events.id === "event1";
 
-  const [data, error] = GetPromise(promise);
-  if (dataDeliv(data)) {
-    console.log("hej emilia", data.text);
-  }
+	const onDragEnd = (result) => {
+		const { destination, source, draggableId } = result;
 
-  const [newData, updateData] = React.useState(myData);
+		if (!destination) {
+			return;
+		}
 
-  //const isDragDisabled = myData.events.id === "event1";
+		if (
+			destination.droppableId === source.droppableId &&
+			destination.index === source.index
+		) {
+			return;
+		}
 
-  const onDragEnd = (result) => {
-    const { destination, source, draggableId } = result;
+		const start = newData.columns[source.droppableId];
+		const finish = newData.columns[destination.droppableId];
+		if (start === finish) {
+			const newEventIds = Array.from(start.eventIds);
+			newEventIds.splice(source.index, 1);
+			newEventIds.splice(destination.index, 0, draggableId);
 
-    if (!destination) {
-      return;
-    }
+			const newColumn = {
+				...start,
+				eventIds: newEventIds,
+			};
 
-    if (
-      destination.droppableId === source.droppableId &&
-      destination.index === source.index
-    ) {
-      return;
-    }
+			const newState = {
+				...newData,
+				columns: {
+					...newData.columns,
+					[newColumn.id]: newColumn,
+				},
+			};
+			updateData(newState);
 
-    const start = newData.columns[source.droppableId];
-    const finish = newData.columns[destination.droppableId];
+			return;
+		}
 
-    if (start === finish) {
-      const newEventIds = Array.from(start.eventIds);
-      newEventIds.splice(source.index, 1);
-      newEventIds.splice(destination.index, 0, draggableId);
+		// Moving from one list to another
+		const startEventIds = Array.from(start.eventIds);
+		startEventIds.splice(source.index, 1);
+		const newStart = {
+			...start,
+			eventIds: startEventIds,
+		};
 
-      const newColumn = {
-        ...start,
-        eventIds: newEventIds,
-      };
+		const finishEventIds = Array.from(finish.eventIds);
+		finishEventIds.splice(destination.index, 0, draggableId);
+		const newFinish = {
+			...finish,
+			eventIds: finishEventIds,
+		};
 
-      const newState = {
-        ...newData,
-        columns: {
-          ...newData.columns,
-          [newColumn.id]: newColumn,
-        },
-      };
-      updateData(newState);
-      return;
-    }
+		const newState = {
+			...newData,
+			columns: {
+				...newData.columns,
+				[newStart.id]: newStart,
+				[newFinish.id]: newFinish,
+			},
+		};
 
-    // Moving from one list to another
-    const startEventIds = Array.from(start.eventIds);
-    startEventIds.splice(source.index, 1);
-    const newStart = {
-      ...start,
-      eventIds: startEventIds,
-    };
+		updateData(newState);
 
-    const finishEventIds = Array.from(finish.eventIds);
-    finishEventIds.splice(destination.index, 0, draggableId);
-    const newFinish = {
-      ...finish,
-      eventIds: finishEventIds,
-    };
+		if (newState.columns.column2.eventIds.length == 0) {
+			//console.log("hej", newState.columns.column2.eventIds);
+			counter += 1;
 
-    const newState = {
-      ...newData,
-      columns: {
-        ...newData.columns,
-        [newStart.id]: newStart,
-        [newFinish.id]: newFinish,
-      },
-    };
-    updateData(newState);
-  };
-  return <GameBoardView2 onDragEnd={onDragEnd} newData={newData} />;
+			const newStart = {
+				...start,
+				eventIds: ["event" + String(counter)],
+			};
+
+			const newState = {
+				...newData,
+				columns: {
+					...newData.columns,
+					[newStart.id]: newStart,
+					[newFinish.id]: newFinish,
+				},
+			};
+
+			updateData(newState);
+		}
+	};
+	return (
+		<GameBoardView2
+			onDragEnd={onDragEnd}
+			newData={newData}
+			myData={CreateCards(10)}
+		/>
+	);
 }
