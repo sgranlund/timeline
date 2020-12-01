@@ -1,28 +1,37 @@
 .columns {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
+	background-color: white;
+	min-height: 30%;
 }
 
 .columntitle {
-    font-family: cursive;
+	font-family: cursive;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
 .events {
-    display: flex;
-    flex-direction: row;
-    height: 100px;
-    justify-content: center;
+	min-height: 200px;
+
+	max-width: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
 .eachElement {
-    border-style: solid;
-    width: 100px;
-    height: 50px;
-    background-color: rgb(173, 204, 252);
-    
+	border-style: solid;
+	border-width: 20px;
+	border-radius: 5px;
+	padding: 6px;
+	width: 5%;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
-:active .eachElement{
-    background-color: crimson;
+.bigDiv {
+	height: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
+}
+.columnEnclose {
+	height: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
+}
+.cardTitle {
+	padding-top: 0px;
 }
