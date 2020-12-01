@@ -1,36 +1,37 @@
 .columns {
 	background-color: white;
-	display: flex;
-	flex-direction: column;
+	min-height: 30%;
 }
 
 .columntitle {
 	font-family: cursive;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
 .events {
-	display: flex;
-	flex-direction: row;
-	height: 150px;
-	justify-content: center;
-	padding: 4px;
+	min-height: 200px;
+
 	max-width: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
 .eachElement {
 	border-style: solid;
-	width: 150px;
-	height: 100px;
-	background-color: rgb(199, 217, 244);
-
-	padding: 16px;
-	margin: "0 0 8px 0";
-	min-height: "50px";
-	user-select: none;
-}
-.eachElement p {
+	border-width: 20px;
+	border-radius: 5px;
+	padding: 6px;
+	width: 5%;
+	background-color: rgba(168, 215, 172, 0.659);
 }
 
-:active .eachElement {
-	background-color: rgb(225, 139, 156);
+.bigDiv {
+	height: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
+}
+.columnEnclose {
+	height: 100%;
+	background-color: rgba(168, 215, 172, 0.659);
+}
+.cardTitle {
+	padding-top: 0px;
 }

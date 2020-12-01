@@ -27,7 +27,7 @@ function App({ model }) {
 					</Route>
 
 					<Route path="/gameBoard">
-						<GameBoard />
+						<GameBoard model={model} />
 					</Route>
 					<Route path="">
 						<LandingPage />
