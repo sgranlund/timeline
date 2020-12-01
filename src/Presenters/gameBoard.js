@@ -137,6 +137,7 @@ export function GameBoard({ model }) {
 		//If the card stack is empty
 		if (newState.columns.column2.eventIds.length == 0) {
 			model.updateCounter();
+
 			//Adds a card to the "Card" array
 			const newStart = {
 				...start,
@@ -151,7 +152,8 @@ export function GameBoard({ model }) {
 					[newFinish.id]: newFinish,
 				},
 			};
-
+			model.checkOrder(newState, "column1");
+			model.checkOrder(newState, "column3");
 			updateData(newState);
 		}
 	};
@@ -161,6 +163,7 @@ export function GameBoard({ model }) {
 			newData={newData}
 			getItemStyle={getItemStyle}
 			getListStyle={getListStyle}
+			checkOrder={model.checkOrder}
 		/>
 	);
 }
