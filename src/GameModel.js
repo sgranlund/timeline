@@ -5,7 +5,7 @@ export class GameModel {
 		startYear = 1000,
 		endYear = 2020,
 		gameName = "",
-		counter = 4
+		counter = 6
 	) {
 		this.numberOfPlayers = players;
 		this.startYear = startYear;
@@ -51,8 +51,34 @@ export class GameModel {
 			Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
 				Math.ceil(this.startYear)
 		);
-		console.log(x);
+		//console.log(x);
 		return x;
+	}
+	checkOrder(allCardsData, column) {
+		// define the array
+		let theTimeline = [];
+		allCardsData.columns[column].eventIds.map((y) => {
+			theTimeline.push(allCardsData.events[y].year);
+		});
+		console.log("theArray", theTimeline);
+		var isDescending = true;
+		var isAscending = true;
+
+		for (var i = 0, l = theTimeline.length - 1; i < l; i++) {
+			// true if this is greater than the next and all other so far have been true
+			isDescending = isDescending && theTimeline[i] > theTimeline[i + 1];
+
+			// true if this is less than the next and all others so far have been true
+			isAscending = isAscending && theTimeline[i] < theTimeline[i + 1];
+		}
+
+		if (isAscending) {
+			console.log(column + " Correct");
+		} else if (isDescending) {
+			console.log(column + " Incorrect, decending");
+		} else {
+			console.log(column + " Incorrect, not sorted");
+		}
 	}
 	getApiData() {
 		//Creates the initial data for the board layout
@@ -73,12 +99,22 @@ export class GameModel {
 					content: "",
 					year: 0,
 				},
+				event4: {
+					id: "event4",
+					content: "",
+					year: 0,
+				},
+				event5: {
+					id: "event5",
+					content: "",
+					year: 0,
+				},
 			},
 			columns: {
 				column1: {
 					id: "column1",
 					title: "Player 1 Timeline",
-					eventIds: ["event1"],
+					eventIds: ["event1", "event4", "event5"],
 				},
 				column2: {
 					id: "column2",
@@ -105,6 +141,14 @@ export class GameModel {
 		questionSource.searchYear(this.getRandomNumber()).then((data) => {
 			localMyData.events.event3.content = data.text.replace(data.number, "");
 			localMyData.events.event3.year = data.number;
+		});
+		questionSource.searchYear(this.getRandomNumber()).then((data) => {
+			localMyData.events.event4.content = data.text.replace(data.number, "");
+			localMyData.events.event4.year = data.number;
+		});
+		questionSource.searchYear(this.getRandomNumber()).then((data) => {
+			localMyData.events.event5.content = data.text.replace(data.number, "");
+			localMyData.events.event5.year = data.number;
 		});
 
 		return localMyData;
