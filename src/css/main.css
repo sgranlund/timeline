@@ -13,6 +13,7 @@ body,
 	border-right: 10px;
 	border-width: 40px;
 	font-family: "Lobster", cursive;
+	text-align: center;
 }
 .botRow img,
 .topRow img {

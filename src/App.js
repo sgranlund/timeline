@@ -1,12 +1,14 @@
 import React from "react";
 import logo from "./images/timeline.webp";
 //import { Counter } from "./features/counter/Counter";
-import "./css/App.css";
+//mport "./css/App.css";
 import "./css/gameBoard.css";
+import "./css/rules.css";
 import { LandingPage } from "./Presenters/landingPage";
 import { CreateGame } from "./Presenters/createGame";
 import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";
+import { Rules } from "./Presenters/rules";
 import "./css/main.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
@@ -28,6 +30,9 @@ function App({ model }) {
 
 					<Route path="/gameBoard">
 						<GameBoard model={model} />
+					</Route>
+					<Route path="/rules">
+						<Rules />
 					</Route>
 					<Route path="">
 						<LandingPage />
