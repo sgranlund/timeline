@@ -5,7 +5,8 @@ export class GameModel {
 		startYear = 1000,
 		endYear = 2020,
 		gameName = "",
-		counter = 4
+		counter = 4,
+		range = [startYear, endYear]
 	) {
 		this.numberOfPlayers = players;
 		this.startYear = startYear;
@@ -13,6 +14,7 @@ export class GameModel {
 		this.gameName = gameName;
 		this.myData = this.getApiData();
 		this.counter = counter;
+		this.range = range;
 	}
 
 	setNumberOfPlayers(x) {
@@ -35,6 +37,12 @@ export class GameModel {
 	}
 	getEndYear() {
 		return this.endYear;
+	}
+	setRange(x) {
+		this.startYear = x[0]
+		this.endYear = x[1]
+		console.log("start", this.startYear)
+		console.log("end", this.endYear)
 	}
 	setGameName(name) {
 		this.gameName = name;

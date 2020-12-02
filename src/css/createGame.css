@@ -1,0 +1,8 @@
+.sliderArea {
+    display: flex;
+    justify-content: center;
+}
+
+.rc-slider {
+    max-width: 50%;
+}
