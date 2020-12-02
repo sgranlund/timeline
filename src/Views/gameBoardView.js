@@ -10,36 +10,37 @@ export const GameBoardView = ({
 	return (
 		<div className="bigDiv">
 			<DragDropContext onDragEnd={onDragEnd}>
-				<div className="columnEnclose">
-					{newData.columnOrder.map((columnId) => {
-						const column = newData.columns[columnId];
-						const events = column.eventIds.map(
+				<div className="rowEnclose">
+					{newData.rowOrder.map((rowId) => {
+						const row = newData.rows[rowId];
+						const events = row.eventIds.map(
 							(eventId) => newData.events[eventId]
 						);
 
 						return (
 							<div
-								className={String(column.id)}
-								key={column.id}
-								column={column}
+								className={String(row.id)}
+								key={row.id}
+								row={row}
 								events={events}
 							>
-								<div className="columntitle">
-									<button
+								<div className="rowtitle">
+									<a
+										className="backButton"
 										onClick={() => {
-											checkOrder(newData, "column1");
-											checkOrder(newData, "column2");
+											checkOrder(newData, "row1");
+											checkOrder(newData, "row2");
 										}}
 									>
 										Push me
-									</button>
-									<h3>{column.title} </h3>
+									</a>
+									<h3>{row.title} </h3>
 								</div>
 
-								<Droppable droppableId={column.id} direction="horizontal">
+								<Droppable droppableId={row.id} direction="horizontal">
 									{(provided, snapshot) => (
 										<div
-											className={column.id}
+											className={row.id}
 											ref={provided.innerRef}
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}

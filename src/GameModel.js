@@ -54,10 +54,10 @@ export class GameModel {
 		//console.log(x);
 		return x;
 	}
-	checkOrder(allCardsData, column) {
+	checkOrder(allCardsData, row) {
 		// define the array
 		let theTimeline = [];
-		allCardsData.columns[column].eventIds.map((y) => {
+		allCardsData.rows[row].eventIds.map((y) => {
 			theTimeline.push(allCardsData.events[y].year);
 		});
 		console.log("theArray", theTimeline);
@@ -73,11 +73,11 @@ export class GameModel {
 		}
 
 		if (isAscending) {
-			console.log(column + " Correct");
+			console.log(row + " Correct");
 		} else if (isDescending) {
-			console.log(column + " Incorrect, decending");
+			console.log(row + " Incorrect, decending");
 		} else {
-			console.log(column + " Incorrect, not sorted");
+			console.log(row + " Incorrect, not sorted");
 		}
 	}
 	getApiData() {
@@ -110,24 +110,24 @@ export class GameModel {
 					year: 0,
 				},
 			},
-			columns: {
-				column1: {
-					id: "column1",
+			rows: {
+				row1: {
+					id: "row1",
 					title: "Player 1 Timeline",
 					eventIds: ["event1", "event4", "event5"],
 				},
-				column2: {
-					id: "column2",
+				row2: {
+					id: "row2",
 					title: "Card",
 					eventIds: ["event2"],
 				},
-				column3: {
-					id: "column3",
+				row3: {
+					id: "row3",
 					title: "Player 2 timeline",
 					eventIds: ["event3"],
 				},
 			},
-			columnOrder: ["column1", "column2", "column3"],
+			rowOrder: ["row1", "row2", "row3"],
 		};
 		//Fetches data from the API with a random year
 		questionSource.searchYear(this.getRandomNumber()).then((data) => {
