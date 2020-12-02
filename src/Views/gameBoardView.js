@@ -24,17 +24,20 @@ export const GameBoardView = ({
 								row={row}
 								events={events}
 							>
-								<div className="rowtitle">
-									<a
-										className="backButton"
-										onClick={() => {
-											checkOrder(newData, "row1");
-											checkOrder(newData, "row2");
-										}}
-									>
-										Push me
-									</a>
-									<h3>{row.title} </h3>
+								<div className="headerBar">
+									<div className="theButton">
+										<button
+											className="checkSortButton"
+											onClick={() => {
+												checkOrder(newData, "row1");
+												checkOrder(newData, "row3");
+											}}
+										>
+											LOCK IN
+										</button>
+									</div>
+
+									<div className="rowTitle"></div>
 								</div>
 
 								<Droppable droppableId={row.id} direction="horizontal">
@@ -47,6 +50,9 @@ export const GameBoardView = ({
 
 											//isDraggingOver={snapshot.isDraggingOver}
 										>
+											<h2 className="background">
+												<span>{row.title}</span>
+											</h2>
 											{events.map((event, index) => {
 												return (
 													<Draggable

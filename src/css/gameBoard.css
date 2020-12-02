@@ -1,22 +1,10 @@
-.rows {
-	background-color: white;
-	min-height: 30%;
-}
-
-.rowtitle {
-	font-family: cursive;
-	background-color: rgba(168, 215, 172, 0.659);
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
 .row1,
 .row2,
 .row3 {
-	min-height: 200px;
+	min-height: 260px;
 
 	max-width: 100%;
-	background-color: rgba(168, 215, 172, 0.659);
+	position: relative;
 }
 .row2 {
 	justify-content: center;
@@ -25,19 +13,109 @@
 	border-style: solid;
 	border-width: 20px;
 	border-radius: 5px;
-	padding: 6px;
-	width: 5%;
-	background-color: rgba(168, 215, 172, 0.659);
+	padding-left: 6px;
+
+	width: 7%;
+	z-index: 2;
 }
 
 .bigDiv {
 	height: 100%;
-	background-color: rgba(168, 215, 172, 0.659);
 }
 .rowEnclose {
 	height: 100%;
-	background-color: rgba(168, 215, 172, 0.659);
 }
 .cardTitle {
 	padding-top: 0px;
+}
+.headerBar {
+	font-family: cursive;
+	display: flex;
+	flex-direction: column-reverse;
+	align-items: center;
+	height: 10%;
+}
+.checkSortButton {
+	background-color: transparent;
+
+	border: 0.1em solid #ffffff;
+	border-radius: 0.12em;
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	color: #ffffff;
+	text-align: center;
+	height: 3em;
+	width: 15em;
+
+	/* default 0 */
+}
+.checkSortButton:focus {
+	outline: 0;
+}
+
+.checkSortButton:hover {
+	background-color: lightgreen;
+}
+
+.rowTitle h3 {
+	width: 200px;
+	text-align: center;
+	margin: 0%;
+}
+.row1 .row2 .row3 {
+	position: relative;
+}
+.row1 h2 {
+	width: 100%;
+	position: absolute;
+	top: 30%;
+	left: 0;
+}
+.row2 h2 {
+	width: 100%;
+	position: absolute;
+	top: 30%;
+	left: 0;
+}
+.row3 h2 {
+	width: 100%;
+	position: absolute;
+	top: 30%;
+	left: 0;
+}
+h2 {
+	font: 33px sans-serif;
+	margin-top: 30px;
+	text-align: center;
+	text-transform: uppercase;
+	color: black;
+}
+h2.background {
+	z-index: 1;
+}
+
+h2::before {
+	border-top: 10px solid black;
+	content: "";
+	margin: 0 auto;
+	position: absolute;
+	top: 39%;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 95%;
+	z-index: -1;
+}
+h2 span {
+	/* to hide the lines from behind the text, you have to set the background color the same as the container */
+	background-color: rgb(92, 172, 172);
+	padding: 0 15px;
+}
+.row1 button {
+	height: 0;
+	display: none;
+}
+.row2 button {
+	height: 0;
+	display: none;
 }

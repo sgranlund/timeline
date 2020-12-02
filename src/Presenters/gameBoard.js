@@ -10,29 +10,32 @@ export function GameBoard({ model }) {
 	const [newData, updateData] = React.useState(model.myData);
 
 	//---------------Styling start---------------//
-	const grid = 10;
+	const grid = 8;
 
 	const getItemStyle = (isDragging, draggableStyle) => ({
 		// some basic styles to make the items look a bit nicer
 		userSelect: "none",
 
-		margin: `0 ${grid}px 0 0`,
+		margin: `0 ${grid / 2}px 0 ${grid / 2}px`,
 		fontSize: "11px",
 		fontFamily:
 			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 
 		// change background colour if dragging
-		background: isDragging ? "lightgreen" : "white",
-
+		borderColor: isDragging ? "lightgreen" : "black",
+		backgroundColor: "white",
 		// styles we need to apply on draggables
 		...draggableStyle,
 	});
 
 	const getListStyle = (isDraggingOver) => ({
-		background: isDraggingOver ? "lightblue" : "white",
+		//borderBottom: "10px solid black",
+
+		borderColor: isDraggingOver ? "lightgreen" : "black",
 		display: "flex",
 		padding: grid,
 		overflow: "auto",
+		height: "23.333%",
 	});
 	//---------------Styling end---------------//
 
@@ -135,7 +138,7 @@ export function GameBoard({ model }) {
 
 		updateData(newState);
 		//If the card stack is empty
-		if (newState.rows.row2.eventIds.length == 0) {
+		if (newState.rows.row2.eventIds.length === 0) {
 			model.updateCounter();
 
 			//Adds a card to the "Card" array
@@ -152,8 +155,8 @@ export function GameBoard({ model }) {
 					[newFinish.id]: newFinish,
 				},
 			};
-			model.checkOrder(newState, "row1");
-			model.checkOrder(newState, "row3");
+			//model.checkOrder(newState, "row1");
+			//model.checkOrder(newState, "row3");
 			updateData(newState);
 		}
 	};
