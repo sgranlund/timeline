@@ -55,6 +55,7 @@ export function GameBoard({ model }) {
 			id: "event" + String(model.counter),
 			content: data.text.replace(data.number, ""),
 			year: data.number,
+			acquired: false,
 		};
 	}
 	//const isDragDisabled = myData.events.id === "event1";

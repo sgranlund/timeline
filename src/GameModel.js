@@ -1,3 +1,4 @@
+import { all } from "ramda";
 import { questionSource } from "./apiHandling";
 export class GameModel {
 	constructor(
@@ -5,7 +6,7 @@ export class GameModel {
 		startYear = 1000,
 		endYear = 2020,
 		gameName = "",
-		counter = 6
+		counter = 4
 	) {
 		this.numberOfPlayers = players;
 		this.startYear = startYear;
@@ -54,11 +55,20 @@ export class GameModel {
 		//console.log(x);
 		return x;
 	}
+	// deleteCards(allCardsData, row) {
+	// 	allCardsData.rows[row].eventIds.map((y) => {
+	// 		if (allCardsData.events[y].acquired === false) {
+	// 			delete allCardsData.events[y];
+	// 			this.counter -= 1;
+	// 		}
+	// 	});
+	// }
 	checkOrder(allCardsData, row) {
 		// define the array
 		let theTimeline = [];
 		allCardsData.rows[row].eventIds.map((y) => {
 			theTimeline.push(allCardsData.events[y].year);
+			console.log(allCardsData.events[y].acquired);
 		});
 		console.log("theArray", theTimeline);
 		var isDescending = true;
@@ -74,10 +84,44 @@ export class GameModel {
 
 		if (isAscending) {
 			console.log(row + " Correct");
+			allCardsData.rows[row].eventIds.map((y) => {
+				allCardsData.events[y].acquired = true;
+			});
 		} else if (isDescending) {
 			console.log(row + " Incorrect, decending");
+			allCardsData.rows[row].eventIds.map((y) => {
+				if (allCardsData.events[y].acquired === false) {
+					console.log(allCardsData.events[y], allCardsData.events);
+					allCardsData.rows[row].eventIds = allCardsData.rows[
+						row
+					].eventIds.filter((arr) => {
+						console.log(arr, allCardsData.events[y].id);
+						return arr !== allCardsData.events[y].id;
+					});
+					console.log();
+					delete allCardsData.events[y];
+					GameModel.counter -= 1;
+
+					console.log(allCardsData);
+				}
+			});
 		} else {
-			console.log(row + " Incorrect, not sorted");
+			allCardsData.rows[row].eventIds.map((y) => {
+				if (allCardsData.events[y].acquired === false) {
+					console.log(allCardsData.events[y], allCardsData.events);
+					allCardsData.rows[row].eventIds = allCardsData.rows[
+						row
+					].eventIds.filter((arr) => {
+						console.log(arr, allCardsData.events[y].id);
+						return arr !== allCardsData.events[y].id;
+					});
+					console.log();
+					delete allCardsData.events[y];
+					GameModel.counter -= 1;
+
+					console.log(allCardsData);
+				}
+			});
 		}
 	}
 	getApiData() {
@@ -88,33 +132,26 @@ export class GameModel {
 					id: "event1",
 					content: "",
 					year: 0,
+					acquired: true,
 				},
 				event2: {
 					id: "event2",
 					content: "",
 					year: 0,
+					acquired: false,
 				},
 				event3: {
 					id: "event3",
 					content: "",
 					year: 0,
-				},
-				event4: {
-					id: "event4",
-					content: "",
-					year: 0,
-				},
-				event5: {
-					id: "event5",
-					content: "",
-					year: 0,
+					acquired: true,
 				},
 			},
 			rows: {
 				row1: {
 					id: "row1",
 					title: "Player 1 Timeline",
-					eventIds: ["event1", "event4", "event5"],
+					eventIds: ["event1"],
 				},
 				row2: {
 					id: "row2",
@@ -141,14 +178,6 @@ export class GameModel {
 		questionSource.searchYear(this.getRandomNumber()).then((data) => {
 			localMyData.events.event3.content = data.text.replace(data.number, "");
 			localMyData.events.event3.year = data.number;
-		});
-		questionSource.searchYear(this.getRandomNumber()).then((data) => {
-			localMyData.events.event4.content = data.text.replace(data.number, "");
-			localMyData.events.event4.year = data.number;
-		});
-		questionSource.searchYear(this.getRandomNumber()).then((data) => {
-			localMyData.events.event5.content = data.text.replace(data.number, "");
-			localMyData.events.event5.year = data.number;
 		});
 
 		return localMyData;
