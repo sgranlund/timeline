@@ -5,6 +5,7 @@ export const GameBoardView = ({
 	newData,
 	getItemStyle,
 	getListStyle,
+	checkOrder,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -23,11 +24,22 @@ export const GameBoardView = ({
 								column={column}
 								events={events}
 							>
-								<h3 className="columntitle">{column.title} </h3>
+								<div className="columntitle">
+									<button
+										onClick={() => {
+											checkOrder(newData, "column1");
+											checkOrder(newData, "column2");
+										}}
+									>
+										Push me
+									</button>
+									<h3>{column.title} </h3>
+								</div>
+
 								<Droppable droppableId={column.id} direction="horizontal">
 									{(provided, snapshot) => (
 										<div
-											className="events"
+											className={column.id}
 											ref={provided.innerRef}
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}
