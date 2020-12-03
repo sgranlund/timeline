@@ -38,8 +38,8 @@ export class GameModel {
 		return this.endYear;
 	}
 	setRange(x) {
-		this.startYear = x[0]
-		this.endYear = x[1]
+		this.startYear = x[0];
+		this.endYear = x[1];
 	}
 	setGameName(name) {
 		this.gameName = name;
@@ -67,12 +67,12 @@ export class GameModel {
 	// 		}
 	// 	});
 	// }
-	checkOrder(allCardsData, row) {
+	checkOrder(cardsData, row) {
+		let allCardsData = { ...cardsData };
 		// define the array
 		let theTimeline = [];
 		allCardsData.rows[row].eventIds.map((y) => {
 			theTimeline.push(allCardsData.events[y].year);
-			console.log(allCardsData.events[y].acquired);
 		});
 		console.log("theArray", theTimeline);
 		var isDescending = true;
@@ -91,41 +91,36 @@ export class GameModel {
 			allCardsData.rows[row].eventIds.map((y) => {
 				allCardsData.events[y].acquired = true;
 			});
-		} else if (isDescending) {
+			return allCardsData;
+		}
+		if (isDescending) {
 			console.log(row + " Incorrect, decending");
 			allCardsData.rows[row].eventIds.map((y) => {
 				if (allCardsData.events[y].acquired === false) {
-					console.log(allCardsData.events[y], allCardsData.events);
 					allCardsData.rows[row].eventIds = allCardsData.rows[
 						row
 					].eventIds.filter((arr) => {
-						console.log(arr, allCardsData.events[y].id);
 						return arr !== allCardsData.events[y].id;
 					});
-					console.log();
-					delete allCardsData.events[y];
-					GameModel.counter -= 1;
 
-					console.log(allCardsData);
+					delete allCardsData.events[y];
 				}
 			});
+			return allCardsData;
 		} else {
+			console.log(row + " Incorrect, not sorted");
 			allCardsData.rows[row].eventIds.map((y) => {
 				if (allCardsData.events[y].acquired === false) {
-					console.log(allCardsData.events[y], allCardsData.events);
 					allCardsData.rows[row].eventIds = allCardsData.rows[
 						row
 					].eventIds.filter((arr) => {
-						console.log(arr, allCardsData.events[y].id);
 						return arr !== allCardsData.events[y].id;
 					});
-					console.log();
-					delete allCardsData.events[y];
-					GameModel.counter -= 1;
 
-					console.log(allCardsData);
+					delete allCardsData.events[y];
 				}
 			});
+			return allCardsData;
 		}
 	}
 	getApiData() {

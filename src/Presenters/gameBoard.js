@@ -8,7 +8,6 @@ import { dataDeliv } from "../dataDelivered";
 export function GameBoard({ model }) {
 	//Create state for what is in which row
 	const [newData, updateData] = React.useState(model.myData);
-
 	//---------------Styling start---------------//
 	const grid = 8;
 
@@ -45,6 +44,8 @@ export function GameBoard({ model }) {
 		setPromise(questionSource.searchYear(model.getRandomNumber()));
 	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
+	//depends on when the counter updates aka when a new card is generated
+
 	//Pulls out the data from the promise
 	const [data, error] = GetPromise(promise);
 
@@ -67,7 +68,6 @@ export function GameBoard({ model }) {
 			return;
 		}
 
-		// if (
 		// 	destination.droppableId === source.droppableId &&
 		// 	destination.index === source.index
 		// ) {
@@ -168,6 +168,8 @@ export function GameBoard({ model }) {
 			getItemStyle={getItemStyle}
 			getListStyle={getListStyle}
 			checkOrder={model.checkOrder}
+			updateData={updateData}
+			model={model}
 		/>
 	);
 }

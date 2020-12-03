@@ -6,6 +6,8 @@ export const GameBoardView = ({
 	getItemStyle,
 	getListStyle,
 	checkOrder,
+	updateData,
+	model,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -29,8 +31,8 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												checkOrder(newData, "row1");
-												checkOrder(newData, "row3");
+												updateData(checkOrder(newData, "row1"));
+												updateData(checkOrder(newData, "row3"));
 											}}
 										>
 											LOCK IN
