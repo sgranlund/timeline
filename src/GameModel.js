@@ -27,11 +27,9 @@ export class GameModel {
 	}
 	setStartYear(x) {
 		this.startYear = x;
-		console.log("start", this.startYear);
 	}
 	setEndYear(x) {
 		this.endYear = x;
-		console.log("end", this.endYear);
 	}
 	getStartYear() {
 		return this.startYear;
@@ -42,8 +40,6 @@ export class GameModel {
 	setRange(x) {
 		this.startYear = x[0]
 		this.endYear = x[1]
-		console.log("start", this.startYear)
-		console.log("end", this.endYear)
 	}
 	setGameName(name) {
 		this.gameName = name;
