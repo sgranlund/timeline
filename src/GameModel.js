@@ -88,21 +88,34 @@ export class GameModel {
 
 		if (isAscending) {
 			console.log(row + " Correct");
+			//if the row of cards is correct we wanna map it
 			allCardsData.rows[row].eventIds.map((y) => {
+				//set all of them to true to make sure they are kept for next turn
 				allCardsData.events[y].acquired = true;
+				//clears so that multiple years isn't added
+				allCardsData.events[y].content = allCardsData.events[y].content.replace(
+					allCardsData.events[y].year,
+					""
+				);
+				//adds cards year if player got it right
+				allCardsData.events[y].content =
+					String(allCardsData.events[y].year) + allCardsData.events[y].content;
 			});
 			return allCardsData;
 		}
 		if (isDescending) {
 			console.log(row + " Incorrect, decending");
+			//player got it wrong
 			allCardsData.rows[row].eventIds.map((y) => {
+				//for all the cards added this turn
 				if (allCardsData.events[y].acquired === false) {
+					//remove them from eventIds aka board
 					allCardsData.rows[row].eventIds = allCardsData.rows[
 						row
 					].eventIds.filter((arr) => {
 						return arr !== allCardsData.events[y].id;
 					});
-
+					//Delete the cards from events
 					delete allCardsData.events[y];
 				}
 			});
