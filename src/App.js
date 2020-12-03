@@ -3,6 +3,7 @@ import logo from "./images/timeline.webp";
 //import { Counter } from "./features/counter/Counter";
 //mport "./css/App.css";
 import "./css/gameBoard.css";
+import "./css/createGame.css"
 import "./css/rules.css";
 import { LandingPage } from "./Presenters/landingPage";
 import { CreateGame } from "./Presenters/createGame";

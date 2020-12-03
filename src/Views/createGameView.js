@@ -1,14 +1,32 @@
+import Slider from 'rc-slider';
+import "rc-slider/assets/index.css";
+const { createSliderWithTooltip } = Slider;
+const Range = createSliderWithTooltip(Slider.Range);
+
 export const CreateGameView = ({
   onNumPlayers,
-  onStartYear,
-  onEndYear,
-  startYear,
-  endYear,
-  onName,
+  onSliderChange
 }) => (
   <div>
     <div className="createGame">
       <span>Create Game</span>
+    </div>
+    <div className="sliderArea">
+        <Range
+          defaultValue={[1000, 2020]}
+          marks={{
+            1000: `1000`,
+            2020: `2020`
+          }}
+          min={1000}
+          max={2020}
+          tipFormatter={value => ` ${value}`}
+          tipProps={{
+            placement: "top",
+            visible: true
+          }}
+          onChange={onSliderChange}
+        />
     </div>
     <div className="settings">
       <div className="players">
@@ -19,30 +37,6 @@ export const CreateGameView = ({
         </select>
       </div>
       <div className="gameSettings">
-        <div className="range">
-          <label>Year 1500</label>
-          <input
-            onChange={(event) => onStartYear(event.target.value)}
-            type="range"
-            min="1500"
-            max="2020"
-          ></input>
-          <label>Year 2020</label>
-          <label>Year 1500</label>
-          <input
-            onChange={(event) => onEndYear(event.target.value)}
-            type="range"
-            min="1500"
-            max="2020"
-          ></input>
-          <label>Year 2020</label>
-        </div>
-        <div>
-          <span>From:</span>
-          {startYear()}
-          <span>To:</span>
-          {endYear()}
-        </div>
       </div>
     </div>
     <div className="startGame">
