@@ -10,29 +10,32 @@ export function GameBoard({ model }) {
 	const [newData, updateData] = React.useState(model.myData);
 
 	//---------------Styling start---------------//
-	const grid = 10;
+	const grid = 8;
 
 	const getItemStyle = (isDragging, draggableStyle) => ({
 		// some basic styles to make the items look a bit nicer
 		userSelect: "none",
 
-		margin: `0 ${grid}px 0 0`,
+		margin: `0 ${grid / 2}px 0 ${grid / 2}px`,
 		fontSize: "11px",
 		fontFamily:
 			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 
 		// change background colour if dragging
-		background: isDragging ? "lightgreen" : "white",
-
+		borderColor: isDragging ? "lightgreen" : "black",
+		backgroundColor: "white",
 		// styles we need to apply on draggables
 		...draggableStyle,
 	});
 
 	const getListStyle = (isDraggingOver) => ({
-		background: isDraggingOver ? "lightblue" : "white",
+		//borderBottom: "10px solid black",
+
+		borderColor: isDraggingOver ? "lightgreen" : "black",
 		display: "flex",
 		padding: grid,
 		overflow: "auto",
+		height: "23.333%",
 	});
 	//---------------Styling end---------------//
 
@@ -52,6 +55,7 @@ export function GameBoard({ model }) {
 			id: "event" + String(model.counter),
 			content: data.text.replace(data.number, ""),
 			year: data.number,
+			acquired: false,
 		};
 	}
 	//const isDragDisabled = myData.events.id === "event1";
@@ -70,8 +74,8 @@ export function GameBoard({ model }) {
 		// 	return;
 		// }
 		//Labels the cards start and finish location
-		const start = newData.columns[source.droppableId];
-		const finish = newData.columns[destination.droppableId];
+		const start = newData.rows[source.droppableId];
+		const finish = newData.rows[destination.droppableId];
 		//Moving in the same list
 		if (start === finish) {
 			//Copies the start arrays IDS
@@ -89,8 +93,8 @@ export function GameBoard({ model }) {
 
 			const newState = {
 				...newData,
-				columns: {
-					...newData.columns,
+				rows: {
+					...newData.rows,
 					[newColumn.id]: newColumn,
 				},
 			};
@@ -102,7 +106,7 @@ export function GameBoard({ model }) {
 		// Moving from one list to another
 		//You can only move cards from "Cards" to a player and not between players or
 		// to another player
-		if (start.id === "column1" || start.id === "column3") {
+		if (start.id === "row1" || start.id === "row3") {
 			return;
 		}
 		//Copies the start arrays IDS
@@ -126,8 +130,8 @@ export function GameBoard({ model }) {
 		// Updates the new board layout
 		const newState = {
 			...newData,
-			columns: {
-				...newData.columns,
+			rows: {
+				...newData.rows,
 				[newStart.id]: newStart,
 				[newFinish.id]: newFinish,
 			},
@@ -135,8 +139,9 @@ export function GameBoard({ model }) {
 
 		updateData(newState);
 		//If the card stack is empty
-		if (newState.columns.column2.eventIds.length == 0) {
+		if (newState.rows.row2.eventIds.length === 0) {
 			model.updateCounter();
+
 			//Adds a card to the "Card" array
 			const newStart = {
 				...start,
@@ -145,13 +150,14 @@ export function GameBoard({ model }) {
 			//Updates the boards layout
 			const newState = {
 				...newData,
-				columns: {
-					...newData.columns,
+				rows: {
+					...newData.rows,
 					[newStart.id]: newStart,
 					[newFinish.id]: newFinish,
 				},
 			};
-
+			//model.checkOrder(newState, "row1");
+			//model.checkOrder(newState, "row3");
 			updateData(newState);
 		}
 	};
@@ -161,6 +167,7 @@ export function GameBoard({ model }) {
 			newData={newData}
 			getItemStyle={getItemStyle}
 			getListStyle={getListStyle}
+			checkOrder={model.checkOrder}
 		/>
 	);
 }

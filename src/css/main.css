@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Nerko+One&display=swap");
 html,
-body,
-#root {
+body #root {
 	width: 100%;
 	height: 100%;
-	background-color: rgba(168, 215, 172, 0.659);
+	background-color: rgb(92, 172, 172);
 }
+
 .title {
 	background-color: white;
 	border-style: solid;
@@ -13,6 +13,7 @@ body,
 	border-right: 10px;
 	border-width: 40px;
 	font-family: "Lobster", cursive;
+	text-align: center;
 }
 .botRow img,
 .topRow img {

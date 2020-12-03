@@ -1,3 +1,4 @@
+import { all } from "ramda";
 import { questionSource } from "./apiHandling";
 export class GameModel {
 	constructor(
@@ -59,8 +60,77 @@ export class GameModel {
 			Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
 				Math.ceil(this.startYear)
 		);
-		console.log(x);
+		//console.log(x);
 		return x;
+	}
+	// deleteCards(allCardsData, row) {
+	// 	allCardsData.rows[row].eventIds.map((y) => {
+	// 		if (allCardsData.events[y].acquired === false) {
+	// 			delete allCardsData.events[y];
+	// 			this.counter -= 1;
+	// 		}
+	// 	});
+	// }
+	checkOrder(allCardsData, row) {
+		// define the array
+		let theTimeline = [];
+		allCardsData.rows[row].eventIds.map((y) => {
+			theTimeline.push(allCardsData.events[y].year);
+			console.log(allCardsData.events[y].acquired);
+		});
+		console.log("theArray", theTimeline);
+		var isDescending = true;
+		var isAscending = true;
+
+		for (var i = 0, l = theTimeline.length - 1; i < l; i++) {
+			// true if this is greater than the next and all other so far have been true
+			isDescending = isDescending && theTimeline[i] > theTimeline[i + 1];
+
+			// true if this is less than the next and all others so far have been true
+			isAscending = isAscending && theTimeline[i] < theTimeline[i + 1];
+		}
+
+		if (isAscending) {
+			console.log(row + " Correct");
+			allCardsData.rows[row].eventIds.map((y) => {
+				allCardsData.events[y].acquired = true;
+			});
+		} else if (isDescending) {
+			console.log(row + " Incorrect, decending");
+			allCardsData.rows[row].eventIds.map((y) => {
+				if (allCardsData.events[y].acquired === false) {
+					console.log(allCardsData.events[y], allCardsData.events);
+					allCardsData.rows[row].eventIds = allCardsData.rows[
+						row
+					].eventIds.filter((arr) => {
+						console.log(arr, allCardsData.events[y].id);
+						return arr !== allCardsData.events[y].id;
+					});
+					console.log();
+					delete allCardsData.events[y];
+					GameModel.counter -= 1;
+
+					console.log(allCardsData);
+				}
+			});
+		} else {
+			allCardsData.rows[row].eventIds.map((y) => {
+				if (allCardsData.events[y].acquired === false) {
+					console.log(allCardsData.events[y], allCardsData.events);
+					allCardsData.rows[row].eventIds = allCardsData.rows[
+						row
+					].eventIds.filter((arr) => {
+						console.log(arr, allCardsData.events[y].id);
+						return arr !== allCardsData.events[y].id;
+					});
+					console.log();
+					delete allCardsData.events[y];
+					GameModel.counter -= 1;
+
+					console.log(allCardsData);
+				}
+			});
+		}
 	}
 	getApiData() {
 		//Creates the initial data for the board layout
@@ -70,36 +140,39 @@ export class GameModel {
 					id: "event1",
 					content: "",
 					year: 0,
+					acquired: true,
 				},
 				event2: {
 					id: "event2",
 					content: "",
 					year: 0,
+					acquired: false,
 				},
 				event3: {
 					id: "event3",
 					content: "",
 					year: 0,
+					acquired: true,
 				},
 			},
-			columns: {
-				column1: {
-					id: "column1",
+			rows: {
+				row1: {
+					id: "row1",
 					title: "Player 1 Timeline",
 					eventIds: ["event1"],
 				},
-				column2: {
-					id: "column2",
+				row2: {
+					id: "row2",
 					title: "Card",
 					eventIds: ["event2"],
 				},
-				column3: {
-					id: "column3",
+				row3: {
+					id: "row3",
 					title: "Player 2 timeline",
 					eventIds: ["event3"],
 				},
 			},
-			columnOrder: ["column1", "column2", "column3"],
+			rowOrder: ["row1", "row2", "row3"],
 		};
 		//Fetches data from the API with a random year
 		questionSource.searchYear(this.getRandomNumber()).then((data) => {
