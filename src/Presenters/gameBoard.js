@@ -8,11 +8,28 @@ import { storeBoard } from "../AUTH/addToDB";
 import { getCounter } from "../AUTH/fetchFromDB";
 import { auth } from "../AUTH/firebase";
 import { promiseNoData } from "../Views/promiseNoData";
+import { getBoard } from "../AUTH/fetchFromDB";
 export function GameBoard({ model }) {
 	//Create state for what is in which row
 
 	const [newData, updateData] = React.useState(model.myData);
+	//Checks if the database has gameBoardinformation
+	React.useEffect(() => {
+		if ("person" == "person") {
+			let x = getBoard("person");
 
+			x.then((data) => {
+				updateData(data);
+				console.log("data", data);
+			});
+			let val = getCounter("person");
+
+			val.then((data) => {
+				model.updateCounter(data);
+				console.log(data);
+			});
+		}
+	}, []);
 	//---------------Styling start---------------//
 	const grid = 8;
 
@@ -143,7 +160,7 @@ export function GameBoard({ model }) {
 		updateData(newState);
 		//If the card stack is empty
 		if (newState.rows.row2.eventIds.length === 0) {
-			model.updateCounter();
+			model.updateCounter("undefined");
 
 			//Adds a card to the "Card" array
 			const newStart = {
@@ -173,7 +190,6 @@ export function GameBoard({ model }) {
 			getListStyle={getListStyle}
 			checkOrder={model.checkOrder}
 			updateData={updateData}
-			model={model}
 		/>
 	);
 }

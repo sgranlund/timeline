@@ -7,7 +7,8 @@ import { auth } from "../AUTH/firebase";
 export function LandingPage() {
 	const [email, setEmail] = React.useState("");
 	const [pass, setPass] = React.useState("");
-	const [authenticated, setAuth] = React.useState(false);
+  const [authenticated, setAuth] = React.useState(false);
+  
 	React.useEffect(() => {
 		auth().onAuthStateChanged((User) => {
 			if (User) {
@@ -17,7 +18,8 @@ export function LandingPage() {
 				setAuth(false);
 			}
 		});
-	}, []);
+  }, []);
+  
 	return (
 		<LandingPageView
 			onText={(text) => {
