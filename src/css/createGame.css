@@ -1,8 +1,37 @@
 .sliderArea {
     display: flex;
     justify-content: center;
+    margin-bottom: 10%;
+    margin-top: 4%;
 }
 
 .rc-slider {
     max-width: 50%;
 }
+
+.createGame {
+    display: flex;
+    justify-content: center;
+}
+
+.timeRange{
+    display: flex;
+    justify-content: center;
+    font-size: 25px;
+    margin-top: 5%;
+}
+
+.playerNames {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.nameTitle {
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+}
+
+

@@ -1,15 +1,24 @@
+import {increase} from "../actions"
+import {name} from "../actions"
+import {name2} from "../actions"
 import Slider from 'rc-slider';
 import "rc-slider/assets/index.css";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
 export const CreateGameView = ({
-  onNumPlayers,
-  onSliderChange
+  onNameOne,
+  onNameTwo,
+  onStart,
+  dispatchYear,
+  dispatchName
 }) => (
   <div>
     <div className="createGame">
       <span>Create Game</span>
+    </div>
+    <div className="timeRange">
+      <span>Choose time range</span>
     </div>
     <div className="sliderArea">
         <Range
@@ -25,22 +34,16 @@ export const CreateGameView = ({
             placement: "top",
             visible: true
           }}
-          onChange={onSliderChange}
+          onChange={(x)=>dispatchYear(increase(x))}
         />
     </div>
-    <div className="settings">
-      <div className="players">
-        <select onChange={(event) => onNumPlayers(event.target.value)}>
-          <option value="2">2 players</option>
-          <option value="3">3 players</option>
-          <option value="4">4 players</option>
-        </select>
-      </div>
-      <div className="gameSettings">
-      </div>
+    <div className="playerNames">
+          <span className="nameTitle">Add player names:</span>
+          <input onChange={(event)=>dispatchName(name(event.target.value))}/>
+          <input onChange={(event)=>dispatchName(name2(event.target.value))}/>
     </div>
-    <div className="startGame">
-      <button>Start!</button>
+    <div className="divButton">
+      <a href="/gameBoard" className="backButton"> Start game </a>
     </div>
   </div>
 );
