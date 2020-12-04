@@ -7,9 +7,6 @@ const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
 export const CreateGameView = ({
-  onNameOne,
-  onNameTwo,
-  onStart,
   dispatchYear,
   dispatchName
 }) => (
@@ -32,7 +29,6 @@ export const CreateGameView = ({
           tipFormatter={value => ` ${value}`}
           tipProps={{
             placement: "top",
-            visible: true
           }}
           onChange={(x)=>dispatchYear(increase(x))}
         />
