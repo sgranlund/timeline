@@ -4,10 +4,15 @@ import { GameBoardView } from "../Views/gameBoardView";
 import { questionSource } from "../apiHandling";
 import { GetPromise } from "../getPromise";
 import { dataDeliv } from "../dataDelivered";
-
+import { storeBoard } from "../AUTH/addToDB";
+import { getCounter } from "../AUTH/fetchFromDB";
+import { auth } from "../AUTH/firebase";
+import { promiseNoData } from "../Views/promiseNoData";
 export function GameBoard({ model }) {
 	//Create state for what is in which row
+
 	const [newData, updateData] = React.useState(model.myData);
+
 	//---------------Styling start---------------//
 	const grid = 8;
 
@@ -37,7 +42,6 @@ export function GameBoard({ model }) {
 		height: "23.333%",
 	});
 	//---------------Styling end---------------//
-
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
 	React.useEffect(() => {
@@ -45,7 +49,6 @@ export function GameBoard({ model }) {
 	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
 	//depends on when the counter updates aka when a new card is generated
-
 	//Pulls out the data from the promise
 	const [data, error] = GetPromise(promise);
 
@@ -158,6 +161,7 @@ export function GameBoard({ model }) {
 			};
 			//model.checkOrder(newState, "row1");
 			//model.checkOrder(newState, "row3");
+			storeBoard(newData, model.counter);
 			updateData(newState);
 		}
 	};

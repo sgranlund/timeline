@@ -1,20 +1,23 @@
 import { all } from "ramda";
 import { questionSource } from "./apiHandling";
+import { getBoard } from "./AUTH/fetchFromDB";
+import { getCounter } from "./AUTH/fetchFromDB";
 export class GameModel {
 	constructor(
 		players = 2,
 		startYear = 1000,
 		endYear = 2020,
 		gameName = "",
-		counter = 4,
+		counterStart = 3,
 		range = [startYear, endYear]
 	) {
 		this.numberOfPlayers = players;
 		this.startYear = startYear;
 		this.endYear = endYear;
 		this.gameName = gameName;
-		this.myData = this.getApiData();
-		this.counter = counter;
+		this.counter = counterStart;
+		this.myData = this.getApiData("person");
+
 		this.range = range;
 	}
 
@@ -48,8 +51,16 @@ export class GameModel {
 	getGameName() {
 		return this.gameName;
 	}
-	updateCounter() {
+	updateCounter(x) {
 		return (this.counter += 1);
+	}
+	setCounter(x) {
+		if ((x = null)) {
+			this.counter = 4;
+			console.log(this.counter);
+		} else {
+			this.counter = x;
+		}
 	}
 	getRandomNumber() {
 		let x = Math.floor(
@@ -136,8 +147,15 @@ export class GameModel {
 			return allCardsData;
 		}
 	}
-	getApiData() {
+	getApiData(user) {
 		//Creates the initial data for the board layout
+
+		let y = {
+			events: {},
+			rows: {},
+			rowOrder: ["row1", "row2", "row3"],
+		};
+
 		let localMyData = {
 			events: {
 				event1: {
@@ -178,6 +196,16 @@ export class GameModel {
 			},
 			rowOrder: ["row1", "row2", "row3"],
 		};
+		//fetches the events from db
+		if (user == "person") {
+			let x = getBoard("person");
+
+			x.then((data) => {
+				y.rows = data.rows;
+				y.events = data.events;
+			});
+		}
+
 		//Fetches data from the API with a random year
 		questionSource.searchYear(this.getRandomNumber()).then((data) => {
 			localMyData.events.event1.content = data.text.replace(data.number, "");
@@ -191,7 +219,8 @@ export class GameModel {
 			localMyData.events.event3.content = data.text.replace(data.number, "");
 			localMyData.events.event3.year = data.number;
 		});
-
+		console.log("y", y);
+		console.log("localMyDat", localMyData);
 		return localMyData;
 	}
 }

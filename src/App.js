@@ -3,14 +3,16 @@ import logo from "./images/timeline.webp";
 //import { Counter } from "./features/counter/Counter";
 //mport "./css/App.css";
 import "./css/gameBoard.css";
-import "./css/createGame.css"
+import "./css/createGame.css";
 import "./css/rules.css";
 import { LandingPage } from "./Presenters/landingPage";
 import { CreateGame } from "./Presenters/createGame";
 import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";
 import { Rules } from "./Presenters/rules";
+import { Test } from "./Presenters/test";
 import "./css/main.css";
+import "./css/test.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App({ model }) {
@@ -24,6 +26,9 @@ function App({ model }) {
 				<Switch>
 					<Route path="/createGame">
 						<CreateGame model={model} />
+					</Route>
+					<Route path="/test">
+						<Test />
 					</Route>
 					<Route path="/gameFinish">
 						<GameFinish />
