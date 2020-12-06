@@ -1,10 +1,11 @@
-export const RuleView = ({}) => {
+export const RuleView = ({ currentUser }) => {
 	return (
 		<div>
 			<h3 className="rulesTitle">How to play</h3>
 			<h3 className="Idea">The Game Idea</h3>
 			<p className="bread">
 				<p>
+					{currentUser.email}
 					Take turns drawing cards and form a timeline with ten different
 					events. Put the events in chronological order. You do not need to know
 					the years, but only be able to place them in the right relationship to

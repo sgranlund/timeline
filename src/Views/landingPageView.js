@@ -4,13 +4,19 @@ import caesar from "../images/caesar.jpg";
 import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
 import pyramid from "../images/pyramid.jpg";
-import { signin } from "../AUTH/gameAuth";
+import { Form, Button, Card, Alert } from "react-bootstrap";
+
 export const LandingPageView = ({
-	onText,
-	onFormChangeEmail,
-	onFormChangePass,
-	onFormSubmitLogin,
-	onFormSubmitCreate,
+	createEmailRef,
+	createPasswordRef,
+	passwordConfirmRef,
+	submitting,
+	loading,
+	error,
+	currentUser,
+	logEmailRef,
+	logPasswordRef,
+	logIn,
 }) => (
 	<div className="landing">
 		<div className="topRow">
@@ -38,50 +44,57 @@ export const LandingPageView = ({
 				<img src={pyramid} alt="pyramid"></img>
 			</div>
 		</div>
-		<div className="buttons">
-			<div className="continue">
-				<div className="gameName">
-					<span class="formHeader">Log in</span>
-					<form onSubmit={(e) => onFormSubmitLogin(e)}>
-						<label htmlFor="email">Email</label>
-						<input
-							type="email"
-							id="email"
-							onChange={(event) => onFormChangeEmail(event)}
-						></input>
-						<label htmlFor="password">Password</label>
-						<input
-							type="password"
-							id="password"
-							onChange={(event) => onFormChangePass(event)}
-						></input>
-						<button>login</button>
-					</form>
-				</div>
-			</div>
-			<div className="continue">
-				<div className="gameName">
-					<span class="formHeader">Create user</span>
-					<form onSubmit={(e) => onFormSubmitCreate(e)}>
-						<label htmlFor="email">Email</label>
-						<input
-							type="email"
-							id="email"
-							onChange={(event) => onFormChangeEmail(event)}
-						></input>
-						<label htmlFor="password">Password</label>
-						<input
-							type="password"
-							id="password"
-							onChange={(event) => onFormChangePass(event)}
-						></input>
-						<button>login</button>
-					</form>
-				</div>
-			</div>
+
+		<div className="Forms">
+			<Card className="create">
+				<Card.Body>
+					<h2>Sign Up</h2>
+					{currentUser.email}
+					{error && <Alert variant="danger ">{error}</Alert>}
+					<Form className="createForm" onSubmit={submitting}>
+						<Form.Group id="email">
+							<Form.Label>Email</Form.Label>
+							<Form.Control type="email" ref={createEmailRef} required />
+						</Form.Group>
+						<Form.Group id="pass">
+							<Form.Label>Password</Form.Label>
+							<Form.Control type="password" ref={createPasswordRef} required />
+						</Form.Group>
+						<Form.Group id="passwordConfirm">
+							<Form.Label>Confirm</Form.Label>
+							<Form.Control type="password" ref={passwordConfirmRef} required />
+						</Form.Group>
+						<Button id="sign" disable={loading.toString()} type="submit">
+							Sign up
+						</Button>
+					</Form>
+				</Card.Body>
+			</Card>
+
+			<Card className="login">
+				<Card.Body>
+					<h2>Login</h2>
+					{currentUser.email}
+					{error && <Alert variant="danger ">{error}</Alert>}
+					<Form className="loginForm" onSubmit={logIn}>
+						<Form.Group id="email">
+							<Form.Label>Email</Form.Label>
+							<Form.Control type="email" ref={logEmailRef} required />
+						</Form.Group>
+						<Form.Group id="pass">
+							<Form.Label>Password</Form.Label>
+							<Form.Control type="password" ref={logPasswordRef} required />
+						</Form.Group>
+						<Button id="sign" disable={loading.toString()} type="submit">
+							Login
+						</Button>
+					</Form>
+				</Card.Body>
+			</Card>
 		</div>
+
 		<div className="divButton">
-			<a href="./rules" class="backButton bouncy">
+			<a href="./rules" className="backButton bouncy">
 				How to play
 			</a>
 		</div>

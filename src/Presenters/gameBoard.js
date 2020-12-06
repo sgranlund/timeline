@@ -178,7 +178,7 @@ export function GameBoard({ model }) {
 			};
 			//model.checkOrder(newState, "row1");
 			//model.checkOrder(newState, "row3");
-			storeBoard(newData, model.counter);
+			//storeBoard(newData, model.counter);
 			updateData(newState);
 		}
 	};
@@ -190,6 +190,8 @@ export function GameBoard({ model }) {
 			getListStyle={getListStyle}
 			checkOrder={model.checkOrder}
 			updateData={updateData}
+			storeBoard={storeBoard}
+			model={model}
 		/>
 	);
 }

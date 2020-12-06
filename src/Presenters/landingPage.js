@@ -1,66 +1,64 @@
 import React from "react";
 import { LandingPageView } from "../Views/landingPageView.js";
-//import { questionSource } from "../apiHandling";
-import { signin } from "../AUTH/gameAuth";
-import { signup } from "../AUTH/gameAuth";
-import { auth } from "../AUTH/firebase";
+
+import { useRef } from "react";
+import { useAuth } from "../AUTH/AuthProv";
+
 export function LandingPage() {
-	const [email, setEmail] = React.useState("");
-	const [pass, setPass] = React.useState("");
-  const [authenticated, setAuth] = React.useState(false);
-  
-	React.useEffect(() => {
-		auth().onAuthStateChanged((User) => {
-			if (User) {
-				setAuth(true);
-				console.log("autenticated", authenticated);
-			} else {
-				setAuth(false);
-			}
-		});
-  }, []);
-  
+	//createUser
+	const createEmailRef = useRef();
+	const createPasswordRef = useRef();
+	const passwordConfirmRef = useRef();
+	//loginuser
+	const logEmailRef = useRef();
+	const logPasswordRef = useRef();
+	const { currentUser, signup } = useAuth();
+	const { logn } = useAuth();
+	//Error handeling
+	const [error, setError] = React.useState("");
+	const [loading, setLoading] = React.useState("");
+
+	async function submitting(e) {
+		e.preventDefault();
+		if (createPasswordRef.current.value !== passwordConfirmRef.current.value) {
+			return setError("Passwords not matching");
+		}
+		try {
+			setError("");
+			setLoading(true);
+			await signup(
+				createEmailRef.current.value,
+				createPasswordRef.current.value
+			);
+		} catch {
+			setError("Failed to create user");
+		}
+		setLoading(false);
+	}
+	async function logIn(e) {
+		e.preventDefault();
+
+		try {
+			setError("");
+			setLoading(true);
+			await logn(logEmailRef.current.value, logPasswordRef.current.value);
+		} catch {
+			setError("Failed to login");
+		}
+		setLoading(false);
+	}
 	return (
 		<LandingPageView
-			onText={(text) => {
-				//console.log(text);
-			}}
-			onKeyEmail={(event) => {
-				if (event.key === "Enter") {
-					console.log("email", event.target);
-				}
-			}}
-			onKeyPass={(event) => {
-				if (event.key === "Enter") {
-					console.log("Password", event.target.value);
-				}
-			}}
-			onFormChangeEmail={(e) => {
-				console.log(e.target.value);
-				setEmail(e.target.value);
-			}}
-			onFormChangePass={(e) => {
-				console.log(e.target.value);
-				setPass(e.target.value);
-			}}
-			onFormSubmitLogin={(e) => {
-				e.preventDefault();
-				signin(email, pass);
-				console.log("loggedin");
-			}}
-			onFormSubmitCreate={(e) => {
-				e.preventDefault();
-				signup(email, pass);
-				console.log("signed up");
-			}}
+			createEmailRef={createEmailRef}
+			createPasswordRef={createPasswordRef}
+			passwordConfirmRef={passwordConfirmRef}
+			submitting={submitting}
+			loading={loading}
+			error={error}
+			currentUser={currentUser}
+			logEmailRef={logEmailRef}
+			logPasswordRef={logPasswordRef}
+			logIn={logIn}
 		/>
 	);
 }
-//Just a test case for trying out the numbersAPI
-// onKey={(event) => {
-//   if (event.key === "Enter") {
-//     questionSource.searchYear(event.target.value).then((year) => {
-//       console.log("This", year.text.replace(year.number, ""));
-//     });
-//   }
-// }}

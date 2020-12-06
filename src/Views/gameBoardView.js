@@ -7,6 +7,7 @@ export const GameBoardView = ({
 	getListStyle,
 	checkOrder,
 	updateData,
+	storeBoard,
 	model,
 }) => {
 	return (
@@ -33,6 +34,7 @@ export const GameBoardView = ({
 											onClick={() => {
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
+												storeBoard(newData, model.counter);
 											}}
 										>
 											LOCK IN

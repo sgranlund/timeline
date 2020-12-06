@@ -13,7 +13,9 @@ import { Rules } from "./Presenters/rules";
 import { Test } from "./Presenters/test";
 import "./css/main.css";
 import "./css/test.css";
+import "./css/landingPage.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { AuthProvider } from "./AUTH/AuthProv";
 
 function App({ model }) {
 	return (
@@ -22,29 +24,31 @@ function App({ model }) {
 				{/*<img src={logo} className="App-logo" alt="logo" />*/}
 				{/* <Counter /> */}
 			</header>
-			<Router>
-				<Switch>
-					<Route path="/createGame">
-						<CreateGame model={model} />
-					</Route>
-					<Route path="/test">
-						<Test />
-					</Route>
-					<Route path="/gameFinish">
-						<GameFinish />
-					</Route>
+			<AuthProvider>
+				<Router>
+					<Switch>
+						<Route path="/createGame">
+							<CreateGame model={model} />
+						</Route>
+						<Route path="/test">
+							<Test />
+						</Route>
+						<Route path="/gameFinish">
+							<GameFinish />
+						</Route>
 
-					<Route path="/gameBoard">
-						<GameBoard model={model} />
-					</Route>
-					<Route path="/rules">
-						<Rules />
-					</Route>
-					<Route path="">
-						<LandingPage />
-					</Route>
-				</Switch>
-			</Router>
+						<Route path="/gameBoard">
+							<GameBoard model={model} />
+						</Route>
+						<Route path="/rules">
+							<Rules />
+						</Route>
+						<Route path="">
+							<LandingPage />
+						</Route>
+					</Switch>
+				</Router>
+			</AuthProvider>
 		</div>
 	);
 }
