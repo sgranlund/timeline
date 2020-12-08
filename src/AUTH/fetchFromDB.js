@@ -26,3 +26,16 @@ export async function getCounter(user) {
 
 	return x2;
 }
+export async function allUsers(user) {
+	let x = {};
+	await db
+		.ref(user)
+		.once("value")
+		.then((snapshot) => {
+			if (snapshot.exists()) {
+				console.log("User exists");
+			}
+		});
+
+	return x;
+}
