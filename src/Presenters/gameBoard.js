@@ -9,9 +9,17 @@ import { getCounter } from "../AUTH/fetchFromDB";
 import { auth } from "../AUTH/firebase";
 import { promiseNoData } from "../Views/promiseNoData";
 import { getBoard } from "../AUTH/fetchFromDB";
+import { useSelector } from "react-redux";
+import store from "../store"
+import { connect } from "react-redux"
+
+
 export function GameBoard({ model }) {
 	//Create state for what is in which row
-
+	const startYear = useSelector((store)=>store.years[0]);
+	const endYear = useSelector((store)=>store.years[1]);
+	const name1 = useSelector((store)=>store.names.name1[0]);
+	const name2 = useSelector((store)=>store.names.name2[0])
 	const [newData, updateData] = React.useState(model.myData);
 	//Checks if the database has gameBoardinformation
 	React.useEffect(() => {
@@ -30,6 +38,11 @@ export function GameBoard({ model }) {
 			});
 		}
 	}, []);
+
+	React.useEffect(() => {
+		newData.rows.row1.title = name1 + "'s timeline";
+		newData.rows.row3.title = name2 + "'s timeline";
+	})
 	//---------------Styling start---------------//
 	const grid = 8;
 
@@ -62,7 +75,7 @@ export function GameBoard({ model }) {
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
 	React.useEffect(() => {
-		setPromise(questionSource.searchYear(model.getRandomNumber()));
+		setPromise(questionSource.searchYear(model.getRandomNumber(startYear, endYear)));
 	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
 	//depends on when the counter updates aka when a new card is generated
@@ -192,6 +205,10 @@ export function GameBoard({ model }) {
 			updateData={updateData}
 			storeBoard={storeBoard}
 			model={model}
+			startYear={startYear}
+			endYear={endYear}
+			name1={name1}
+			name2={name2}
 		/>
 	);
 }
