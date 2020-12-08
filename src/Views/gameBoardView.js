@@ -1,5 +1,6 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
@@ -9,6 +10,10 @@ export const GameBoardView = ({
 	updateData,
 	storeBoard,
 	model,
+	startYear,
+	endYear,
+	name1,
+	name2
 }) => {
 	return (
 		<div className="bigDiv">
