@@ -1,7 +1,7 @@
 import { db } from "./firebase";
 
-export function storeBoard(gameBoardData, counterData) {
-	db.ref("person").set({
+export function storeBoard(gameBoardData, counterData, user) {
+	db.ref(user).set({
 		gameBoard: gameBoardData,
 		counter: counterData,
 	});
