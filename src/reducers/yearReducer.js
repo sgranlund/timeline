@@ -1,4 +1,4 @@
-const yearReducer = (state = [1000, 2020], action) => {
+const yearReducer = (state = 0, action) => {
     switch(action.type){
         case 'CHANGE':
             return state = action.payload;
