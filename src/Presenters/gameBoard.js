@@ -11,6 +11,11 @@ import { promiseNoData } from "../Views/promiseNoData";
 import { getBoard } from "../AUTH/fetchFromDB";
 export function GameBoard({ model }) {
 	//Create state for what is in which row
+  
+	const startYear = useSelector((store)=>store.years[0]);
+	const endYear = useSelector((store)=>store.years[1]);
+	const name1 = useSelector((store)=>store.names.name1[0]);
+	const name2 = useSelector((store)=>store.names.name2[0]);
 
 	const [newData, updateData] = React.useState(model.myData);
 	//Checks if the database has gameBoardinformation
