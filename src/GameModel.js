@@ -2,23 +2,6 @@ import { all } from "ramda";
 import { questionSource } from "./apiHandling";
 import { getBoard } from "./AUTH/fetchFromDB";
 import { getCounter } from "./AUTH/fetchFromDB";
-import store from "./store";
-import { useSelector } from "react-redux";
-
-function GameMod () {
-	const startYear = useSelector((store)=>store.years[0]);
-	const endYear = useSelector((store)=>store.years[1]);
-	const name1 = useSelector((store)=>store.names.name1[0]);
-	const name2 = useSelector((store)=>store.names.name2[0]);
-	return {
-		startYear,
-		endYear,
-		name1,
-		name2
-	}
-}
-
-
 export class GameModel {
 	constructor(
 		players = 2,
@@ -84,17 +67,10 @@ export class GameModel {
 			this.counter = x;
 		}
 	}
-	getRandomNumber(startYear, endYear) {
-		if (startYear == null && endYear == null) {
-			let x = Math.floor(
-				Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
-					Math.ceil(this.startYear)
-			);
-			return x;
-		}
+	getRandomNumber() {
 		let x = Math.floor(
-			Math.random() * (Math.floor(endYear) - Math.ceil(startYear)) +
-				Math.ceil(startYear)
+			Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
+				Math.ceil(this.startYear)
 		);
 		//console.log(x);
 		return x;
@@ -176,7 +152,7 @@ export class GameModel {
 			return allCardsData;
 		}
 	}
-	getApiData(user, startYear, endYear) {
+	getApiData(user) {
 		//Creates the initial data for the board layout
 
 		// let y = {

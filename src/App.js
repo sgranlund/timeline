@@ -16,7 +16,8 @@ import "./css/test.css";
 import "./css/landingPage.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./AUTH/AuthProv";
-
+import { CreateAccount } from "./Presenters/createAccount";
+import { LoginAccount } from "./Presenters/loginAccount";
 function App({ model }) {
 	return (
 		<div className="App">
@@ -28,7 +29,7 @@ function App({ model }) {
 				<Router>
 					<Switch>
 						<Route path="/createGame">
-							<CreateGame />
+							<CreateGame model={model} />
 						</Route>
 						<Route path="/test">
 							<Test />
@@ -42,6 +43,12 @@ function App({ model }) {
 						</Route>
 						<Route path="/rules">
 							<Rules />
+						</Route>
+						<Route path="/createAcc">
+							<CreateAccount />
+						</Route>
+						<Route path="/loginAcc">
+							<LoginAccount />
 						</Route>
 						<Route path="">
 							<LandingPage />
