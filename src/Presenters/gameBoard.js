@@ -51,7 +51,7 @@ export function GameBoard({ model }) {
 		userSelect: "none",
 
 		margin: `0 ${grid / 2}px 0 ${grid / 2}px`,
-		fontSize: "11px",
+		//fontSize: "11px",
 		fontFamily:
 			"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 
