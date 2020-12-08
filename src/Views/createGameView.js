@@ -1,4 +1,4 @@
-import {increase} from "../actions"
+import {change} from "../actions"
 import {name} from "../actions"
 import {name2} from "../actions"
 import Slider from 'rc-slider';
@@ -31,7 +31,7 @@ export const CreateGameView = ({
           tipProps={{
             placement: "top",
           }}
-          onChange={(x)=>dispatchYear(increase(x))}
+          onChange={(x)=>dispatchYear(change(x))}
         />
     </div>
     <div className="playerNames">
