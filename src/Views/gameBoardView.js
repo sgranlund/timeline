@@ -9,6 +9,7 @@ export const GameBoardView = ({
 	updateData,
 	storeBoard,
 	model,
+	currentUser,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -34,7 +35,7 @@ export const GameBoardView = ({
 											onClick={() => {
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
-												storeBoard(newData, model.counter);
+												storeBoard(newData, model.counter, currentUser);
 											}}
 										>
 											LOCK IN

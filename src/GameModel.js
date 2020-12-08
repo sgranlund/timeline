@@ -52,7 +52,6 @@ export class GameModel {
 		return this.gameName;
 	}
 	updateCounter(x) {
-		console.log(x);
 		if (x !== "undefined") {
 			return (this.counter = x);
 		} else {
@@ -62,7 +61,6 @@ export class GameModel {
 	setCounter(x) {
 		if ((x = null)) {
 			this.counter = 4;
-			console.log(this.counter);
 		} else {
 			this.counter = x;
 		}
@@ -77,9 +75,9 @@ export class GameModel {
 		}
 		let x = Math.floor(
 			Math.random() * (Math.floor(endYear) - Math.ceil(startYear)) +
- 				Math.ceil(startYear)
- 		);
-		 return x;
+				Math.ceil(startYear)
+		);
+		return x;
 	}
 	// deleteCards(allCardsData, row) {
 	// 	allCardsData.rows[row].eventIds.map((y) => {
@@ -109,7 +107,6 @@ export class GameModel {
 		}
 
 		if (isAscending) {
-			console.log(row + " Correct");
 			//if the row of cards is correct we wanna map it
 			allCardsData.rows[row].eventIds.map((y) => {
 				//set all of them to true to make sure they are kept for next turn
@@ -126,7 +123,6 @@ export class GameModel {
 			return allCardsData;
 		}
 		if (isDescending) {
-			console.log(row + " Incorrect, decending");
 			//player got it wrong
 			allCardsData.rows[row].eventIds.map((y) => {
 				//for all the cards added this turn
@@ -143,7 +139,6 @@ export class GameModel {
 			});
 			return allCardsData;
 		} else {
-			console.log(row + " Incorrect, not sorted");
 			allCardsData.rows[row].eventIds.map((y) => {
 				if (allCardsData.events[y].acquired === false) {
 					allCardsData.rows[row].eventIds = allCardsData.rows[
