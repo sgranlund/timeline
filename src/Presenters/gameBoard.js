@@ -9,6 +9,9 @@ import { getCounter } from "../AUTH/fetchFromDB";
 import { auth } from "../AUTH/firebase";
 import { promiseNoData } from "../Views/promiseNoData";
 import { getBoard } from "../AUTH/fetchFromDB";
+import { useSelector } from "react-redux";
+import store from "../store"
+
 export function GameBoard({ model }) {
 	//Create state for what is in which row
   
@@ -34,6 +37,11 @@ export function GameBoard({ model }) {
 				console.log(data);
 			});
 		}
+	}, []);
+
+	React.useEffect(() => {
+		newData.rows.row1.title = name1 + "'s timeline";
+		newData.rows.row3.title = name2 + "'s timeline";
 	}, []);
 	//---------------Styling start---------------//
 	const grid = 8;
@@ -67,7 +75,7 @@ export function GameBoard({ model }) {
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
 	React.useEffect(() => {
-		setPromise(questionSource.searchYear(model.getRandomNumber()));
+		setPromise(questionSource.searchYear(model.getRandomNumber(startYear, endYear)));
 	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
 	//depends on when the counter updates aka when a new card is generated

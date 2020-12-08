@@ -3,6 +3,7 @@ import {name} from "../actions"
 import {name2} from "../actions"
 import Slider from 'rc-slider';
 import "rc-slider/assets/index.css";
+import { Link } from "react-router-dom"
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
@@ -39,7 +40,8 @@ export const CreateGameView = ({
           <input onChange={(event)=>dispatchName(name2(event.target.value))}/>
     </div>
     <div className="divButton">
-      <a href="/gameBoard" className="backButton"> Start game </a>
+      {/* <a href="/gameBoard" className="backButton"> Start game </a> */}
+      <Link to="/gameBoard" className="backButton"> Start game </Link>
     </div>
   </div>
 );

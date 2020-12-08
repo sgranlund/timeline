@@ -67,13 +67,19 @@ export class GameModel {
 			this.counter = x;
 		}
 	}
-	getRandomNumber() {
+	getRandomNumber(startYear, endYear) {
+		if (startYear == null && endYear == null) {
+			let x = Math.floor(
+				Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
+					Math.ceil(this.startYear)
+			);
+			return x;
+		}
 		let x = Math.floor(
-			Math.random() * (Math.floor(this.endYear) - Math.ceil(this.startYear)) +
-				Math.ceil(this.startYear)
-		);
-		//console.log(x);
-		return x;
+			Math.random() * (Math.floor(endYear) - Math.ceil(startYear)) +
+ 				Math.ceil(startYear)
+ 		);
+		 return x;
 	}
 	// deleteCards(allCardsData, row) {
 	// 	allCardsData.rows[row].eventIds.map((y) => {
