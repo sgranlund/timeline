@@ -32,7 +32,7 @@ export const RuleView = ({ currentUser }) => {
 				</p>
 			</p>
 			<div className="divButton">
-				<a href="/" class="backButton bouncy">
+				<a href="/test" class="backButton bouncy">
 					Go Back!
 				</a>
 			</div>
