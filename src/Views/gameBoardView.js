@@ -19,6 +19,8 @@ export const GameBoardView = ({
 	nameNr2,
 	pointsPlay1,
 	pointsPlay2,
+	turn,
+	updateTurn,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -56,12 +58,22 @@ export const GameBoardView = ({
 													pointsPlay2
 												);
 												points();
+												updateTurn(turn + 1);
 												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 												//console.log("length", newData.rows.row1.eventIds.length);
 											}}
 										>
 											LOCK IN
 										</button>
+										{row.id == "row2" && (
+											<div>
+												{turn % 2 == 0 ? (
+													<p className="turn">{nameNr1} Turn</p>
+												) : (
+													<p className="turn">{nameNr2} Turn</p>
+												)}
+											</div>
+										)}
 									</div>
 
 									<div className="rowTitle"></div>

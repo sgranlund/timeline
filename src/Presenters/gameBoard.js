@@ -25,7 +25,7 @@ export function GameBoard({ model }) {
 	const dispatch = useDispatch();
 
 	const [newData, updateData] = React.useState(model.myData);
-
+	const [turn, updateTurn] = React.useState(0);
 	React.useEffect(() => {
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
@@ -236,6 +236,8 @@ export function GameBoard({ model }) {
 			nameNr2={nameNr2}
 			pointsPlay1={pointsPlay1}
 			pointsPlay2={pointsPlay2}
+			turn={turn}
+			updateTurn={updateTurn}
 		/>
 	);
 }
