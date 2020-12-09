@@ -1,7 +1,5 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { increase1 } from "../actions";
-import { increase2 } from "../actions";
 
 export const GameBoardView = ({
 	onDragEnd,
@@ -17,8 +15,8 @@ export const GameBoardView = ({
 	points,
 	startYear,
 	endYear,
-	name1,
-	name2,
+	nameNr1,
+	nameNr2,
 	pointsPlay1,
 	pointsPlay2,
 }) => {
@@ -52,8 +50,8 @@ export const GameBoardView = ({
 													currentUser,
 													startYear,
 													endYear,
-													name1,
-													name2,
+													nameNr1,
+													nameNr2,
 													pointsPlay1,
 													pointsPlay2
 												);

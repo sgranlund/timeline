@@ -107,7 +107,7 @@ export class GameModel {
 			isAscending = isAscending && theTimeline[i] < theTimeline[i + 1];
 		}
 
-		if (isAscending) {
+		if (isAscending || allCardsData.rows[row].eventIds.length == 1) {
 			//if the row of cards is correct we wanna map it
 			allCardsData.rows[row].eventIds.map((y) => {
 				//set all of them to true to make sure they are kept for next turn
@@ -217,7 +217,7 @@ export class GameModel {
 		questionSource
 			.searchYear(this.getRandomNumber(startYear, endYear))
 			.then((data) => {
-				localMyData.events.event1.content = data.text.replace(data.number, "");
+				localMyData.events.event1.content = data.text;
 				localMyData.events.event1.year = data.number;
 			}); //lägga in then i data
 		questionSource
@@ -229,7 +229,7 @@ export class GameModel {
 		questionSource
 			.searchYear(this.getRandomNumber(startYear, endYear))
 			.then((data) => {
-				localMyData.events.event3.content = data.text.replace(data.number, "");
+				localMyData.events.event3.content = data.text;
 				localMyData.events.event3.year = data.number;
 			});
 		//console.log("y", y);

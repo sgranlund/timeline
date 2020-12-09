@@ -1,6 +1,11 @@
+import homeLogo from "../images/iconfinder_Home.svg";
 export const RuleView = () => {
 	return (
 		<div>
+			<div id="stars"></div>
+			<div id="stars2"></div>
+			<div id="stars3"></div>
+			<img src={homeLogo} onClick={() => (window.location.pathname = "")}></img>
 			<h3 className="rulesTitle">How to play</h3>
 			<h3 className="Idea">The Game Idea</h3>
 			<p className="bread">
@@ -16,7 +21,6 @@ export const RuleView = () => {
 					card at a time. Whoever first gets ten cards wins a game!
 				</p>
 			</p>
-
 			<h3 className="Course">The Course of The Game</h3>
 			<p className="bread">
 				<p>
