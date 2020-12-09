@@ -10,7 +10,7 @@ export const LoginAccountView = ({
 	<Card className="login">
 		<Card.Body>
 			<h2>Login</h2>
-			{currentUser.email}
+			{currentUser && currentUser.email}
 			{error && <Alert variant="danger ">{error}</Alert>}
 			<Form className="loginForm" onSubmit={logIn}>
 				<Form.Group id="email">

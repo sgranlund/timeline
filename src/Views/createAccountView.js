@@ -11,7 +11,7 @@ export const CreateAccountView = ({
 	<Card className="create">
 		<Card.Body>
 			<h2>Sign Up</h2>
-			{currentUser.email}
+			{currentUser && currentUser.email}
 			{error && <Alert variant="danger ">{error}</Alert>}
 			<Form className="createForm" onSubmit={submitting}>
 				<Form.Group id="email">
