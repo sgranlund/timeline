@@ -27,17 +27,13 @@ export async function getCounter(user) {
 	return x2;
 }
 export async function allUsers(user) {
-	let x = {};
+	let x = false;
 	await db
 		.ref(user)
 		.once("value")
 		.then((snapshot) => {
-			if (snapshot.exists()) {
-				console.log("User exists");
-				return true;
-			} else {
-				console.log("User does not exists");
-				return false;
-			}
+			x = snapshot.exists();
+			console.log("User exists");
 		});
+	return x;
 }

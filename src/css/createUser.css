@@ -1,0 +1,95 @@
+.Forms {
+	display: flex;
+	justify-content: center;
+}
+
+.card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+}
+.create {
+	height: 100%;
+}
+.createForm {
+	display: flex;
+	flex-direction: column;
+	border-radius: 5%;
+	background-color: rgba(0, 0, 0, 0.173);
+	justify-content: space-around;
+	height: 65%;
+	width: 30%;
+	font-size: 100%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+.createForm h3 {
+	color: white;
+
+	text-align: center;
+	font-size: 300%;
+	margin-top: 6%;
+	margin-bottom: 4%;
+}
+#emailCreate,
+#passCreate,
+#passwordConfirm {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+#emailCreate label,
+#passCreate label,
+#passwordConfirm label {
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+#emailCreate input,
+#passCreate input,
+#passwordConfirm input {
+	width: 50%;
+	height: 50px;
+	font-size: 120%;
+	background-color: transparent;
+	border: 2px solid white;
+	border-radius: 0.4em;
+	color: white;
+	margin-top: 3%;
+	margin-bottom: 10%;
+	align-self: center;
+}
+#signCreate {
+	background-color: transparent;
+	padding: 0.35em 1.2em;
+	border: 0.1em solid #ffffff;
+	margin: 0 0.3em 3% 0;
+	border-radius: 0.12em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-family: "Roboto", sans-serif;
+	font-size: 100%;
+	font-weight: bold;
+	color: #ffffff;
+	text-align: center;
+	transition: all 0.2s;
+	width: 60%;
+	height: 100%;
+	align-self: center;
+}
+#signCreate:hover {
+	color: #000000;
+	background-color: #ffffff;
+}
+
+button {
+	outline: none;
+}
+input {
+	outline: none;
+}

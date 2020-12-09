@@ -14,12 +14,10 @@ import store from "../store";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
 import { useDispatch } from "react-redux";
-import {increase1} from "../actions";
-import {increase2} from "../actions";
-
+import { increase1 } from "../actions";
+import { increase2 } from "../actions";
 
 export function GameBoard({ model }) {
-
 	//Create state for what is in which row
 
 	const { currentUser } = useAuth();
@@ -33,12 +31,12 @@ export function GameBoard({ model }) {
 
 	const [newData, updateData] = React.useState(model.myData);
 
-
 	//Checks if the database has gameBoardinformation
 	React.useEffect(() => {
-		allUsers(currentUser.uid).then((currentUser) => {
-			if (currentUser) {
-				console.log(allUsers(currentUser.uid));
+		allUsers(currentUser.uid).then((userInDB) => {
+			console.log(userInDB);
+			if (userInDB) {
+				console.log(currentUser.uid);
 				let x = getBoard(currentUser.uid);
 
 				x.then((data) => {
@@ -48,6 +46,7 @@ export function GameBoard({ model }) {
 
 				val.then((data) => {
 					model.updateCounter(data);
+					console.log(data);
 				});
 			}
 		});
@@ -57,8 +56,7 @@ export function GameBoard({ model }) {
 		newData.rows.row1.title = name1 + "'s timeline";
 		newData.rows.row3.title = name2 + "'s timeline";
 	}); */
-
-	
+	console.log(startYear, endYear);
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
 	React.useEffect(() => {
@@ -219,10 +217,9 @@ export function GameBoard({ model }) {
 		dispatchPoints(increase1(newData.rows.row1.eventIds.length));
 		dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
-			console.log("10 points")
+			console.log("10 points");
 		}
-	}
-
+	};
 
 	return (
 		<GameBoardView
