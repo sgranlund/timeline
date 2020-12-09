@@ -5,17 +5,12 @@ import { questionSource } from "../apiHandling";
 import { GetPromise } from "../getPromise";
 import { dataDeliv } from "../dataDelivered";
 import { storeBoard } from "../AUTH/addToDB";
-import { getCounter } from "../AUTH/fetchFromDB";
-import { auth } from "../AUTH/firebase";
-import { promiseNoData } from "../Views/promiseNoData";
-import { getBoard } from "../AUTH/fetchFromDB";
+import { getAllData } from "../AUTH/fetchFromDB";
 import { useSelector } from "react-redux";
-import store from "../store";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
 import { useDispatch } from "react-redux";
-import { increase1 } from "../actions";
-import { increase2 } from "../actions";
+import { increase1, increase2, change, name, name2 } from "../actions";
 
 export function GameBoard({ model }) {
 	//Create state for what is in which row
@@ -23,30 +18,31 @@ export function GameBoard({ model }) {
 	const { currentUser } = useAuth();
 	const startYear = useSelector((store) => store.years[0]);
 	const endYear = useSelector((store) => store.years[1]);
-	const name1 = useSelector((store) => store.names.name1[0]);
-	const name2 = useSelector((store) => store.names.name2[0]);
+	const nameNr1 = useSelector((store) => store.names.name1[0]);
+	const nameNr2 = useSelector((store) => store.names.name2[0]);
 	const pointsPlay1 = useSelector((store) => store.points.player1);
 	const pointsPlay2 = useSelector((store) => store.points.player2);
-	const dispatchPoints = useDispatch();
+	const dispatch = useDispatch();
 
 	const [newData, updateData] = React.useState(model.myData);
 
-	//Checks if the database has gameBoardinformation
 	React.useEffect(() => {
+		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
 			console.log(userInDB);
 			if (userInDB) {
 				console.log(currentUser.uid);
-				let x = getBoard(currentUser.uid);
-
-				x.then((data) => {
-					updateData(data);
-				});
-				let val = getCounter(currentUser.uid);
-
-				val.then((data) => {
-					model.updateCounter(data);
+				//Fetches all the important data from database
+				let allTheData = getAllData(currentUser.uid);
+				allTheData.then((data) => {
 					console.log(data);
+					updateData(data.board);
+					model.updateCounter(data.counter);
+					dispatch(change(data.theYears));
+					dispatch(increase1(data.pointsPlay1));
+					dispatch(increase2(data.pointsPlay2));
+					dispatch(name(data.name1));
+					dispatch(name2(data.name1));
 				});
 			}
 		});
@@ -214,8 +210,8 @@ export function GameBoard({ model }) {
 	};
 
 	const Points = () => {
-		dispatchPoints(increase1(newData.rows.row1.eventIds.length));
-		dispatchPoints(increase2(newData.rows.row3.eventIds.length));
+		dispatch(increase1(newData.rows.row1.eventIds.length));
+		dispatch(increase2(newData.rows.row3.eventIds.length));
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
 			console.log("10 points");
 		}
@@ -232,8 +228,14 @@ export function GameBoard({ model }) {
 			storeBoard={storeBoard}
 			model={model}
 			currentUser={currentUser.uid}
-			dispatchPoints={dispatchPoints}
+			dispatchPoints={dispatch}
 			points={Points}
+			startYear={startYear}
+			endYear={endYear}
+			name1={nameNr1}
+			name2={nameNr2}
+			pointsPlay1={pointsPlay1}
+			pointsPlay2={pointsPlay2}
 		/>
 	);
 }
