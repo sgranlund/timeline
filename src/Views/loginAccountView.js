@@ -31,7 +31,7 @@ export const LoginAccountView = ({
 				>
 					Login
 				</Button>
-				<Button id="signIn" variant="link" onClick={logginOut}>
+				<Button id="signOut" variant="link" onClick={logginOut}>
 					Logout
 				</Button>
 			</Form>
