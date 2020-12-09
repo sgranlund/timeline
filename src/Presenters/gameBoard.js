@@ -13,15 +13,27 @@ import { useSelector } from "react-redux";
 import store from "../store";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
+import { useDispatch } from "react-redux";
+import {increase1} from "../actions";
+import {increase2} from "../actions";
+
+
 export function GameBoard({ model }) {
+
 	//Create state for what is in which row
+
 	const { currentUser } = useAuth();
 	const startYear = useSelector((store) => store.years[0]);
 	const endYear = useSelector((store) => store.years[1]);
 	const name1 = useSelector((store) => store.names.name1[0]);
 	const name2 = useSelector((store) => store.names.name2[0]);
+	const pointsPlay1 = useSelector((store) => store.points.player1);
+	const pointsPlay2 = useSelector((store) => store.points.player2);
+	const dispatchPoints = useDispatch();
 
 	const [newData, updateData] = React.useState(model.myData);
+
+
 	//Checks if the database has gameBoardinformation
 	React.useEffect(() => {
 		allUsers(currentUser.uid).then((currentUser) => {
@@ -41,11 +53,34 @@ export function GameBoard({ model }) {
 		});
 	}, []);
 
-	React.useEffect(() => {
+	/* React.useEffect(() => {
 		newData.rows.row1.title = name1 + "'s timeline";
 		newData.rows.row3.title = name2 + "'s timeline";
-	});
+	}); */
 
+	
+	const [promise, setPromise] = React.useState(null);
+	//Fetches promise for the cards
+	React.useEffect(() => {
+		setPromise(
+			questionSource.searchYear(model.getRandomNumber(startYear, endYear))
+		);
+	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
+
+	//depends on when the counter updates aka when a new card is generated
+	//Pulls out the data from the promise
+	const [data, error] = GetPromise(promise);
+
+	if (dataDeliv(data)) {
+		//Creates an new event with data from the promise
+		//Doesn't add it to the row in view
+		newData.events["event" + String(model.counter)] = {
+			id: "event" + String(model.counter),
+			content: data.text.replace(data.number, ""),
+			year: data.number,
+			acquired: false,
+		};
+	}
 	//---------------Styling start---------------//
 	const grid = 8;
 
@@ -75,28 +110,7 @@ export function GameBoard({ model }) {
 		height: "23.333%",
 	});
 	//---------------Styling end---------------//
-	const [promise, setPromise] = React.useState(null);
-	//Fetches promise for the cards
-	React.useEffect(() => {
-		setPromise(
-			questionSource.searchYear(model.getRandomNumber(startYear, endYear))
-		);
-	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
-	//depends on when the counter updates aka when a new card is generated
-	//Pulls out the data from the promise
-	const [data, error] = GetPromise(promise);
-
-	if (dataDeliv(data)) {
-		//Creates an new event with data from the promise
-		//Doesn't add it to the row in view
-		newData.events["event" + String(model.counter)] = {
-			id: "event" + String(model.counter),
-			content: data.text.replace(data.number, ""),
-			year: data.number,
-			acquired: false,
-		};
-	}
 	//const isDragDisabled = myData.events.id === "event1";
 	//makes event draggable
 	const onDragEnd = (result) => {
@@ -200,6 +214,16 @@ export function GameBoard({ model }) {
 			updateData(newState);
 		}
 	};
+
+	const Points = () => {
+		dispatchPoints(increase1(newData.rows.row1.eventIds.length));
+		dispatchPoints(increase2(newData.rows.row3.eventIds.length));
+		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
+			console.log("10 points")
+		}
+	}
+
+
 	return (
 		<GameBoardView
 			onDragEnd={onDragEnd}
@@ -211,6 +235,8 @@ export function GameBoard({ model }) {
 			storeBoard={storeBoard}
 			model={model}
 			currentUser={currentUser.uid}
+			dispatchPoints={dispatchPoints}
+			points={Points}
 		/>
 	);
 }

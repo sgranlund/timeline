@@ -30,7 +30,7 @@ function App({ model }) {
 				<Router>
 					<Switch>
 						<Route path="/createGame">
-							<CreateGame />
+							<CreateGame model={model}/>
 						</Route>
 						<Route path="/test">
 							<Test />

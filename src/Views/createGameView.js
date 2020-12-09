@@ -1,4 +1,4 @@
-import {increase} from "../actions"
+import {change} from "../actions"
 import {name} from "../actions"
 import {name2} from "../actions"
 import Slider from 'rc-slider';
@@ -9,7 +9,10 @@ const Range = createSliderWithTooltip(Slider.Range);
 
 export const CreateGameView = ({
   dispatchYear,
-  dispatchName
+  dispatchName,
+  model,
+  startYear,
+  endYear
 }) => (
   <div>
     <div className="createGame">
@@ -31,7 +34,7 @@ export const CreateGameView = ({
           tipProps={{
             placement: "top",
           }}
-          onChange={(x)=>dispatchYear(increase(x))}
+          onChange={(x)=>dispatchYear(change(x))}
         />
     </div>
     <div className="playerNames">
@@ -40,8 +43,7 @@ export const CreateGameView = ({
           <input onChange={(event)=>dispatchName(name2(event.target.value))}/>
     </div>
     <div className="divButton">
-      {/* <a href="/gameBoard" className="backButton"> Start game </a> */}
-      <Link to="/gameBoard" className="backButton"> Start game </Link>
+      <Link to="/gameBoard" className="backButton" onClick={()=>model.getApiData(startYear, endYear)}> Start game </Link>
     </div>
   </div>
 );

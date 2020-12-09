@@ -5,11 +5,17 @@ import { CreateGameView } from "../Views/createGameView.js";
 export function CreateGame({ model }) {
   const dispatchYear = useDispatch();
   const dispatchName = useDispatch();
+  const startYear = useSelector((store) => store.years[0]);
+	const endYear = useSelector((store) => store.years[1]);
+
 
   return (
     <CreateGameView
       dispatchYear={dispatchYear}
       dispatchName={dispatchName}
+      model={model}
+      startYear={startYear}
+      endYear={endYear}
     />
   );
 }

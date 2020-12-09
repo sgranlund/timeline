@@ -9,15 +9,16 @@ export class GameModel {
 		endYear = 2020,
 		gameName = "",
 		counterStart = 4,
-		range = [startYear, endYear]
+		range = [startYear, endYear],
+		myData = {}
 	) {
 		this.numberOfPlayers = players;
 		this.startYear = startYear;
 		this.endYear = endYear;
 		this.gameName = gameName;
 		this.counter = counterStart;
-		this.myData = this.getApiData("person");
-
+		//this.myData = this.getApiData("person");
+		this.myData = myData;
 		this.range = range;
 	}
 
@@ -153,7 +154,7 @@ export class GameModel {
 			return allCardsData;
 		}
 	}
-	getApiData(user) {
+	getApiData(startYear, endYear) {
 		//Creates the initial data for the board layout
 
 		// let y = {
@@ -213,20 +214,21 @@ export class GameModel {
 		// }
 
 		//Fetches data from the API with a random year
-		questionSource.searchYear(this.getRandomNumber()).then((data) => {
+		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
 			localMyData.events.event1.content = data.text.replace(data.number, "");
 			localMyData.events.event1.year = data.number;
 		}); //lägga in then i data
-		questionSource.searchYear(this.getRandomNumber()).then((data) => {
+		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
 			localMyData.events.event2.content = data.text.replace(data.number, "");
 			localMyData.events.event2.year = data.number;
 		});
-		questionSource.searchYear(this.getRandomNumber()).then((data) => {
+		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
 			localMyData.events.event3.content = data.text.replace(data.number, "");
 			localMyData.events.event3.year = data.number;
 		});
 		//console.log("y", y);
 		console.log("localMyDat", localMyData);
+		this.myData = localMyData;
 		return localMyData;
 	}
 }
