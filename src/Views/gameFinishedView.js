@@ -8,15 +8,15 @@ export const GameFinishedView = ({
 }) => (
     <div className="gameFinish">
         <div className="gameFinishedTitle">
-            <span>Game Finished</span>
+            <span>Congratulations</span>
         </div>
         <div className="result">
-            <span className="resultTitle">Congratulations</span>
-            <span>The winner is:</span>
+            <span className="resultTitle"></span>
             <span className="theWinner">{countWinner()}</span>
+            <span className="winnerIs">you won!</span>
         </div>
         <div className="newGameButton">
-            <a href="/createGame" className="backButton" >
+            <a href="/createGame" className="newButton" >
                 New game
             </a>
         </div>
