@@ -11,7 +11,8 @@ export const LoginAccountView = ({
 }) => (
 	<Card className="login">
 		<Card.Body>
-			{console.log(currentUser)}
+			{currentUser && currentUser.email}
+
 			{error && <Alert variant="danger ">{error}</Alert>}
 			<Form className="loginFormLog" onSubmit={logIn}>
 				<h3>Login</h3>
@@ -26,8 +27,8 @@ export const LoginAccountView = ({
 				<Button
 					id="signIn"
 					disable={loading.toString()}
-					type="submit"
 					onClick={() => startGame(currentUser)}
+					type="submit"
 				>
 					Login
 				</Button>

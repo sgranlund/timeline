@@ -15,6 +15,7 @@ import "./css/main.css";
 import "./css/test.css";
 import "./css/landingPage.css";
 import "./css/login.css";
+import "./css/createUser.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { AuthProvider } from "./AUTH/AuthProv";
 import { CreateAccount } from "./Presenters/createAccount";
@@ -30,7 +31,7 @@ function App({ model }) {
 				<Router>
 					<Switch>
 						<Route path="/createGame">
-							<CreateGame model={model}/>
+							<CreateGame model={model} />
 						</Route>
 						<Route path="/test">
 							<Test />

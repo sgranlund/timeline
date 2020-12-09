@@ -8,7 +8,7 @@ export function CreateAccount() {
 	const createEmailRef = useRef();
 	const createPasswordRef = useRef();
 	const passwordConfirmRef = useRef();
-	const { currentUser, signup } = useAuth();
+	const { currentUser, signup, logout } = useAuth();
 	//Error handeling
 	const [error, setError] = React.useState("");
 	const [loading, setLoading] = React.useState("");
@@ -30,6 +30,29 @@ export function CreateAccount() {
 		}
 		setLoading(false);
 	}
+	async function logginOut() {
+		setError("");
+		try {
+			await logout().then(() => console.log("user signed out"));
+		} catch {
+			setError("Failed to logout");
+		}
+	}
+	React.useEffect(() => {
+		if (currentUser) {
+			logginOut();
+		}
+	}, []);
+	function startGame(thisUser) {
+		if (thisUser !== null) {
+			console.log("createGame");
+			window.location.pathname = "/createGame";
+			return;
+		} else {
+			console.log("null");
+			return;
+		}
+	}
 
 	return (
 		<CreateAccountView
@@ -40,6 +63,7 @@ export function CreateAccount() {
 			loading={loading}
 			error={error}
 			currentUser={currentUser}
+			startGame={startGame}
 		/>
 	);
 }

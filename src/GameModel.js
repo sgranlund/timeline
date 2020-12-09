@@ -5,7 +5,7 @@ import { getCounter } from "./AUTH/fetchFromDB";
 export class GameModel {
 	constructor(
 		players = 2,
-		startYear = 1000,
+		startYear = 1500,
 		endYear = 2020,
 		gameName = "",
 		counterStart = 4,
@@ -18,7 +18,7 @@ export class GameModel {
 		this.gameName = gameName;
 		this.counter = counterStart;
 		//this.myData = this.getApiData("person");
-		this.myData = myData;
+		this.myData = this.getApiData(this.startYear, this.endYear);
 		this.range = range;
 	}
 
@@ -214,18 +214,24 @@ export class GameModel {
 		// }
 
 		//Fetches data from the API with a random year
-		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
-			localMyData.events.event1.content = data.text.replace(data.number, "");
-			localMyData.events.event1.year = data.number;
-		}); //lägga in then i data
-		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
-			localMyData.events.event2.content = data.text.replace(data.number, "");
-			localMyData.events.event2.year = data.number;
-		});
-		questionSource.searchYear(this.getRandomNumber(startYear, endYear)).then((data) => {
-			localMyData.events.event3.content = data.text.replace(data.number, "");
-			localMyData.events.event3.year = data.number;
-		});
+		questionSource
+			.searchYear(this.getRandomNumber(startYear, endYear))
+			.then((data) => {
+				localMyData.events.event1.content = data.text.replace(data.number, "");
+				localMyData.events.event1.year = data.number;
+			}); //lägga in then i data
+		questionSource
+			.searchYear(this.getRandomNumber(startYear, endYear))
+			.then((data) => {
+				localMyData.events.event2.content = data.text.replace(data.number, "");
+				localMyData.events.event2.year = data.number;
+			});
+		questionSource
+			.searchYear(this.getRandomNumber(startYear, endYear))
+			.then((data) => {
+				localMyData.events.event3.content = data.text.replace(data.number, "");
+				localMyData.events.event3.year = data.number;
+			});
 		//console.log("y", y);
 		console.log("localMyDat", localMyData);
 		this.myData = localMyData;
