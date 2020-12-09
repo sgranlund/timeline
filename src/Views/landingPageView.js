@@ -49,8 +49,7 @@ export const LandingPageView = ({
 			<Card className="create">
 				<Card.Body>
 					<h2>Sign Up</h2>
-					{currentUser.email}
-					{error && <Alert variant="danger ">{error}</Alert>}
+
 					<Form className="createForm" onSubmit={submitting}>
 						<Form.Group id="email">
 							<Form.Label>Email</Form.Label>
@@ -74,8 +73,7 @@ export const LandingPageView = ({
 			<Card className="login">
 				<Card.Body>
 					<h2>Login</h2>
-					{currentUser.email}
-					{error && <Alert variant="danger ">{error}</Alert>}
+
 					<Form className="loginForm" onSubmit={logIn}>
 						<Form.Group id="email">
 							<Form.Label>Email</Form.Label>

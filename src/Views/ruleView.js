@@ -1,11 +1,15 @@
-export const RuleView = ({ currentUser }) => {
+import homeLogo from "../images/iconfinder_Home.svg";
+export const RuleView = () => {
 	return (
 		<div>
+			<div id="stars"></div>
+			<div id="stars2"></div>
+			<div id="stars3"></div>
+			<img src={homeLogo} onClick={() => (window.location.pathname = "")}></img>
 			<h3 className="rulesTitle">How to play</h3>
 			<h3 className="Idea">The Game Idea</h3>
 			<p className="bread">
 				<p>
-					{currentUser.email}
 					Take turns drawing cards and form a timeline with ten different
 					events. Put the events in chronological order. You do not need to know
 					the years, but only be able to place them in the right relationship to
@@ -17,7 +21,6 @@ export const RuleView = ({ currentUser }) => {
 					card at a time. Whoever first gets ten cards wins a game!
 				</p>
 			</p>
-
 			<h3 className="Course">The Course of The Game</h3>
 			<p className="bread">
 				<p>

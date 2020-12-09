@@ -1,4 +1,5 @@
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import homeLogo from "../images/iconfinder_Home.svg";
 export const CreateAccountView = ({
 	createEmailRef,
 	createPasswordRef,
@@ -7,18 +8,23 @@ export const CreateAccountView = ({
 	loading,
 	error,
 	currentUser,
+	startGame,
 }) => (
 	<Card className="create">
+		<div id="stars"></div>
+		<div id="stars2"></div>
+		<div id="stars3"></div>
+		<img src={homeLogo} onClick={() => (window.location.pathname = "")}></img>
 		<Card.Body>
-			<h2>Sign Up</h2>
-			{currentUser.email}
-			{error && <Alert variant="danger ">{error}</Alert>}
+			{currentUser && currentUser.email}
+
 			<Form className="createForm" onSubmit={submitting}>
-				<Form.Group id="email">
+				<h3>To create a new game please sign up</h3>
+				<Form.Group id="emailCreate">
 					<Form.Label>Email</Form.Label>
 					<Form.Control type="email" ref={createEmailRef} required />
 				</Form.Group>
-				<Form.Group id="pass">
+				<Form.Group id="passCreate">
 					<Form.Label>Password</Form.Label>
 					<Form.Control type="password" ref={createPasswordRef} required />
 				</Form.Group>
@@ -26,9 +32,15 @@ export const CreateAccountView = ({
 					<Form.Label>Confirm</Form.Label>
 					<Form.Control type="password" ref={passwordConfirmRef} required />
 				</Form.Group>
-				<Button id="sign" disable={loading.toString()} type="submit">
-					Sign up
-				</Button>
+				{currentUser ? (
+					<Button id="signCreate" onClick={() => startGame(currentUser)}>
+						PlayGame
+					</Button>
+				) : (
+					<Button id="signCreate" disable={loading.toString()} type="submit">
+						Sign up
+					</Button>
+				)}
 			</Form>
 		</Card.Body>
 	</Card>

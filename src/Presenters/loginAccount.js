@@ -29,15 +29,26 @@ export function LoginAccount() {
 		setError("");
 		try {
 			await logout().then(() => console.log("user signed out"));
-			window.location.pathname = "/test";
 		} catch {
 			setError("Failed to logout");
 		}
 	}
+	React.useEffect(() => {
+		if (currentUser) {
+			logginOut();
+		}
+	}, []);
+
 	function startGame(thisUser) {
-		if (thisUser !== null) {
+		if (thisUser !== null && allUsers(thisUser)) {
 			window.location.pathname = "/gameBoard";
+			return;
+		}
+		if (thisUser !== null) {
+			window.location.pathname = "/createGame";
+			return;
 		} else {
+			console.log("null");
 			return;
 		}
 	}
