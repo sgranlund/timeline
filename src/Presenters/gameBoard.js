@@ -26,24 +26,28 @@ export function GameBoard({ model }) {
 	const [newData, updateData] = React.useState(model.myData);
 	//Checks if the database has gameBoardinformation
 	React.useEffect(() => {
-		if (allUsers(currentUser.uid)) {
-			let x = getBoard(currentUser.uid);
+		allUsers(currentUser.uid).then((currentUser) => {
+			if (currentUser) {
+				console.log(allUsers(currentUser.uid));
+				let x = getBoard(currentUser.uid);
 
-			x.then((data) => {
-				updateData(data);
-			});
-			let val = getCounter(currentUser.uid);
+				x.then((data) => {
+					updateData(data);
+				});
+				let val = getCounter(currentUser.uid);
 
-			val.then((data) => {
-				model.updateCounter(data);
-			});
-		}
+				val.then((data) => {
+					model.updateCounter(data);
+				});
+			}
+		});
 	}, []);
 
 	React.useEffect(() => {
 		newData.rows.row1.title = name1 + "'s timeline";
 		newData.rows.row3.title = name2 + "'s timeline";
 	});
+
 	//---------------Styling start---------------//
 	const grid = 8;
 
