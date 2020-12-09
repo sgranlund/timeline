@@ -2,6 +2,7 @@ import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import {increase1} from "../actions";
 import {increase2} from "../actions";
+import { Redirect } from "react-router-dom";
 
 export const GameBoardView = ({
 	onDragEnd,
@@ -14,7 +15,8 @@ export const GameBoardView = ({
 	model,
 	currentUser,
 	dispatchPoints,
-	points
+	points,
+	pointsPlay1
 }) => {
 	return (
 		<div className="bigDiv">

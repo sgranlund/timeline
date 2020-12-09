@@ -16,6 +16,7 @@ import { allUsers } from "../AUTH/fetchFromDB";
 import { useDispatch } from "react-redux";
 import {increase1} from "../actions";
 import {increase2} from "../actions";
+import { useHistory } from "react-router-dom"
 
 
 export function GameBoard({ model }) {
@@ -214,12 +215,16 @@ export function GameBoard({ model }) {
 			updateData(newState);
 		}
 	};
+	const history = useHistory();
 
 	const Points = () => {
 		dispatchPoints(increase1(newData.rows.row1.eventIds.length));
 		dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
-			console.log("10 points")
+			console.log("10 points");
+			history.push("/gameFinish")
+			//window.location.pathname = "/gameFinish";
+			//return <Redirect push to="/gameFinish"/>
 		}
 	}
 
@@ -237,6 +242,7 @@ export function GameBoard({ model }) {
 			currentUser={currentUser.uid}
 			dispatchPoints={dispatchPoints}
 			points={Points}
+			pointsPlay1={pointsPlay1}
 		/>
 	);
 }
