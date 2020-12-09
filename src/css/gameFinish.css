@@ -1,0 +1,39 @@
+.gameFinish {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.gameFinishedTitle {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 5%;
+    left: 50%;
+    font-size: 40px;
+}
+
+.result {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 20%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.resultTitle {
+    font-size: 30px;
+    font-family: "Roboto", sans-serif;
+}
+
+.theWinner {
+    font-family: "Roboto", sans-serif;
+}
+
+.newGameButton {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 70%;
+    left: 50%;
+}

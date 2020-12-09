@@ -10,6 +10,8 @@ import { useSelector } from "react-redux";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom"
+
 import { increase1, increase2, change, name, name2 } from "../actions";
 
 export function GameBoard({ model }) {
@@ -208,12 +210,16 @@ export function GameBoard({ model }) {
 			updateData(newState);
 		}
 	};
+	const history = useHistory();
 
 	const Points = () => {
 		dispatch(increase1(newData.rows.row1.eventIds.length));
 		dispatch(increase2(newData.rows.row3.eventIds.length));
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
 			console.log("10 points");
+			history.push("/gameFinish")
+			//window.location.pathname = "/gameFinish";
+			//return <Redirect push to="/gameFinish"/>
 		}
 	};
 
