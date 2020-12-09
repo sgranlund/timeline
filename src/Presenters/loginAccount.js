@@ -3,12 +3,12 @@ import { LoginAccountView } from "../Views/loginAccountView";
 
 import { useRef } from "react";
 import { useAuth } from "../AUTH/AuthProv";
-
+import { allUsers } from "../AUTH/fetchFromDB";
 export function LoginAccount() {
 	//loginuser
 	const logEmailRef = useRef();
 	const logPasswordRef = useRef();
-	const { currentUser, logn } = useAuth();
+	const { currentUser, logn, logout } = useAuth();
 	//Error handeling
 	const [error, setError] = React.useState("");
 	const [loading, setLoading] = React.useState("");
@@ -25,6 +25,22 @@ export function LoginAccount() {
 		}
 		setLoading(false);
 	}
+	async function logginOut() {
+		setError("");
+		try {
+			await logout().then(() => console.log("user signed out"));
+			window.location.pathname = "/test";
+		} catch {
+			setError("Failed to logout");
+		}
+	}
+	function startGame(thisUser) {
+		if (thisUser !== null) {
+			window.location.pathname = "/gameBoard";
+		} else {
+			return;
+		}
+	}
 	return (
 		<LoginAccountView
 			loading={loading}
@@ -33,6 +49,8 @@ export function LoginAccount() {
 			logEmailRef={logEmailRef}
 			logPasswordRef={logPasswordRef}
 			logIn={logIn}
+			logginOut={logginOut}
+			startGame={startGame}
 		/>
 	);
 }

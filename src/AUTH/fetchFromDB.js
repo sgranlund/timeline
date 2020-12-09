@@ -34,8 +34,10 @@ export async function allUsers(user) {
 		.then((snapshot) => {
 			if (snapshot.exists()) {
 				console.log("User exists");
+				return true;
+			} else {
+				console.log("User does not exists");
+				return false;
 			}
 		});
-
-	return x;
 }
