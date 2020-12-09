@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import store from "../store";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
+import { useDispatch } from "react-redux";
 export function GameBoard({ model }) {
 	//Create state for what is in which row
 	const { currentUser } = useAuth();
@@ -20,6 +21,7 @@ export function GameBoard({ model }) {
 	const endYear = useSelector((store) => store.years[1]);
 	const name1 = useSelector((store) => store.names.name1[0]);
 	const name2 = useSelector((store) => store.names.name2[0]);
+	const dispatchPoints = useDispatch();
 
 	const [newData, updateData] = React.useState(model.myData);
 	//Checks if the database has gameBoardinformation
@@ -207,6 +209,7 @@ export function GameBoard({ model }) {
 			storeBoard={storeBoard}
 			model={model}
 			currentUser={currentUser.uid}
+			dispatchPoints={dispatchPoints}
 		/>
 	);
 }

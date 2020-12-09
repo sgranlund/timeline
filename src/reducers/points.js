@@ -1,9 +1,9 @@
 const pointsReducer = (state = 0, action) => {
     switch(action.type){
         case 'INCREASE':
-            return state +1;
+            return state = action.payload;
         case 'DECREASE':
-            return state-1;
+            return state = action.payload;
         default:
             return state;
     }
