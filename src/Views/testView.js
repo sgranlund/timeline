@@ -93,10 +93,10 @@ export const TestView = ({
 							<Form className="loginForm">
 								<h3 className="h3text">PLAY GAME</h3>
 								<Button id="sign" href="/loginAcc">
-									Login
+									Continue Game
 								</Button>
 								<Button id="sign" href="/createAcc">
-									Create account
+									Create new game
 								</Button>
 								<Button id="sign" type="submit" href="/rules">
 									How to play

@@ -34,9 +34,7 @@ function App({ model }) {
 						<Route path="/createGame">
 							<CreateGame model={model} />
 						</Route>
-						<Route path="/test">
-							<Test />
-						</Route>
+
 						<Route path="/gameFinish">
 							<GameFinish />
 						</Route>
@@ -53,8 +51,11 @@ function App({ model }) {
 						<Route path="/loginAcc">
 							<LoginAccount />
 						</Route>
-						<Route path="">
+						<Route path="/landingPage">
 							<LandingPage />
+						</Route>
+						<Route path="/">
+							<Test />
 						</Route>
 					</Switch>
 				</Router>

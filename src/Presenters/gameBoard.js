@@ -27,7 +27,7 @@ export function GameBoard({ model }) {
 	const dispatch = useDispatch();
 
 	const [newData, updateData] = React.useState(model.myData);
-
+	const [turn, updateTurn] = React.useState(0);
 	React.useEffect(() => {
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
@@ -44,16 +44,16 @@ export function GameBoard({ model }) {
 					dispatch(increase1(data.pointsPlay1));
 					dispatch(increase2(data.pointsPlay2));
 					dispatch(name(data.name1));
-					dispatch(name2(data.name1));
+					dispatch(name2(data.name2));
 				});
 			}
 		});
 	}, []);
 
-	/* React.useEffect(() => {
-		newData.rows.row1.title = name1 + "'s timeline";
-		newData.rows.row3.title = name2 + "'s timeline";
-	}); */
+	React.useEffect(() => {
+		newData.rows.row1.title = nameNr1 + "'s timeline";
+		newData.rows.row3.title = nameNr2 + "'s timeline";
+	});
 	console.log(startYear, endYear);
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
@@ -238,10 +238,12 @@ export function GameBoard({ model }) {
 			points={Points}
 			startYear={startYear}
 			endYear={endYear}
-			name1={nameNr1}
-			name2={nameNr2}
+			nameNr1={nameNr1}
+			nameNr2={nameNr2}
 			pointsPlay1={pointsPlay1}
 			pointsPlay2={pointsPlay2}
+			turn={turn}
+			updateTurn={updateTurn}
 		/>
 	);
 }
