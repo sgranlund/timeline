@@ -1,7 +1,7 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {increase} from "../actions";
-import {decrease} from "../actions";
+import {increase1} from "../actions";
+import {increase2} from "../actions";
 
 export const GameBoardView = ({
 	onDragEnd,
@@ -13,7 +13,8 @@ export const GameBoardView = ({
 	storeBoard,
 	model,
 	currentUser,
-	dispatchPoints
+	dispatchPoints,
+	points
 }) => {
 	return (
 		<div className="bigDiv">
@@ -40,7 +41,9 @@ export const GameBoardView = ({
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
 												storeBoard(newData, model.counter, currentUser);
-												dispatchPoints(increase((newdata)=>newdata.rows.row1.lenght));
+												points()
+												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
+												//console.log("length", newData.rows.row1.eventIds.length);
 											}}
 										>
 											LOCK IN

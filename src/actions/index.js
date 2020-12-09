@@ -26,16 +26,16 @@ export const name2 = (name) => {
     }
 }
 
-export const increase = (nr) => {
+export const increase1 = (nr) => {
     return {
-        type: 'INCREASE',
+        type: 'INCREASE1',
         payload: nr
     }
 }
 
-export const decrease = (nr) => {
+export const increase2 = (nr) => {
     return {
-        type: 'DECREASE',
+        type: 'INCREASE2',
         payload: nr
     }
 }
