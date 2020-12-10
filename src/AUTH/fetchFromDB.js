@@ -42,7 +42,8 @@ export async function allUsers(user) {
 }
 
 export async function deleteGame(user) {
-	let userRef = db.ref(user);
-	await userRef.remove()
+	await db.ref(user).remove();
+	//let userRef = db.ref(user);
+	//userRef.remove();
 	console.log("user", user, "removed")
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Link } from "react-router-dom";
 import { increase1 } from "../actions";
 import { increase2 } from "../actions";
 import { Redirect } from "react-router-dom";
@@ -47,7 +48,6 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												points();
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
 												storeBoard(
@@ -61,7 +61,7 @@ export const GameBoardView = ({
 													pointsPlay1,
 													pointsPlay2
 												);
-
+												points();
 												updateTurn(turn + 1);
 												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 												//console.log("length", newData.rows.row1.eventIds.length);
@@ -134,6 +134,9 @@ export const GameBoardView = ({
 					})}
 				</div>
 			</DragDropContext>
+			<div className="rulesButtondiv">
+				<Link to="/rules" className="backButton">How to play</Link>
+			</div>
 		</div>
 	);
 };

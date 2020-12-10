@@ -77,6 +77,7 @@ export function GameBoard({ model }) {
 			year: data.number,
 			acquired: false,
 		};
+		console.log(data.text, data.number)
 	}
 	//---------------Styling start---------------//
 	const grid = 8;
@@ -216,12 +217,10 @@ export function GameBoard({ model }) {
 	const Points = () => {
 		dispatch(increase1(newData.rows.row1.eventIds.length));
 		dispatch(increase2(newData.rows.row3.eventIds.length));
-		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
-			console.log("10 points");
+		if (newData.rows.row1.eventIds.length > 4 || newData.rows.row3.eventIds.length > 4) {
+			console.log("5 points");
 			history.push("/gameFinish");
 			deleteGame(currentUser.uid);
-			//window.location.pathname = "/gameFinish";
-			//return <Redirect push to="/gameFinish"/>
 		}
 	};
 

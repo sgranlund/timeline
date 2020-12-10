@@ -132,6 +132,11 @@ h2 span {
 	top: 15%;
 	left: 17%;
 }
+.rulesButtondiv {
+	position: absolute;
+	top: 5%;
+	right: 5%;
+}
 @media screen and (max-width: 1500px) {
 	.row1,
 	.row2,
