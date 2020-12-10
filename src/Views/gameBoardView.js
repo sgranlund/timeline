@@ -1,7 +1,7 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {increase1} from "../actions";
-import {increase2} from "../actions";
+import { increase1 } from "../actions";
+import { increase2 } from "../actions";
 import { Redirect } from "react-router-dom";
 
 export const GameBoardView = ({
@@ -47,6 +47,7 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
+												points();
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
 												storeBoard(
@@ -60,7 +61,7 @@ export const GameBoardView = ({
 													pointsPlay1,
 													pointsPlay2
 												);
-												points();
+
 												updateTurn(turn + 1);
 												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 												//console.log("length", newData.rows.row1.eventIds.length);
@@ -69,7 +70,7 @@ export const GameBoardView = ({
 											LOCK IN
 										</button>
 										{row.id == "row2" && (
-											<div>
+											<div className="turnParent">
 												{turn % 2 == 0 ? (
 													<p className="turn">{nameNr1} Turn</p>
 												) : (

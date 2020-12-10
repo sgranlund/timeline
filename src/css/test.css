@@ -171,6 +171,26 @@ html {
 	overflow: hidden;
 }
 
+@media screen and (max-width: 1500px) {
+	.uppe img,
+	.nere img {
+		height: 200px;
+		width: 200px;
+		object-fit: cover;
+		margin-left: 20px;
+		margin-right: 20px;
+		border-style: solid;
+		border-color: white;
+		border-width: 10px;
+	}
+	.attachLineNere {
+		display: none;
+	}
+	.attachLineUppe {
+		display: none;
+	}
+}
+
 #stars {
 	width: 1px;
 	height: 1px;

@@ -4,14 +4,17 @@
 	padding-right: 30%;
 	display: flex;
 	flex-direction: row;
+	color: white;
 }
 .Idea,
 .Course {
 	text-align: center;
+	color: white;
 }
 .rulesTitle {
 	font-size: 75px;
 	text-align: center;
+	color: white;
 }
 
 a.backButton {
