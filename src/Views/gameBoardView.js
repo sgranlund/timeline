@@ -47,6 +47,7 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
+												points();
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
 												storeBoard(
@@ -60,7 +61,7 @@ export const GameBoardView = ({
 													pointsPlay1,
 													pointsPlay2
 												);
-												points();
+
 												updateTurn(turn + 1);
 												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
 												//console.log("length", newData.rows.row1.eventIds.length);

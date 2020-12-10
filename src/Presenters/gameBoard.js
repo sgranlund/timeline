@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
 import { increase1, increase2, change, name, name2 } from "../actions";
 
@@ -20,8 +20,8 @@ export function GameBoard({ model }) {
 	const { currentUser } = useAuth();
 	const startYear = useSelector((store) => store.years[0]);
 	const endYear = useSelector((store) => store.years[1]);
-	const nameNr1 = useSelector((store) => store.names.name1[0]);
-	const nameNr2 = useSelector((store) => store.names.name2[0]);
+	const nameNr1 = useSelector((store) => store.names.name1);
+	const nameNr2 = useSelector((store) => store.names.name2);
 	const pointsPlay1 = useSelector((store) => store.points.player1);
 	const pointsPlay2 = useSelector((store) => store.points.player2);
 	const dispatch = useDispatch();
@@ -218,8 +218,8 @@ export function GameBoard({ model }) {
 		dispatch(increase2(newData.rows.row3.eventIds.length));
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
 			console.log("10 points");
-			history.push("/gameFinish")
-			deleteGame(currentUser.uid)
+			history.push("/gameFinish");
+			deleteGame(currentUser.uid);
 			//window.location.pathname = "/gameFinish";
 			//return <Redirect push to="/gameFinish"/>
 		}
