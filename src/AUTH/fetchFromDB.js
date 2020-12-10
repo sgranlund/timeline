@@ -40,3 +40,9 @@ export async function allUsers(user) {
 		});
 	return x;
 }
+
+export async function deleteGame(user) {
+	let userRef = db.ref(user);
+	await userRef.remove()
+	console.log("user", user, "removed")
+}
