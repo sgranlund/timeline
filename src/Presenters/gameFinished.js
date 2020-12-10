@@ -1,7 +1,6 @@
 import React from "react";
 import { GameFinishedView } from "../Views/gameFinishedView.js";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom"
 
 
 export function GameFinish() {
@@ -10,8 +9,6 @@ export function GameFinish() {
 	const pointsPlay1 = useSelector((store) => store.points.player1);
   const pointsPlay2 = useSelector((store) => store.points.player2);
 
-
-  console.log("name1", name1)
 
   const countWinner = () => {
     let winner = "";

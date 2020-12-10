@@ -5,7 +5,7 @@ import { questionSource } from "../apiHandling";
 import { GetPromise } from "../getPromise";
 import { dataDeliv } from "../dataDelivered";
 import { storeBoard } from "../AUTH/addToDB";
-import { getAllData } from "../AUTH/fetchFromDB";
+import { getAllData, deleteGame } from "../AUTH/fetchFromDB";
 import { useSelector } from "react-redux";
 import { useAuth } from "../AUTH/AuthProv";
 import { allUsers } from "../AUTH/fetchFromDB";
@@ -28,12 +28,13 @@ export function GameBoard({ model }) {
 
 	const [newData, updateData] = React.useState(model.myData);
 	const [turn, updateTurn] = React.useState(0);
+
 	React.useEffect(() => {
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
 			console.log(userInDB);
+			console.log(currentUser.uid);
 			if (userInDB) {
-				console.log(currentUser.uid);
 				//Fetches all the important data from database
 				let allTheData = getAllData(currentUser.uid);
 				allTheData.then((data) => {
@@ -218,6 +219,7 @@ export function GameBoard({ model }) {
 		if (pointsPlay1 === 3 || pointsPlay2 === 3) {
 			console.log("10 points");
 			history.push("/gameFinish")
+			deleteGame(currentUser.uid)
 			//window.location.pathname = "/gameFinish";
 			//return <Redirect push to="/gameFinish"/>
 		}

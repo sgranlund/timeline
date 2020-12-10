@@ -4,9 +4,12 @@ export const GameFinishedView = ({
     pointsPlay1,
     pointsPlay2,
     countWinner,
-    newGame
+    newGame,
 }) => (
     <div className="gameFinish">
+        	<div id="stars"></div>
+			<div id="stars2"></div>
+			<div id="stars3"></div>
         <div className="gameFinishedTitle">
             <span>Congratulations</span>
         </div>
