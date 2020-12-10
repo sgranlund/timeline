@@ -1,7 +1,7 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {increase1} from "../actions";
-import {increase2} from "../actions";
+import { increase1 } from "../actions";
+import { increase2 } from "../actions";
 import { Redirect } from "react-router-dom";
 
 export const GameBoardView = ({
@@ -69,7 +69,7 @@ export const GameBoardView = ({
 											LOCK IN
 										</button>
 										{row.id == "row2" && (
-											<div>
+											<div className="turnParent">
 												{turn % 2 == 0 ? (
 													<p className="turn">{nameNr1} Turn</p>
 												) : (
