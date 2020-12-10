@@ -4,54 +4,18 @@ import { getBoard } from "./AUTH/fetchFromDB";
 import { getCounter } from "./AUTH/fetchFromDB";
 export class GameModel {
 	constructor(
-		players = 2,
 		startYear = 1500,
 		endYear = 2020,
-		gameName = "",
 		counterStart = 4,
-		range = [startYear, endYear],
-		myData = {}
+		myData = {},
 	) {
-		this.numberOfPlayers = players;
 		this.startYear = startYear;
 		this.endYear = endYear;
-		this.gameName = gameName;
 		this.counter = counterStart;
 		//this.myData = this.getApiData("person");
 		this.myData = this.getApiData(this.startYear, this.endYear);
-		this.range = range;
 	}
 
-	setNumberOfPlayers(x) {
-		if (x < 2) throw "Number of players cannot less than two";
-		this.numberOfPlayers = x;
-	}
-	getNumberOfPlayers() {
-		return this.numberOfPlayers;
-	}
-	setStartYear(x) {
-		this.startYear = x;
-	}
-	setEndYear(x) {
-		this.endYear = x;
-	}
-	getStartYear() {
-		return this.startYear;
-	}
-	getEndYear() {
-		return this.endYear;
-	}
-	setRange(x) {
-		this.startYear = x[0];
-		this.endYear = x[1];
-	}
-	setGameName(name) {
-		this.gameName = name;
-		console.log(this.gameName);
-	}
-	getGameName() {
-		return this.gameName;
-	}
 	updateCounter(x) {
 		if (x !== "undefined") {
 			return (this.counter = x);
@@ -107,7 +71,7 @@ export class GameModel {
 			isAscending = isAscending && theTimeline[i] < theTimeline[i + 1];
 		}
 
-		if (isAscending || allCardsData.rows[row].eventIds.length == 1) {
+		if (isAscending || allCardsData.rows[row].eventIds.length === 1) {
 			//if the row of cards is correct we wanna map it
 			allCardsData.rows[row].eventIds.map((y) => {
 				//set all of them to true to make sure they are kept for next turn
