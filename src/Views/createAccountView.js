@@ -74,12 +74,13 @@ export const CreateAccountView = ({
 			) : (
 				<Form className="createForm" onSubmit={submitting}>
 					<h3>To create a new game please sign up</h3>
+
 					<Form.Group id="emailCreate">
+						{error && error}
 						<Form.Label>Email</Form.Label>
 						<Form.Control type="email" ref={createEmailRef} required />
 					</Form.Group>
 					<Form.Group id="passCreate">
-						{error && error}
 						<Form.Label>Password </Form.Label>
 
 						<Form.Control

@@ -69,26 +69,25 @@ export const LoginAccountView = ({
 				{currentUser ? (
 					<div className="playGame">
 						<h1>Logged in as {currentUser.email}</h1>
-						<Button id="signIn" onClick={() => startGame(currentUser)}>
+						<Button id="play" onClick={() => startGame(currentUser)}>
 							Play Game!
 						</Button>
 					</div>
 				) : (
-					<Form className="loginFormLog" onSubmit={logIn}>
-						<h3>Login</h3>
+					<div>
+						<Form className="loginFormLog" onSubmit={logIn}>
+							<h3>Login</h3>
 
-						<Form.Group id="emailLog">
-							{error && <Alert variant="danger ">{error}</Alert>}
-							<Form.Label>Email</Form.Label>
-							<Form.Control type="email" ref={logEmailRef} required />
-						</Form.Group>
-						<Form.Group id="passLog">
-							<Form.Label>Password</Form.Label>
-							<Form.Control type="password" ref={logPasswordRef} required />
-						</Form.Group>
-						{currentUser ? (
-							<div></div>
-						) : (
+							<Form.Group id="emailLog">
+								{error && <Alert variant="danger ">{error}</Alert>}
+								<Form.Label>Email</Form.Label>
+								<Form.Control type="email" ref={logEmailRef} required />
+							</Form.Group>
+							<Form.Group id="passLog">
+								<Form.Label>Password</Form.Label>
+								<Form.Control type="password" ref={logPasswordRef} required />
+							</Form.Group>
+
 							<Button
 								id="signIn"
 								disable={loading.toString()}
@@ -97,19 +96,11 @@ export const LoginAccountView = ({
 							>
 								Login
 							</Button>
-						)}
-
-						<Button
-							id="signIn"
-							onClick={() => (window.location.pathname = "/createAcc")}
-						>
-							Create new user
-						</Button>
-
-						<Button id="signOut" variant="link" onClick={logginOut}>
-							Logout
-						</Button>
-					</Form>
+						</Form>
+						<a className="linkTocreate" href="/createAcc">
+							Not a user click here to create new user
+						</a>
+					</div>
 				)}
 			</Card.Body>
 		</Card>
