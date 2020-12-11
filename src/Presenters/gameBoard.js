@@ -192,11 +192,7 @@ export function GameBoard({ model }) {
 	const Points = () => {
 		dispatch(increase1(newData.rows.row1.eventIds.length));
 		dispatch(increase2(newData.rows.row3.eventIds.length));
-		if (
-			newData.rows.row1.eventIds.length > 4 ||
-			newData.rows.row3.eventIds.length > 4
-		) {
-			console.log("5 points");
+		if (newData.rows.row1.eventIds.length > 4 || newData.rows.row3.eventIds.length > 4) {
 			history.push("/gameFinish");
 			deleteGame(currentUser.uid);
 		}
