@@ -21,7 +21,7 @@ export function LoginAccount() {
 			setLoading(true);
 			await logn(logEmailRef.current.value, logPasswordRef.current.value);
 		} catch {
-			setError("Failed to login");
+			setError("Please create a user");
 		}
 		setLoading(false);
 	}
