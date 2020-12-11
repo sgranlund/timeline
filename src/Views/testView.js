@@ -138,12 +138,9 @@ export const TestView = ({
 				<div className="attach">
 					<Card className="login">
 						<Card.Body>
-							<Form className="loginForm">
+							<Form className="testPlayGame">
 								<Button id="sign" href="/loginAcc">
-									Play Game
-								</Button>
-								<Button id="sign" type="submit" href="/rules">
-									How to play
+									<label>Play Game</label>
 								</Button>
 							</Form>
 						</Card.Body>
