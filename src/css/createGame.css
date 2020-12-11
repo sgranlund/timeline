@@ -50,7 +50,8 @@
 	text-align: center;
 }
 ::placeholder {
-	color: white;
+	color: black;
 	font-size: 1em;
 	text-align: center;
+	font-family: cursive;
 }

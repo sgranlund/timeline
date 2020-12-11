@@ -25,8 +25,8 @@ export function CreateAccount() {
 				createEmailRef.current.value,
 				createPasswordRef.current.value
 			);
-		} catch {
-			setError("Failed to create user");
+		} catch (err) {
+			setError(err.message);
 		}
 		setLoading(false);
 	}
