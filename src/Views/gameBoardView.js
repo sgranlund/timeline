@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { increase1 } from "../actions";
 import { increase2 } from "../actions";
 import { Redirect } from "react-router-dom";
+import { getItemStyle, getListStyle } from "../boardStyle";
 
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
-	getItemStyle,
-	getListStyle,
+
 	checkOrder,
 	updateData,
 	storeBoard,
@@ -25,6 +25,8 @@ export const GameBoardView = ({
 	pointsPlay2,
 	turn,
 	updateTurn,
+	userTurn,
+	updateUserTurn,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -72,9 +74,14 @@ export const GameBoardView = ({
 										{row.id == "row2" && (
 											<div className="turnParent">
 												{turn % 2 == 0 ? (
-													<p className="turn">{nameNr1} Turn</p>
+													<p className="turn">
+														{updateUserTurn("row3")}
+														{nameNr1} Turn
+													</p>
 												) : (
-													<p className="turn">{nameNr2} Turn</p>
+													<p className="turn">
+														{updateUserTurn("row1")} {nameNr2} Turn
+													</p>
 												)}
 											</div>
 										)}
@@ -112,6 +119,7 @@ export const GameBoardView = ({
 																{...provided.dragHandleProps}
 																ref={provided.innerRef}
 																style={getItemStyle(
+																	userTurn === row.id,
 																	snapshot.isDragging,
 																	provided.draggableProps.style
 																)}
@@ -135,7 +143,9 @@ export const GameBoardView = ({
 				</div>
 			</DragDropContext>
 			<div className="rulesButtondiv">
-				<Link to="/rules" className="backButton">How to play</Link>
+				<Link to="/rules" className="backButton">
+					How to play
+				</Link>
 			</div>
 		</div>
 	);

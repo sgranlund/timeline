@@ -37,6 +37,10 @@ export const GameFinishedView = ({
 			{/* <span className="theWinner">{countWinner()}</span> */}
 			<span className="winnerIs">you won!</span>
 		</div>
+        <div className="score">
+            <span className="score1">{name1} got {pointsPlay1} points</span>
+            <span className="score2">{name2} got {pointsPlay2} points</span>
+        </div>
 		<div className="newGameButton">
 			<a href="/createGame" className="newButton">
 				New game
