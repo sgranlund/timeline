@@ -31,13 +31,15 @@ export const CreateGameView = ({
 					1000: `1000`,
 					2020: `2020`,
 				}}
+				step={10}
 				min={1000}
 				max={2020}
 				tipFormatter={(value) => ` ${value}`}
 				tipProps={{
 					placement: "top",
+					visible: true
 				}}
-				onChange={(x) => dispatchYear(change(x))}
+				onAfterChange={(x) => dispatchYear(change(x))}
 			/>
 		</div>
 		<div className="playerNames">
