@@ -1,6 +1,6 @@
 import abra from "../images/abra.jpg";
 import berlin from "../images/berlinmuren.jpg";
-import caesar from "../images/caesar.jpg";
+import bonneyAnne from "../images/bonneyAnne.jpg";
 import iphone from "../images/iphone.jpg";
 import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
@@ -53,11 +53,11 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 			<div className="nere">
 				<div className="attach">
 					<hr className="attachLineNere" />
-					<img alt="caesar" src={caesar}></img>
+					<img alt="bonneyAnne" src={bonneyAnne}></img>
 
 					{dataDeliv(data3) && (
 						<p className="text">
-							200 hundred years after Caesar is born {data3.number} f.kr is also
+							The year Anne Bonney is born {data3.year}is also
 							{data3.text.substr(data3.text.indexOf(" ") + 3)}
 						</p>
 					)}

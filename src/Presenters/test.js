@@ -12,7 +12,7 @@ export function Test() {
 	React.useEffect(() => {
 		setPromise1(questionSource.searchYear(1809));
 		setPromise2(questionSource.searchYear(2007));
-		setPromise3(questionSource.searchYear(100));
+		setPromise3(questionSource.searchYear(1697));
 		setPromise4(questionSource.searchYear(1989));
 	}, []);
 

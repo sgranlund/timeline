@@ -3,7 +3,7 @@ import berlin from "../images/berlinmuren.jpg";
 import caesar from "../images/caesar.jpg";
 import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
-import pyramid from "../images/pyramid.jpg";
+import bonneyAnne from "../images/bonneyAnne.jpg";
 import { Form, Button, Card } from "react-bootstrap";
 export const LandingPageView = ({
 	createEmailRef,
