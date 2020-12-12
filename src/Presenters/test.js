@@ -26,20 +26,5 @@ export function Test() {
 	// for (let i = 0; i < logo.length; i++) {
 	// 	console.log(` ${logo[i].getTotalLength()}`);
 	// }
-	return (
-		<TestView
-			data1={data1}
-			error1={error1}
-			promise1={promise1}
-			data2={data2}
-			error2={error2}
-			promise2={promise2}
-			data3={data3}
-			error3={error3}
-			promise3={promise3}
-			data4={data4}
-			error4={error4}
-			promise4={promise4}
-		/>
-	);
+	return <TestView data1={data1} data2={data2} data3={data3} data4={data4} />;
 }

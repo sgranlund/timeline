@@ -1,7 +1,5 @@
 import { ReactComponent as Logo } from "../images/timeline.svg";
 
-import { Form, Button, Card, Alert } from "react-bootstrap";
-
 export const RuleView = () => {
 	return (
 		<div>

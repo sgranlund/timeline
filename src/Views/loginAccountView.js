@@ -1,5 +1,4 @@
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import homeLogo from "../images/iconfinder_Home.svg";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 export const LoginAccountView = ({
 	loading,
@@ -8,7 +7,6 @@ export const LoginAccountView = ({
 	logEmailRef,
 	logPasswordRef,
 	logIn,
-	logginOut,
 	startGame,
 }) => (
 	<div>

@@ -61,7 +61,6 @@ export function LoginAccount() {
 			logEmailRef={logEmailRef}
 			logPasswordRef={logPasswordRef}
 			logIn={logIn}
-			logginOut={logginOut}
 			startGame={startGame}
 		/>
 	);

@@ -1,27 +1,11 @@
 import abra from "../images/abra.jpg";
 import berlin from "../images/berlinmuren.jpg";
 import caesar from "../images/caesar.jpg";
-import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
-import pyramid from "../images/pyramid.jpg";
 import { Form, Button, Card, Alert } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 import { dataDeliv } from "../dataDelivered";
-export const TestView = ({
-	getText,
-	data1,
-	error1,
-	promise1,
-	data2,
-	error2,
-	promise2,
-	data3,
-	error3,
-	promise3,
-	data4,
-	error4,
-	promise4,
-}) => {
+export const TestView = ({ data1, data2, data3, data4 }) => {
 	return (
 		<div className="apa">
 			<div id="stars"></div>
