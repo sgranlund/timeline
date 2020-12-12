@@ -35,7 +35,7 @@
 #passLog label {
 	color: white;
 	text-transform: uppercase;
-	font-weight: bold;
+	font-size: 120%;
 }
 
 #emailLog input,
@@ -58,10 +58,7 @@
 	margin: 7% 0.3em 0 0;
 	border-radius: 0.12em;
 	box-sizing: border-box;
-	text-decoration: none;
-	font-family: "Roboto", sans-serif;
-	font-size: 100%;
-	font-weight: bold;
+	font-size: 150%;
 	color: #ffffff;
 	text-align: center;
 	transition: all 0.2s;
@@ -162,7 +159,7 @@ input {
 	border-radius: 0.12em;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: "Roboto", sans-serif;
+
 	font-size: 200%;
 	font-weight: bold;
 	color: #ffffff;

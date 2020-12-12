@@ -29,7 +29,8 @@
 	padding-top: 0px;
 }
 .headerBar {
-	font-family: cursive;
+	font-size: 100%;
+	font-weight: 900;
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
@@ -40,7 +41,7 @@
 
 	border: 0.1em solid #ffffff;
 	border-radius: 0.12em;
-	font-family: "Roboto", sans-serif;
+
 	font-weight: 900;
 	color: #ffffff;
 	text-align: center;
@@ -89,7 +90,7 @@
 	left: 0;
 }
 h2 {
-	font: 33px sans-serif;
+	font-size: 44px;
 	margin-top: 30px;
 	text-align: center;
 	text-transform: uppercase;
@@ -138,7 +139,6 @@ h2 span {
 	z-index: 49;
 	font-size: 0;
 	font-weight: 700;
-	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 	animation: hide 1.5s;
 	opacity: 0.1;
 }
@@ -158,7 +158,7 @@ h2 span {
 	top: 20%;
 	left: 20%;
 	color: white;
-	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+
 	background-color: transparent;
 	font-size: 200%;
 	width: 100%;
@@ -242,7 +242,6 @@ h2 span {
 	}
 
 	.headerBar {
-		font-family: cursive;
 		display: flex;
 		flex-direction: column-reverse;
 		align-items: center;
@@ -277,5 +276,4 @@ h2 span {
 	left: 80%;
 	text-decoration: none;
 	color: white;
-	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }

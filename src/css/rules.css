@@ -24,7 +24,6 @@ a.backButton {
 	border-radius: 0.12em;
 	box-sizing: border-box;
 	text-decoration: none;
-	font-family: "Roboto", sans-serif;
 	font-weight: 300;
 	color: #ffffff;
 	text-align: center;
@@ -66,9 +65,7 @@ a.backButton:hover {
 	justify-content: center;
 }
 
-
-
-@media screen and (max-width:1500px) {
+@media screen and (max-width: 1500px) {
 	.bread {
 		text-align: start;
 		padding-left: 30%;
@@ -86,7 +83,7 @@ a.backButton:hover {
 		margin-top: 0%;
 		margin-bottom: 3%;
 	}
-	
+
 	a.backButton {
 		padding: 0.35em 1.2em;
 		border: 0.1em solid #ffffff;
@@ -94,7 +91,7 @@ a.backButton:hover {
 		border-radius: 0.12em;
 		box-sizing: border-box;
 		text-decoration: none;
-		font-family: "Roboto", sans-serif;
+
 		font-weight: 300;
 		color: #ffffff;
 		text-align: center;
@@ -135,5 +132,4 @@ a.backButton:hover {
 		display: flex;
 		justify-content: center;
 	}
-	
 }
