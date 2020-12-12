@@ -1,7 +1,7 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
-import { getItemStyle, getListStyle } from "../boardStyle";
+import { getItemStyle, getListStyle, noViewCard } from "../boardStyle";
 import rules from "../images/rules.svg";
 
 export const GameBoardView = ({
@@ -22,6 +22,11 @@ export const GameBoardView = ({
 	turn,
 	updateTurn,
 	userTurn,
+	updateUserTurn,
+	newCard,
+	onMouseD,
+	onMouseU,
+	mouse,
 	playerTurn,
 }) => {
 	return (
@@ -122,7 +127,14 @@ export const GameBoardView = ({
 																{...provided.draggableProps}
 																{...provided.dragHandleProps}
 																ref={provided.innerRef}
-																style={getItemStyle(
+																onMouseDown={()=>onMouseD()}
+																onMouseUp={()=>onMouseU()}
+																style={row.id === "row2" ? 
+																	noViewCard(
+																	mouse === true,
+																	snapshot.isDragging,
+																	provided.draggableProps.style) : 
+																	getItemStyle(
 																	userTurn === row.id,
 																	snapshot.isDragging,
 																	provided.draggableProps.style
