@@ -26,7 +26,7 @@ export const GameBoardView = ({
 	newCard,
 	onMouseD,
 	onMouseU,
-	mouse
+	mouse,
 	playerTurn,
 }) => {
 	return (
