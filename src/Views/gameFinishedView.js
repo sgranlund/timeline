@@ -11,6 +11,14 @@ export const GameFinishedView = ({
 		<div id="stars"></div>
 		<div id="stars2"></div>
 		<div id="stars3"></div>
+		<div class="fireworks">
+			<div className="before"></div>
+			<div className="after"></div>
+		</div>
+		<div class="fireworks2">
+			<div className="before"></div>
+			<div className="after"></div>
+		</div>
 		<Logo
 			id="timelineHomeButton"
 			onClick={() => (window.location.pathname = "")}
