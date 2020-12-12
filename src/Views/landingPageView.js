@@ -4,16 +4,13 @@ import caesar from "../images/caesar.jpg";
 import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
 import pyramid from "../images/pyramid.jpg";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-import { TestView } from "./testView";
+import { Form, Button, Card } from "react-bootstrap";
 export const LandingPageView = ({
 	createEmailRef,
 	createPasswordRef,
 	passwordConfirmRef,
 	submitting,
 	loading,
-	error,
-	currentUser,
 	logEmailRef,
 	logPasswordRef,
 	logIn,

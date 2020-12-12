@@ -1,7 +1,4 @@
 import React from "react";
-import logo from "./images/timeline.webp";
-//import { Counter } from "./features/counter/Counter";
-//mport "./css/App.css";
 import "./css/gameBoard.css";
 import "./css/createGame.css";
 import "./css/rules.css";
@@ -17,7 +14,7 @@ import "./css/landingPage.css";
 import "./css/login.css";
 import "./css/gameFinish.css";
 import "./css/createUser.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./AUTH/AuthProv";
 import { CreateAccount } from "./Presenters/createAccount";
 import { LoginAccount } from "./Presenters/loginAccount";

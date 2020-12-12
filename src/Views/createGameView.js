@@ -68,7 +68,7 @@ export const CreateGameView = ({ dispatchYear, dispatchName, getYearSpan }) => (
 				Start game{" "}
 			</Link>
 			<Link className="rulesCreate" to="/rules">
-				<img className="createRulesIMG" src={rules}></img>
+				<img alt="linkRules" className="createRulesIMG" src={rules}></img>
 				<p className="createRulesP">How to play</p>
 			</Link>
 		</div>

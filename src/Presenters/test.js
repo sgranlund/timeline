@@ -17,10 +17,10 @@ export function Test() {
 	}, []);
 
 	//Pulls out the data from the promise
-	const [data1, error1] = GetPromise(promise1);
-	const [data2, error2] = GetPromise(promise2);
-	const [data3, error3] = GetPromise(promise3);
-	const [data4, error4] = GetPromise(promise4);
+	const [data1] = GetPromise(promise1);
+	const [data2] = GetPromise(promise2);
+	const [data3] = GetPromise(promise3);
+	const [data4] = GetPromise(promise4);
 
 	// const logo = document.querySelectorAll("#timelineLogo path");
 	// for (let i = 0; i < logo.length; i++) {

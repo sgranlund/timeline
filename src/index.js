@@ -1,12 +1,11 @@
 //import store from "./app/store";
-import React, { Component } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import "./css/index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { GameModel } from "./GameModel";
-import store from "./store"
-
+import store from "./store";
 
 const model = new GameModel();
 

@@ -83,7 +83,11 @@ export const GameBoardView = ({
 										)}
 										{row.id === "row2" && (
 											<Link to="/rules">
-												<img className="gameRulesIMG" src={rules}></img>
+												<img
+													alt="rules"
+													className="gameRulesIMG"
+													src={rules}
+												></img>
 
 												<p className="gameRulesP">How to play</p>
 											</Link>

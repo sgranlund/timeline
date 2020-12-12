@@ -2,7 +2,7 @@ import abra from "../images/abra.jpg";
 import berlin from "../images/berlinmuren.jpg";
 import caesar from "../images/caesar.jpg";
 import iphone from "../images/iphone.jpg";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 import { dataDeliv } from "../dataDelivered";
 export const TestView = ({ data1, data2, data3, data4 }) => {
@@ -19,7 +19,7 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 			<div className="uppe">
 				<div className="attach">
 					<hr className="attachLineUppe" />
-					<img src={berlin}></img>
+					<img alt="berlin" src={berlin}></img>
 					{dataDeliv(data4) && (
 						<p className="text">
 							The year that the Berlin wall fell {data4.number} is also
@@ -40,7 +40,7 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 				</div>
 				<div className="attach">
 					<hr className="attachLineUppe" />
-					<img src={iphone}></img>
+					<img alt="iphone" src={iphone}></img>
 					{dataDeliv(data2) && (
 						<p className="text">
 							The year that the Iphone is released {data2.number} is also
@@ -53,7 +53,7 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 			<div className="nere">
 				<div className="attach">
 					<hr className="attachLineNere" />
-					<img src={caesar}></img>
+					<img alt="caesar" src={caesar}></img>
 
 					{dataDeliv(data3) && (
 						<p className="text">
@@ -64,7 +64,7 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 				</div>
 				<div className="attach">
 					<hr className="attachLineNere" />
-					<img src={abra}></img>
+					<img alt="Lincoln" src={abra}></img>
 
 					{dataDeliv(data1) && (
 						<p className="text">

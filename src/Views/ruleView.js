@@ -39,9 +39,12 @@ export const RuleView = () => {
 				</p>
 			</p>
 			<div className="divButton">
-				<a onClick={() => window.history.back()} className="backButton bouncy">
+				<button
+					onClick={() => window.history.back()}
+					className="backButton bouncy"
+				>
 					Go Back!
-				</a>
+				</button>
 			</div>
 		</div>
 	);

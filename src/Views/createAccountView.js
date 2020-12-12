@@ -1,4 +1,4 @@
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 export const CreateAccountView = ({
 	createEmailRef,
