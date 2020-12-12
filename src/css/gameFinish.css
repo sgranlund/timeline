@@ -281,3 +281,15 @@ a.newButton:hover {
 		opacity: 0;
 	}
 }
+
+@media screen and (max-width: 1500px) {
+	.result {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 40%;
+		left: 50%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
