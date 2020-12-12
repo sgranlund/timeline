@@ -2,6 +2,7 @@ import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
 import { getItemStyle, getListStyle } from "../boardStyle";
+import rules from "../images/rules.svg";
 
 export const GameBoardView = ({
 	onDragEnd,
@@ -80,6 +81,13 @@ export const GameBoardView = ({
 												</div>
 											</div>
 										)}
+										{row.id === "row2" && (
+											<Link to="/rules">
+												<img className="gameRulesIMG" src={rules}></img>
+
+												<p className="gameRulesP">How to play</p>
+											</Link>
+										)}
 									</div>
 
 									<div className="rowTitle"></div>
@@ -132,11 +140,7 @@ export const GameBoardView = ({
 					})}
 				</div>
 			</DragDropContext>
-			<div className="rulesButtondiv">
-				<Link to="/rules" className="backButton">
-					How to play
-				</Link>
-			</div>
+			<div className="rulesButtondiv"></div>
 		</div>
 	);
 };

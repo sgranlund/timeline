@@ -259,3 +259,23 @@ h2 span {
 		margin: 0%;
 	}
 }
+
+.gameRulesIMG {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 48%;
+	left: 80%;
+}
+.gameRulesP {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 60%;
+	left: 80%;
+	text-decoration: none;
+	color: white;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
