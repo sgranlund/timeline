@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><svg xml:space="preserve" viewBox="0 0 100 100" y="0" x="0" xmlns="http://www.w3.org/2000/svg" id="圖層_1" version="1.1" width="47px" height="47px" xmlns:xlink="http://www.w3.org/1999/xlink" style="width:100%;height:100%;background-color:rgb(255, 255, 255);animation-play-state:paused" ><g class="ldl-scale" style="transform-origin-z:0px;transform-origin-y:50%;transform-origin-x:50%;transform:rotate(0deg) scale(0.8, 0.8);animation-play-state:paused" ><radialGradient gradientUnits="userSpaceOnUse" r="35.871" cy="31.818" cx="45.421" id="SVGID_1_" style="animation-play-state:paused" ><stop stop-color="#f5e6c8" offset="0" style="stop-color:rgb(245, 230, 200);animation-play-state:paused" ></stop>
+<stop stop-color="#f5e169" offset="1" style="stop-color:rgb(245, 225, 105);animation-play-state:paused" ></stop></radialGradient>
+<path stroke="#333" fill="url(#SVGID_1_)" stroke-miterlimit="10" stroke-width="3.5" d="M71.961 46.103c0-12.593-10.599-22.71-23.363-21.918-10.983.682-19.902 9.654-20.524 20.641-.416 7.347 2.783 13.965 7.98 18.241 1.612 1.327 2.494 3.345 2.494 5.433v.118a6.433 6.433 0 0 0 6.433 6.433h10.036a6.433 6.433 0 0 0 6.433-6.433V68.5c0-2.176 1.023-4.192 2.688-5.594 4.784-4.028 7.823-10.06 7.823-16.803z" style="stroke:rgb(51, 51, 51);animation-play-state:paused" ></path>
+<path stroke-miterlimit="10" stroke-width="3.5" stroke="#333" fill="#333" d="M59.375 72.222h-18.75a5.095 5.095 0 0 0-5.095 5.095v3.308a5.095 5.095 0 0 0 5.095 5.095h1.422a4.28 4.28 0 0 0 4.28 4.28h7.347a4.28 4.28 0 0 0 4.28-4.28h1.422a5.095 5.095 0 0 0 5.095-5.095v-3.308a5.096 5.096 0 0 0-5.096-5.095z" style="stroke:rgb(51, 51, 51);fill:rgb(51, 51, 51);animation-play-state:paused" ></path>
+<path stroke-miterlimit="10" stroke-width="3.5" stroke-linecap="round" fill="none" stroke="#333" stroke-linejoin="round" d="M38.161 47.949l2.273 1.51a.849.849 0 0 0 1.374 0l1.586-2.181a.849.849 0 0 1 1.374 0l1.586 2.181a.849.849 0 0 0 1.374 0l1.586-2.181a.849.849 0 0 1 1.374 0l1.586 2.181a.849.849 0 0 0 1.374 0l1.586-2.181a.849.849 0 0 1 1.374 0l1.586 2.181a.849.849 0 0 0 1.374 0l2.273-1.51" style="stroke:rgb(51, 51, 51);animation-play-state:paused" ></path>
+<path d="M39.63 76.128h20.74" stroke-miterlimit="10" stroke-width="3.5" stroke-linecap="round" fill="none" stroke="#e0e0e0" style="stroke:rgb(224, 224, 224);animation-play-state:paused" ></path>
+<path d="M39.63 81.785h20.74" stroke-miterlimit="10" stroke-width="3.5" stroke-linecap="round" fill="none" stroke="#e0e0e0" style="stroke:rgb(224, 224, 224);animation-play-state:paused" ></path>
+<path d="M50 10v7.879" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M31.818 14.872l3.94 6.823" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M18.508 28.182l6.823 3.939" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M13.636 46.364h7.879" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M18.508 64.545l6.823-3.939" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M81.492 64.545l-6.823-3.939" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M86.364 46.364h-7.879" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M81.492 28.182l-6.823 3.939" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<path d="M68.182 14.872l-3.94 6.823" stroke-width="3.5" fill="none" stroke="#f8b26a" stroke-miterlimit="10" stroke-linejoin="round" stroke-linecap="round" style="stroke:rgb(248, 178, 106);animation-play-state:paused" ></path>
+<metadata xmlns:d="https://loading.io/stock/" style="animation-play-state:paused" ><d:name style="animation-play-state:paused" >bulb</d:name>
+
+
+<d:tags style="animation-play-state:paused" >bulb,light,creative,creativity,idea,brainstorm,bright,luminance,think,smart,thought</d:tags>
+
+
+<d:license style="animation-play-state:paused" >by</d:license>
+
+
+<d:slug style="animation-play-state:paused" >jwcrqs</d:slug></metadata></g><!-- generated by https://loading.io/ --></svg>

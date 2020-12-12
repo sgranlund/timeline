@@ -2,6 +2,7 @@ import abra from "../images/abra.jpg";
 import berlin from "../images/berlinmuren.jpg";
 import bonneyAnne from "../images/bonneyAnne.jpg";
 import iphone from "../images/iphone.jpg";
+import bulb from "../images/bulb.svg";
 import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 import { dataDeliv } from "../dataDelivered";

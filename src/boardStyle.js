@@ -14,6 +14,26 @@ export const getItemStyle = (turn, isDragging, draggableStyle) => ({
 
 	backgroundColor: turn ? "darkgray" : "white",
 	color: turn ? "#696969" : "black",
+
+	
+	//backgroundColor: newCard ? "black" : "white",
+	// styles we need to apply on draggables
+	...draggableStyle,
+});
+
+export const noViewCard = (mouse, isDragging, draggableStyle) => ({
+	userSelect: "none",
+
+	margin: `0 ${grid / 2}px 0 ${grid / 2}px`,
+	//fontSize: "11px",
+	fontFamily:
+		"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+	// change background colour if dragging
+	borderColor: isDragging ? "lightgreen" : "black",
+
+	backgroundColor: mouse ?  "white" : "black",
+	//color: newCard ? "#696969" : "black",
+
 	// styles we need to apply on draggables
 	...draggableStyle,
 });
