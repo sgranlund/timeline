@@ -1,4 +1,3 @@
-import homeLogo from "../images/iconfinder_Home.svg";
 export const RuleView = () => {
 	return (
 		<div>

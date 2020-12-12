@@ -13,7 +13,7 @@ export const GameBoardView = ({
 	checkOrder,
 	updateData,
 	storeBoard,
-	model,
+	counter,
 	currentUser,
 	dispatchPoints,
 	points,
@@ -54,7 +54,7 @@ export const GameBoardView = ({
 												updateData(checkOrder(newData, "row3"));
 												storeBoard(
 													newData,
-													model.counter,
+													counter,
 													currentUser,
 													startYear,
 													endYear,

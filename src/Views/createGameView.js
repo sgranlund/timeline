@@ -7,13 +7,7 @@ import { Link } from "react-router-dom";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
-export const CreateGameView = ({
-	dispatchYear,
-	dispatchName,
-	model,
-	startYear,
-	endYear,
-}) => (
+export const CreateGameView = ({ dispatchYear, dispatchName, getYearSpan }) => (
 	<div>
 		<div id="stars"></div>
 		<div id="stars2"></div>
@@ -110,7 +104,7 @@ export const CreateGameView = ({
 			<Link
 				to="/gameBoard"
 				className="backButton"
-				onClick={() => model.getApiData(startYear, endYear)}
+				onClick={() => getYearSpan()}
 			>
 				{" "}
 				Start game{" "}
