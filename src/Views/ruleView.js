@@ -1,4 +1,7 @@
 import { ReactComponent as Logo } from "../images/timeline.svg";
+
+import { Form, Button, Card, Alert } from "react-bootstrap";
+
 export const RuleView = () => {
 	return (
 		<div>
@@ -38,7 +41,7 @@ export const RuleView = () => {
 				</p>
 			</p>
 			<div className="divButton">
-				<a href="/gameBoard" class="backButton bouncy">
+				<a onClick={() => window.history.back()} className="backButton bouncy">
 					Go Back!
 				</a>
 			</div>

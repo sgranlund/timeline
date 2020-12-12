@@ -5,6 +5,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../images/timeline.svg";
+import rules from "../images/rules.svg";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
@@ -17,6 +18,7 @@ export const CreateGameView = ({ dispatchYear, dispatchName, getYearSpan }) => (
 			id="timelineHomeButton"
 			onClick={() => (window.location.pathname = "")}
 		/>
+
 		<div className="createGame">
 			<span>Create Game</span>
 		</div>
@@ -56,14 +58,18 @@ export const CreateGameView = ({ dispatchYear, dispatchName, getYearSpan }) => (
 				onChange={(event) => dispatchName(name2(event.target.value))}
 			/>
 		</div>
-		<div className="divButton">
+		<div className="divButtonCreate">
 			<Link
 				to="/gameBoard"
-				className="backButton"
+				className="startGameButton"
 				onClick={() => getYearSpan()}
 			>
 				{" "}
 				Start game{" "}
+			</Link>
+			<Link className="rulesCreate" to="/rules">
+				<img className="createRulesIMG" src={rules}></img>
+				<p className="createRulesP">How to play</p>
 			</Link>
 		</div>
 	</div>
