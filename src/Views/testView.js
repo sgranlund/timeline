@@ -5,7 +5,7 @@ import hendrix from "../images/hendrix.jpeg";
 import iphone from "../images/iphone.jpg";
 import pyramid from "../images/pyramid.jpg";
 import { Form, Button, Card, Alert } from "react-bootstrap";
-
+import bulb from "../images/bulb.svg";
 import { dataDeliv } from "../dataDelivered";
 export const TestView = ({
 	getText,

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { increase1 } from "../actions";
 import { increase2 } from "../actions";
 import { Redirect } from "react-router-dom";
-import { getItemStyle, getListStyle } from "../boardStyle";
+import { getItemStyle, getListStyle, noViewCard } from "../boardStyle";
 
 export const GameBoardView = ({
 	onDragEnd,
@@ -27,6 +27,10 @@ export const GameBoardView = ({
 	updateTurn,
 	userTurn,
 	updateUserTurn,
+	newCard,
+	onMouseD,
+	onMouseU,
+	mouse
 }) => {
 	return (
 		<div className="bigDiv">
@@ -110,6 +114,7 @@ export const GameBoardView = ({
 														key={event.id}
 														event={event}
 														index={index}
+														onClick={()=>console.log("clicked")}
 														//isDragDisabled={isDragDisabled}
 													>
 														{(provided, snapshot) => (
@@ -118,7 +123,14 @@ export const GameBoardView = ({
 																{...provided.draggableProps}
 																{...provided.dragHandleProps}
 																ref={provided.innerRef}
-																style={getItemStyle(
+																onMouseDown={()=>onMouseD()}
+																onMouseUp={()=>onMouseU()}
+																style={row.id === "row2" ? 
+																	noViewCard(
+																	mouse === true,
+																	snapshot.isDragging,
+																	provided.draggableProps.style) : 
+																	getItemStyle(
 																	userTurn === row.id,
 																	snapshot.isDragging,
 																	provided.draggableProps.style

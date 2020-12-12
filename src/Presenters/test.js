@@ -5,6 +5,7 @@ import { questionSource } from "../apiHandling";
 import { GetPromise } from "../getPromise";
 import { dataDeliv } from "../dataDelivered";
 import { promiseNoData } from "../Views/promiseNoData";
+
 export function Test() {
 	const [promise1, setPromise1] = React.useState(null);
 	const [promise2, setPromise2] = React.useState(null);

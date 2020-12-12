@@ -16,7 +16,7 @@ import { increase1, increase2, change, name, name2 } from "../actions";
 
 export function GameBoard({ model }) {
 	//Create state for what is in which row
-
+	let mouse = false;
 	const { currentUser } = useAuth();
 	const startYear = useSelector((store) => store.years[0]);
 	const endYear = useSelector((store) => store.years[1]);
@@ -29,7 +29,7 @@ export function GameBoard({ model }) {
 	const [newData, updateData] = React.useState(model.myData);
 	const [turn, updateTurn] = React.useState(0);
 	const [userTurn, updateUserTurn] = React.useState("");
-	console.log(userTurn);
+	const [newCard, updateCard] = React.useState("");
 	React.useEffect(() => {
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
@@ -56,7 +56,6 @@ export function GameBoard({ model }) {
 		newData.rows.row1.title = nameNr1 + "'s timeline";
 		newData.rows.row3.title = nameNr2 + "'s timeline";
 	});
-	console.log(startYear, endYear);
 	const [promise, setPromise] = React.useState(null);
 	//Fetches promise for the cards
 	React.useEffect(() => {
@@ -78,7 +77,7 @@ export function GameBoard({ model }) {
 			year: data.number,
 			acquired: false,
 		};
-		console.log(data.text, data.number);
+		//console.log(data.text, data.number);
 	}
 
 	//const isDragDisabled = myData.events.id === "event1";
@@ -166,7 +165,8 @@ export function GameBoard({ model }) {
 		//If the card stack is empty
 		if (newState.rows.row2.eventIds.length === 0) {
 			model.updateCounter("undefined");
-
+			updateCard("row2");
+			console.log("newCard", newCard);
 			//Adds a card to the "Card" array
 			const newStart = {
 				...start,
@@ -198,6 +198,18 @@ export function GameBoard({ model }) {
 		}
 	};
 
+	const onMouseD = () => {
+		mouse = true;
+		console.log("mouse",mouse)
+		return mouse
+	}
+
+	const onMouseU = () => {
+		mouse = false;
+		console.log("mouse",mouse)
+		return mouse
+	}
+
 	return (
 		<GameBoardView
 			onDragEnd={onDragEnd}
@@ -219,6 +231,10 @@ export function GameBoard({ model }) {
 			updateTurn={updateTurn}
 			userTurn={userTurn}
 			updateUserTurn={updateUserTurn}
+			newCard={newCard}
+			onMouseD={onMouseD}
+			onMouseU={onMouseU}
+			mouse={mouse}
 		/>
 	);
 }
