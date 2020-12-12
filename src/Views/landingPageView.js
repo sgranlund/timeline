@@ -38,7 +38,7 @@ export const LandingPageView = ({
 				<img src={iphone} alt="iphone"></img>
 			</div>
 			<div>
-				<img src={pyramid} alt="pyramid"></img>
+				<img src={bonneyAnne} alt="bonneyAnne"></img>
 			</div>
 		</div>
 
