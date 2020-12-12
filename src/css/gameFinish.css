@@ -199,3 +199,85 @@ a.newButton:hover {
 		transform: translatey(calc(var(--axis-y) * -1));
 	}
 }
+
+.fireworks > .before,
+.fireworks > .after {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+
+	animation: 5s bang ease-out infinite backwards,
+		5s position linear infinite backwards;
+}
+
+.fireworks2 > .before,
+.fireworks2 > .after {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+
+	animation: 2.5s bang ease-out infinite backwards,
+		2.5s position2 linear infinite backwards;
+}
+
+@keyframes bang {
+	to {
+		box-shadow: 0px -295.6666666667px #ff007b, -228px -276.6666666667px #003cff,
+			-223px -394.6666666667px #ff001a, 218px 3.3333333333px #ff00cc,
+			72px -272.6666666667px #00fffb, 12px -67.6666666667px #ae00ff,
+			-179px 22.3333333333px #eeff00, 102px -59.6666666667px #ff1100,
+			176px -17.6666666667px #ffb300, -236px -287.6666666667px #f700ff,
+			-201px -233.6666666667px #00ff4d, -197px -409.6666666667px #ffd000,
+			190px -388.6666666667px #ff00bb, -97px -344.6666666667px #0088ff,
+			125px -270.6666666667px #00ff84, 217px 29.3333333333px #bb00ff,
+			125px -25.6666666667px #0dff00, 122px 38.3333333333px #00d5ff,
+			39px 30.3333333333px #0051ff, 188px -287.6666666667px #000dff,
+			-55px -105.6666666667px #3300ff, -59px -90.6666666667px #ffc800,
+			159px -37.6666666667px #eeff00, 96px 21.3333333333px #0022ff,
+			-125px -208.6666666667px #000dff, 83px 75.3333333333px #ffc800,
+			-39px -166.6666666667px #00ffaa, 83px -412.6666666667px #00eeff,
+			8px -14.6666666667px #ff3c00, 96px -279.6666666667px #00a6ff,
+			-49px -147.6666666667px #77ff00, -87px -415.6666666667px #ff006f,
+			123px -237.6666666667px #aa00ff, -19px -194.6666666667px #ff00e1,
+			26px 3.3333333333px #ffae00, -144px -392.6666666667px #26ff00,
+			182px -8.6666666667px #fff200, -183px -345.6666666667px #9dff00,
+			-95px -371.6666666667px #7300ff, 103px -362.6666666667px #0015ff,
+			120px -315.6666666667px #ff6f00, 202px -150.6666666667px #ea00ff,
+			57px 46.3333333333px #15ff00, 119px -325.6666666667px #3700ff,
+			-90px 71.3333333333px #00ffaa, -226px -130.6666666667px #00a2ff,
+			-148px -375.6666666667px #00d9ff, 36px -203.6666666667px #d000ff,
+			213px 79.3333333333px #99ff00, 164px -158.6666666667px #ff00d9,
+			-100px -247.6666666667px #00f2ff;
+	}
+}
+@keyframes gravity {
+	0% {
+		transform: translateY(2000px);
+	}
+}
+@keyframes position {
+	0% {
+		margin-top: 80%;
+		margin-left: 50%;
+		visibility: 100%;
+	}
+	100% {
+		margin-top: 20%;
+		margin-left: 80%;
+		opacity: 0;
+	}
+}
+@keyframes position2 {
+	0% {
+		margin-top: 80%;
+		margin-left: 50%;
+		visibility: 100%;
+	}
+	100% {
+		margin-top: 20%;
+		margin-left: 15%;
+		opacity: 0;
+	}
+}

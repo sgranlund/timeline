@@ -212,18 +212,6 @@ export function GameBoard({ model }) {
 		}
 	}
 
-	const onMouseD = () => {
-		mouse = true;
-		console.log("mouse",mouse)
-		return mouse
-	}
-
-	const onMouseU = () => {
-		mouse = false;
-		console.log("mouse",mouse)
-		return mouse
-	}
-
 	return (
 		<GameBoardView
 			onDragEnd={onDragEnd}
@@ -244,10 +232,6 @@ export function GameBoard({ model }) {
 			updateTurn={updateTurn}
 			userTurn={userTurn}
 			updateUserTurn={updateUserTurn}
-			newCard={newCard}
-			onMouseD={onMouseD}
-			onMouseU={onMouseU}
-			mouse={mouse}
 			playerTurn={playerTurn}
 		/>
 	);
