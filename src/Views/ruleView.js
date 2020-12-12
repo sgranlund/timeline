@@ -83,7 +83,7 @@ export const RuleView = () => {
 				</p>
 			</p>
 			<div className="divButton">
-				<a href="/test" class="backButton bouncy">
+				<a href="/gameBoard" class="backButton bouncy">
 					Go Back!
 				</a>
 			</div>
