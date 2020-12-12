@@ -1,21 +1,16 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
-import { increase1 } from "../actions";
-import { increase2 } from "../actions";
-import { Redirect } from "react-router-dom";
 import { getItemStyle, getListStyle } from "../boardStyle";
 
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
-
 	checkOrder,
 	updateData,
 	storeBoard,
 	counter,
 	currentUser,
-	dispatchPoints,
 	points,
 	startYear,
 	endYear,
@@ -26,7 +21,7 @@ export const GameBoardView = ({
 	turn,
 	updateTurn,
 	userTurn,
-	updateUserTurn,
+	playerTurn,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -65,24 +60,24 @@ export const GameBoardView = ({
 												);
 												points();
 												updateTurn(turn + 1);
-												//dispatchPoints(increase2(newData.rows.row3.eventIds.length));
-												//console.log("length", newData.rows.row1.eventIds.length);
 											}}
 										>
 											LOCK IN
 										</button>
-										{row.id == "row2" && (
-											<div className="turnParent">
-												{turn % 2 == 0 ? (
-													<p className="turn">
-														{updateUserTurn("row3")}
-														{nameNr1} Turn
-													</p>
-												) : (
-													<p className="turn">
-														{updateUserTurn("row1")} {nameNr2} Turn
-													</p>
-												)}
+										{playerTurn(row.id, turn) === "row3" && (
+											<div className="turnDisp">
+												<p className="turn">{nameNr1}'s Turn</p>
+												<div className="backDrop">
+													<p className="showTurn">{nameNr1}'s Turn</p>
+												</div>
+											</div>
+										)}
+										{playerTurn(row.id, turn) === "row1" && (
+											<div className="turnDisp">
+												<p className="turn">{nameNr2}'s Turn</p>
+												<div className="backDrop">
+													<p className="showTurn">{nameNr2}'s Turn</p>
+												</div>
 											</div>
 										)}
 									</div>
@@ -97,8 +92,6 @@ export const GameBoardView = ({
 											ref={provided.innerRef}
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}
-
-											//isDraggingOver={snapshot.isDraggingOver}
 										>
 											<h2 className="background">
 												<span>{row.title}</span>
@@ -110,7 +103,6 @@ export const GameBoardView = ({
 														key={event.id}
 														event={event}
 														index={index}
-														//isDragDisabled={isDragDisabled}
 													>
 														{(provided, snapshot) => (
 															<div
@@ -123,8 +115,6 @@ export const GameBoardView = ({
 																	snapshot.isDragging,
 																	provided.draggableProps.style
 																)}
-																//isDragging={snapshot.isDragging}
-																//isDragDisabled={isDragDisabled}
 															>
 																<h3 className="cardTitle">This year...</h3>
 																{event.content}

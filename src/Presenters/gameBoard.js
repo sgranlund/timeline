@@ -200,6 +200,17 @@ export function GameBoard({ model }) {
 			deleteGame(currentUser.uid);
 		}
 	};
+	function playerTurn(rowId, turn) {
+		if (rowId === "row2") {
+			if (turn % 2 === 0) {
+				updateUserTurn("row3");
+				return "row3";
+			} else {
+				updateUserTurn("row1");
+				return "row1";
+			}
+		}
+	}
 
 	return (
 		<GameBoardView
@@ -210,7 +221,6 @@ export function GameBoard({ model }) {
 			storeBoard={storeBoard}
 			counter={model.counter}
 			currentUser={currentUser.uid}
-			dispatchPoints={dispatch}
 			points={Points}
 			startYear={startYear}
 			endYear={endYear}
@@ -221,7 +231,7 @@ export function GameBoard({ model }) {
 			turn={turn}
 			updateTurn={updateTurn}
 			userTurn={userTurn}
-			updateUserTurn={updateUserTurn}
+			playerTurn={playerTurn}
 		/>
 	);
 }
