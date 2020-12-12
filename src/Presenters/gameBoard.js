@@ -47,6 +47,7 @@ export function GameBoard({ model }) {
 					dispatch(increase2(data.pointsPlay2));
 					dispatch(name(data.name1));
 					dispatch(name2(data.name2));
+					updateTurn(data.turn);
 				});
 			}
 		});
@@ -204,9 +205,11 @@ export function GameBoard({ model }) {
 		if (rowId === "row2") {
 			if (turn % 2 === 0) {
 				updateUserTurn("row3");
+
 				return "row3";
 			} else {
 				updateUserTurn("row1");
+
 				return "row1";
 			}
 		}

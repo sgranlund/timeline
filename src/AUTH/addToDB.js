@@ -9,7 +9,8 @@ export function storeBoard(
 	name1Local,
 	name2Local,
 	pointsPlay1Local,
-	pointsPlay2Local
+	pointsPlay2Local,
+	turn
 ) {
 	db.ref(user).set({
 		gameBoard: gameBoardData,
@@ -20,6 +21,7 @@ export function storeBoard(
 		name2: name2Local,
 		pointsPlay1: pointsPlay1Local,
 		pointsPlay2: pointsPlay2Local,
+		theTurn: turn,
 	});
 	console.log("added to DB");
 }

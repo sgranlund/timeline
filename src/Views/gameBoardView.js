@@ -49,6 +49,9 @@ export const GameBoardView = ({
 											onClick={() => {
 												updateData(checkOrder(newData, "row1"));
 												updateData(checkOrder(newData, "row3"));
+
+												updateTurn(turn + 1);
+
 												storeBoard(
 													newData,
 													counter,
@@ -58,10 +61,11 @@ export const GameBoardView = ({
 													nameNr1,
 													nameNr2,
 													pointsPlay1,
-													pointsPlay2
+													pointsPlay2,
+													turn - 1
 												);
+
 												points();
-												updateTurn(turn + 1);
 											}}
 										>
 											LOCK IN
