@@ -4,20 +4,21 @@ import { name2 } from "../actions";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../images/timeline.svg";
+import rules from "../images/rules.svg";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 
-export const CreateGameView = ({
-	dispatchYear,
-	dispatchName,
-	model,
-	startYear,
-	endYear,
-}) => (
+export const CreateGameView = ({ dispatchYear, dispatchName, getYearSpan }) => (
 	<div>
 		<div id="stars"></div>
 		<div id="stars2"></div>
 		<div id="stars3"></div>
+		<Logo
+			id="timelineHomeButton"
+			onClick={() => (window.location.pathname = "")}
+		/>
+
 		<div className="createGame">
 			<span>Create Game</span>
 		</div>
@@ -37,7 +38,7 @@ export const CreateGameView = ({
 				tipFormatter={(value) => ` ${value}`}
 				tipProps={{
 					placement: "top",
-					visible: true
+					visible: true,
 				}}
 				onAfterChange={(x) => dispatchYear(change(x))}
 			/>
@@ -57,14 +58,18 @@ export const CreateGameView = ({
 				onChange={(event) => dispatchName(name2(event.target.value))}
 			/>
 		</div>
-		<div className="divButton">
+		<div className="divButtonCreate">
 			<Link
 				to="/gameBoard"
-				className="backButton"
-				onClick={() => model.getApiData(startYear, endYear)}
+				className="startGameButton"
+				onClick={() => getYearSpan()}
 			>
 				{" "}
 				Start game{" "}
+			</Link>
+			<Link className="rulesCreate" to="/rules">
+				<img alt="linkRules" className="createRulesIMG" src={rules}></img>
+				<p className="createRulesP">How to play</p>
 			</Link>
 		</div>
 	</div>

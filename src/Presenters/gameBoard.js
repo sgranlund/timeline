@@ -192,11 +192,25 @@ export function GameBoard({ model }) {
 	const Points = () => {
 		dispatch(increase1(newData.rows.row1.eventIds.length));
 		dispatch(increase2(newData.rows.row3.eventIds.length));
-		if (newData.rows.row1.eventIds.length > 4 || newData.rows.row3.eventIds.length > 4) {
+		if (
+			newData.rows.row1.eventIds.length > 4 ||
+			newData.rows.row3.eventIds.length > 4
+		) {
 			history.push("/gameFinish");
 			deleteGame(currentUser.uid);
 		}
 	};
+	function playerTurn(rowId, turn) {
+		if (rowId === "row2") {
+			if (turn % 2 === 0) {
+				updateUserTurn("row3");
+				return "row3";
+			} else {
+				updateUserTurn("row1");
+				return "row1";
+			}
+		}
+	}
 
 	const onMouseD = () => {
 		mouse = true;
@@ -217,9 +231,8 @@ export function GameBoard({ model }) {
 			checkOrder={model.checkOrder}
 			updateData={updateData}
 			storeBoard={storeBoard}
-			model={model}
+			counter={model.counter}
 			currentUser={currentUser.uid}
-			dispatchPoints={dispatch}
 			points={Points}
 			startYear={startYear}
 			endYear={endYear}
@@ -235,6 +248,7 @@ export function GameBoard({ model }) {
 			onMouseD={onMouseD}
 			onMouseU={onMouseU}
 			mouse={mouse}
+			playerTurn={playerTurn}
 		/>
 	);
 }

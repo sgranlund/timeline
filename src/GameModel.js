@@ -1,14 +1,6 @@
-import { all } from "ramda";
 import { questionSource } from "./apiHandling";
-import { getBoard } from "./AUTH/fetchFromDB";
-import { getCounter } from "./AUTH/fetchFromDB";
 export class GameModel {
-	constructor(
-		startYear = 1500,
-		endYear = 2020,
-		counterStart = 4,
-		myData = {},
-	) {
+	constructor(startYear = 1500, endYear = 2020, counterStart = 4, myData = {}) {
 		this.startYear = startYear;
 		this.endYear = endYear;
 		this.counter = counterStart;
@@ -58,6 +50,7 @@ export class GameModel {
 		let theTimeline = [];
 		allCardsData.rows[row].eventIds.map((y) => {
 			theTimeline.push(allCardsData.events[y].year);
+			return 0;
 		});
 		console.log("theArray", theTimeline);
 		var isDescending = true;
@@ -84,6 +77,7 @@ export class GameModel {
 				//adds cards year if player got it right
 				allCardsData.events[y].content =
 					String(allCardsData.events[y].year) + allCardsData.events[y].content;
+				return 0;
 			});
 			return allCardsData;
 		}
@@ -101,6 +95,7 @@ export class GameModel {
 					//Delete the cards from events
 					delete allCardsData.events[y];
 				}
+				return 0;
 			});
 			return allCardsData;
 		} else {
@@ -114,6 +109,7 @@ export class GameModel {
 
 					delete allCardsData.events[y];
 				}
+				return 0;
 			});
 			return allCardsData;
 		}

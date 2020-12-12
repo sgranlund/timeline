@@ -20,8 +20,9 @@ export function LoginAccount() {
 			setError("");
 			setLoading(true);
 			await logn(logEmailRef.current.value, logPasswordRef.current.value);
-		} catch {
-			setError("Please create a user");
+		} catch (err) {
+			console.log(err.message);
+			setError("Please create an user");
 		}
 		setLoading(false);
 	}
@@ -60,7 +61,6 @@ export function LoginAccount() {
 			logEmailRef={logEmailRef}
 			logPasswordRef={logPasswordRef}
 			logIn={logIn}
-			logginOut={logginOut}
 			startGame={startGame}
 		/>
 	);
