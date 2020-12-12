@@ -100,12 +100,3 @@ form button {
 .formHeader {
 	font-family: "Nerko One";
 }
-.turn {
-	color: white;
-	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-	background-color: black;
-	font-size: 100%;
-	width: 100px;
-	height: 50px;
-	text-align: center;
-}

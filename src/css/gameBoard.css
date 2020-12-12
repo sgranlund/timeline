@@ -47,8 +47,9 @@
 	height: 2.5em;
 	width: 12em;
 	position: absolute;
-	top: -25%;
-	left: 15%;
+	transform: translate(-50%, -50%);
+	top: -40%;
+	left: 20%;
 
 	/* default 0 */
 }
@@ -127,16 +128,82 @@ h2 span {
 	width: 100%;
 	height: 100%;
 }
+.backDrop {
+	height: 0px;
+	width: 0px;
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(0, 0, 0, 0.351);
+	z-index: 49;
+	font-size: 0;
+	font-weight: 700;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	animation: hide 1.5s;
+	opacity: 0.1;
+}
+.showTurn {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	left: 50%;
+	top: 20%;
+	z-index: 50;
+	user-select: none;
+	color: white;
+}
+
 .turn {
 	position: absolute;
-	top: 15%;
-	left: 17%;
+	transform: translate(-50%, -50%);
+	top: 20%;
+	left: 20%;
+	color: white;
+	font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+	background-color: transparent;
+	font-size: 200%;
+	width: 100%;
+	height: 0;
+	text-align: center;
+	/* animation-name: example;
+	animation-duration: 1s; */
+}
+@keyframes hide {
+	0% {
+		opacity: 0%;
+		width: 100%;
+		height: 60%;
+		font-size: 300%;
+	}
+	40% {
+		opacity: 100%;
+		width: 100%;
+		height: 60%;
+		font-size: 300%;
+	}
+	100% {
+		opacity: 0;
+		width: 100%;
+		height: 60%;
+		font-size: 300%;
+	}
+}
+@keyframes example {
+	from {
+		color: lightgreen;
+		letter-spacing: 5px;
+		text-rendering: geometricPrecision;
+	}
+	to {
+		color: white;
+		letter-spacing: normal;
+	}
 }
 .rulesButtondiv {
 	position: absolute;
 	top: 5%;
 	right: 5%;
 }
+
 @media screen and (max-width: 1500px) {
 	.row1,
 	.row2,
@@ -191,4 +258,24 @@ h2 span {
 		text-align: center;
 		margin: 0%;
 	}
+}
+
+.gameRulesIMG {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 48%;
+	left: 80%;
+}
+.gameRulesP {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 60%;
+	left: 80%;
+	text-decoration: none;
+	color: white;
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
