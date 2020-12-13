@@ -17,9 +17,35 @@ Timeline is a game that with inspiration from the game "När då då?" which bri
 
 ## Structure
 
-The app is built with react and redux. The store is provided with react-redux. The app also uses react-router-dom for routing. It is written using TypeScript. Data is stored using firebase's firestore.
+The app is built with react and redux. The store is provided with react-redux. The app also uses react-router-dom for routing,rc-slide,react-beautiful-dnd,react-bootstrap . It is written using TypeScript. Data is stored using firebase's firestore.
 
-The app files are split into six folders described below.
-###TODO
+The app files are split into five folders described below.
+
+# Assets
+
+For any assets used on the page such as images
+
+# Views
+
+Groups all the views used in this project
+
+# Presenters
+
+Groups all the presenters for the views
+
+# Model
+
+- **model**
+  Moel contains the core model for the gam
+- **Redux**
+  Contains all the files used for using Redux
+- **API**
+  Contains files for fetchin from the API
+- **Firebase**
+  Contains for adding and fetching data fromn the realtime database in Firebase
+
+# Theme
+
+Contains all the styling files
 
 ---
