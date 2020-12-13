@@ -42,6 +42,8 @@ export function GameBoard({ model }) {
 	const [data, error] = GetPromise(promise);
 	const history = useHistory();
 
+	const [loading, setLoad] = React.useState(false);
+	console.log(newData);
 	React.useEffect(() => {
 		updatingWhoIsPlaying();
 		//Checks if the user has a ongoing game
@@ -61,15 +63,16 @@ export function GameBoard({ model }) {
 					dispatch(name(data.name1));
 					dispatch(name2(data.name2));
 					updateTurn(data.turn);
+					setLoad(true);
 				});
 			}
 		});
 	}, []);
 
-	React.useEffect(() => {
-		newData.rows.row1.title = nameNr1 + "'s timeline";
-		newData.rows.row3.title = nameNr2 + "'s timeline";
-	}, []);
+	// React.useEffect(() => {
+	// 	newData.rows.row1.title = nameNr1 + "'s timeline";
+	// 	newData.rows.row3.title = nameNr2 + "'s timeline";
+	// }, []);
 
 	//Fetches promise for the cards
 	React.useEffect(() => {
@@ -123,7 +126,6 @@ export function GameBoard({ model }) {
 				},
 			};
 			updateData(newState);
-
 			return;
 		}
 
@@ -241,16 +243,24 @@ export function GameBoard({ model }) {
 		updatingWhoIsPlaying();
 		Points();
 	}
+	function waitFirebase(data) {
+		return (
+			!data && <span className="loadWheel">Turning back time</span> // case 1
+		);
+	}
+
 	return (
-		<GameBoardView
-			onDragEnd={onDragEnd}
-			newData={newData}
-			nameNr1={nameNr1}
-			nameNr2={nameNr2}
-			turn={turn}
-			userTurn={userTurn}
-			playerTurn={playerTurn}
-			pushLockin={pushLockin}
-		/>
+		waitFirebase(loading) || (
+			<GameBoardView
+				onDragEnd={onDragEnd}
+				newData={newData}
+				nameNr1={nameNr1}
+				nameNr2={nameNr2}
+				turn={turn}
+				userTurn={userTurn}
+				playerTurn={playerTurn}
+				pushLockin={pushLockin}
+			/>
+		)
 	);
 }
