@@ -1,5 +1,7 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { GameBoardView } from "../Views/gameBoardView";
 import { questionSource } from "../Model/API/apiHandling";
 import { GetPromise } from "../Model/API/getPromise";
@@ -10,10 +12,7 @@ import {
 	deleteGame,
 	allUsers,
 } from "../Model/Firebase/fetchFromDB";
-import { useSelector } from "react-redux";
 import { useAuth } from "../Model/Firebase/AuthProv";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 
 import {
 	increase1,
@@ -25,7 +24,6 @@ import {
 
 export function GameBoard({ model }) {
 	//Create state for what is in which row
-	let mouse = false;
 	const { currentUser } = useAuth();
 	const startYear = useSelector((store) => store.years[0]);
 	const endYear = useSelector((store) => store.years[1]);
@@ -39,6 +37,11 @@ export function GameBoard({ model }) {
 	const [turn, updateTurn] = React.useState(0);
 	const [userTurn, updateUserTurn] = React.useState("");
 	const [newCard, updateCard] = React.useState("");
+	const [promise, setPromise] = React.useState(null);
+	//Pulls out the data from the promise
+	const [data, error] = GetPromise(promise);
+	const history = useHistory();
+
 	React.useEffect(() => {
 		updatingWhoIsPlaying();
 		//Checks if the user has a ongoing game
@@ -66,8 +69,8 @@ export function GameBoard({ model }) {
 	React.useEffect(() => {
 		newData.rows.row1.title = nameNr1 + "'s timeline";
 		newData.rows.row3.title = nameNr2 + "'s timeline";
-	});
-	const [promise, setPromise] = React.useState(null);
+	}, []);
+
 	//Fetches promise for the cards
 	React.useEffect(() => {
 		setPromise(
@@ -76,8 +79,6 @@ export function GameBoard({ model }) {
 	}, [model.counter]); //depends on when the counter updates aka when a new card is generated
 
 	//depends on when the counter updates aka when a new card is generated
-	//Pulls out the data from the promise
-	const [data, error] = GetPromise(promise);
 
 	if (dataDeliv(data)) {
 		//Creates an new event with data from the promise
@@ -88,10 +89,8 @@ export function GameBoard({ model }) {
 			year: data.number,
 			acquired: false,
 		};
-		//console.log(data.text, data.number);
 	}
 
-	//const isDragDisabled = myData.events.id === "event1";
 	//makes event draggable
 	const onDragEnd = (result) => {
 		const { destination, source, draggableId } = result;
@@ -99,12 +98,6 @@ export function GameBoard({ model }) {
 		if (!destination) {
 			return;
 		}
-
-		// 	destination.droppableId === source.droppableId &&
-		// 	destination.index === source.index
-		// ) {
-		// 	return;
-		// }
 		//Labels the cards start and finish location
 		const start = newData.rows[source.droppableId];
 		const finish = newData.rows[destination.droppableId];
@@ -122,7 +115,6 @@ export function GameBoard({ model }) {
 				...start,
 				eventIds: newEventIds,
 			};
-
 			const newState = {
 				...newData,
 				rows: {
@@ -196,8 +188,7 @@ export function GameBoard({ model }) {
 			updateData(newState);
 		}
 	};
-	const history = useHistory();
-
+	//Used to update player score and check if we have a winner
 	const Points = () => {
 		dispatch(increase1(newData.rows.row1.eventIds.length));
 		dispatch(increase2(newData.rows.row3.eventIds.length));
@@ -209,6 +200,7 @@ export function GameBoard({ model }) {
 			deleteGame(currentUser.uid);
 		}
 	};
+	//Keeps track on whos turn it is
 	function playerTurn(rowId, turn) {
 		if (rowId === "row2") {
 			if (turn % 2 === 0) {
@@ -219,7 +211,7 @@ export function GameBoard({ model }) {
 		}
 	}
 
-	//Who's turn is it
+	//Updates is aka if it's someones turn to play
 	function updatingWhoIsPlaying() {
 		if (turn % 2 === 0) {
 			console.log("row3");
@@ -229,29 +221,36 @@ export function GameBoard({ model }) {
 			updateUserTurn("row1");
 		}
 	}
-
+	//On locking in card check if player was right and update accordingly
+	function pushLockin() {
+		updateData(model.lockIn(newData, "row1"));
+		updateData(model.lockIn(newData, "row3"));
+		updateTurn(turn + 1);
+		storeBoard(
+			newData,
+			model.counter,
+			currentUser.uid,
+			startYear,
+			endYear,
+			nameNr1,
+			nameNr2,
+			pointsPlay1,
+			pointsPlay2,
+			turn - 1
+		);
+		updatingWhoIsPlaying();
+		Points();
+	}
 	return (
 		<GameBoardView
 			onDragEnd={onDragEnd}
 			newData={newData}
-			lockIn={model.lockIn}
-			updateData={updateData}
-			storeBoard={storeBoard}
-			counter={model.counter}
-			currentUser={currentUser.uid}
-			points={Points}
-			startYear={startYear}
-			endYear={endYear}
 			nameNr1={nameNr1}
 			nameNr2={nameNr2}
-			pointsPlay1={pointsPlay1}
-			pointsPlay2={pointsPlay2}
 			turn={turn}
-			updateTurn={updateTurn}
 			userTurn={userTurn}
-			updateUserTurn={updateUserTurn}
 			playerTurn={playerTurn}
-			updatingWhoIsPlaying={updatingWhoIsPlaying}
+			pushLockin={pushLockin}
 		/>
 	);
 }

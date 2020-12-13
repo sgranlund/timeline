@@ -7,23 +7,12 @@ import rules from "../Assets/rules.svg";
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
-	lockIn,
-	updateData,
-	storeBoard,
-	counter,
-	currentUser,
-	points,
-	startYear,
-	endYear,
 	nameNr1,
 	nameNr2,
-	pointsPlay1,
-	pointsPlay2,
 	turn,
-	updateTurn,
 	userTurn,
 	playerTurn,
-	updatingWhoIsPlaying,
+	pushLockin,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -47,23 +36,7 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												updateData(lockIn(newData, "row1"));
-												updateData(lockIn(newData, "row3"));
-												updateTurn(turn + 1);
-												storeBoard(
-													newData,
-													counter,
-													currentUser,
-													startYear,
-													endYear,
-													nameNr1,
-													nameNr2,
-													pointsPlay1,
-													pointsPlay2,
-													turn - 1
-												);
-												updatingWhoIsPlaying();
-												points();
+												pushLockin();
 											}}
 										>
 											LOCK IN
