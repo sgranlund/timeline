@@ -16,7 +16,7 @@ export function GameFinish() {
 		if (pointsPlay1 < pointsPlay2) {
 			winner = name2;
 		}
-		console.log(winner);
+
 		return winner;
 	};
 

@@ -48,8 +48,6 @@ export function GameBoard({ model }) {
 		//Checks if the user has a ongoing game
 
 		allUsers(currentUser.uid).then((userInDB) => {
-			console.log(userInDB);
-			console.log(currentUser.uid);
 			if (userInDB) {
 				//Fetches all the important data from database
 				let allTheData = getAllData(currentUser.uid);
@@ -67,7 +65,6 @@ export function GameBoard({ model }) {
 				});
 			} else {
 				setLoad(true);
-				console.log("setFalse");
 			}
 		});
 	}, []);
@@ -174,7 +171,7 @@ export function GameBoard({ model }) {
 		if (newState.rows.row2.eventIds.length === 0) {
 			model.updateCounter("undefined");
 			updateCard("row2");
-			console.log("newCard", newCard);
+
 			//Adds a card to the "Card" array
 			const newStart = {
 				...start,
@@ -219,16 +216,13 @@ export function GameBoard({ model }) {
 	//Updates is aka if it's someones turn to play
 	function updatingWhoIsPlaying(turn) {
 		if (turn % 2 === 0) {
-			console.log("turn1", turn);
 			updateUserTurn("row3");
 		} else {
-			console.log("turn2", turn);
 			updateUserTurn("row1");
 		}
 	}
 	//On locking in card check if player was right and update accordingly
 	function pushLockin() {
-		console.log(turn, "turn");
 		updateData(model.lockIn(newData, "row1"));
 		updateData(model.lockIn(newData, "row3"));
 

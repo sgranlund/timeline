@@ -23,5 +23,4 @@ export function storeBoard(
 		pointsPlay2: pointsPlay2Local,
 		theTurn: turn,
 	});
-	console.log("added to DB");
 }

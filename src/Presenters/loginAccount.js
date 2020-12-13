@@ -21,7 +21,6 @@ export function LoginAccount() {
 			setLoading(true);
 			await logn(logEmailRef.current.value, logPasswordRef.current.value);
 		} catch (err) {
-			console.log(err.message);
 			setError("Please create an user");
 		}
 		setLoading(false);
@@ -29,7 +28,7 @@ export function LoginAccount() {
 	async function logginOut() {
 		setError("");
 		try {
-			await logout().then(() => console.log("user signed out"));
+			await logout().then(() => {});
 		} catch {
 			setError("Failed to logout");
 		}
@@ -43,7 +42,6 @@ export function LoginAccount() {
 	function startGame(thisUser) {
 		if (thisUser !== null) {
 			allUsers(currentUser.uid).then((userInDB) => {
-				console.log(userInDB);
 				if (userInDB) {
 					window.location.pathname = "/gameBoard";
 					return;
@@ -53,7 +51,6 @@ export function LoginAccount() {
 				}
 			});
 		} else {
-			console.log("null");
 			return;
 		}
 	}

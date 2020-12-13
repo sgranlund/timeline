@@ -22,9 +22,5 @@ export function Test() {
 	const [data3] = GetPromise(promise3);
 	const [data4] = GetPromise(promise4);
 
-	// const logo = document.querySelectorAll("#timelineLogo path");
-	// for (let i = 0; i < logo.length; i++) {
-	// 	console.log(` ${logo[i].getTotalLength()}`);
-	// }
 	return <TestView data1={data1} data2={data2} data3={data3} data4={data4} />;
 }

@@ -33,7 +33,7 @@ export function CreateAccount() {
 	async function logginOut() {
 		setError("");
 		try {
-			await logout().then(() => console.log("user signed out"));
+			await logout().then(() => {});
 		} catch {
 			setError("Failed to logout");
 		}
@@ -45,11 +45,9 @@ export function CreateAccount() {
 	}, []);
 	function startGame(thisUser) {
 		if (thisUser !== null) {
-			console.log("createGame");
 			window.location.pathname = "/createGame";
 			return;
 		} else {
-			console.log("null");
 			return;
 		}
 	}

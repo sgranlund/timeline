@@ -38,14 +38,10 @@ export async function allUsers(user) {
 		.once("value")
 		.then((snapshot) => {
 			x = snapshot.exists();
-			console.log("User exists");
 		});
 	return x;
 }
 
 export async function deleteGame(user) {
 	await db.ref(user).remove();
-	//let userRef = db.ref(user);
-	//userRef.remove();
-	console.log("user", user, "removed");
 }
