@@ -36,7 +36,7 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												pushLockin();
+												pushLockin(turn);
 											}}
 										>
 											LOCK IN
@@ -82,6 +82,7 @@ export const GameBoardView = ({
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}
 										>
+											{console.log(userTurn)}
 											<h2 className="background">
 												<span>{row.title}</span>
 											</h2>

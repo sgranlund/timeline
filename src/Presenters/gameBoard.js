@@ -35,7 +35,7 @@ export function GameBoard({ model }) {
 
 	const [newData, updateData] = React.useState(model.myData);
 	const [turn, updateTurn] = React.useState(0);
-	const [userTurn, updateUserTurn] = React.useState("");
+	const [userTurn, updateUserTurn] = React.useState("row3");
 	const [newCard, updateCard] = React.useState("");
 	const [promise, setPromise] = React.useState(null);
 	//Pulls out the data from the promise
@@ -43,10 +43,10 @@ export function GameBoard({ model }) {
 	const history = useHistory();
 
 	const [loading, setLoad] = React.useState(false);
-	console.log(newData);
+
 	React.useEffect(() => {
-		updatingWhoIsPlaying();
 		//Checks if the user has a ongoing game
+
 		allUsers(currentUser.uid).then((userInDB) => {
 			console.log(userInDB);
 			console.log(currentUser.uid);
@@ -54,7 +54,6 @@ export function GameBoard({ model }) {
 				//Fetches all the important data from database
 				let allTheData = getAllData(currentUser.uid);
 				allTheData.then((data) => {
-					console.log(data);
 					updateData(data.board);
 					model.updateCounter(data.counter);
 					dispatch(change(data.theYears));
@@ -63,16 +62,20 @@ export function GameBoard({ model }) {
 					dispatch(name(data.name1));
 					dispatch(name2(data.name2));
 					updateTurn(data.turn);
+					updatingWhoIsPlaying(data.turn);
 					setLoad(true);
 				});
+			} else {
+				setLoad(true);
+				console.log("setFalse");
 			}
 		});
 	}, []);
 
-	// React.useEffect(() => {
-	// 	newData.rows.row1.title = nameNr1 + "'s timeline";
-	// 	newData.rows.row3.title = nameNr2 + "'s timeline";
-	// }, []);
+	React.useEffect(() => {
+		newData.rows.row1.title = nameNr1 + "'s timeline";
+		newData.rows.row3.title = nameNr2 + "'s timeline";
+	});
 
 	//Fetches promise for the cards
 	React.useEffect(() => {
@@ -214,20 +217,23 @@ export function GameBoard({ model }) {
 	}
 
 	//Updates is aka if it's someones turn to play
-	function updatingWhoIsPlaying() {
+	function updatingWhoIsPlaying(turn) {
 		if (turn % 2 === 0) {
-			console.log("row3");
+			console.log("turn1", turn);
 			updateUserTurn("row3");
 		} else {
-			console.log("row1");
+			console.log("turn2", turn);
 			updateUserTurn("row1");
 		}
 	}
 	//On locking in card check if player was right and update accordingly
 	function pushLockin() {
+		console.log(turn, "turn");
 		updateData(model.lockIn(newData, "row1"));
 		updateData(model.lockIn(newData, "row3"));
+
 		updateTurn(turn + 1);
+		updatingWhoIsPlaying(turn + 1);
 		storeBoard(
 			newData,
 			model.counter,
@@ -238,9 +244,9 @@ export function GameBoard({ model }) {
 			nameNr2,
 			pointsPlay1,
 			pointsPlay2,
-			turn - 1
+			turn + 1
 		);
-		updatingWhoIsPlaying();
+
 		Points();
 	}
 	function waitFirebase(data) {
