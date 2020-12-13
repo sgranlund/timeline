@@ -1,5 +1,5 @@
 import { Form, Button, Card, Alert } from "react-bootstrap";
-import { ReactComponent as Logo } from "../images/timeline.svg";
+import { ReactComponent as Logo } from "../Assets/timeline.svg";
 export const LoginAccountView = ({
 	loading,
 	error,

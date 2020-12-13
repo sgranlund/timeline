@@ -1,18 +1,27 @@
 import React from "react";
 
 import { GameBoardView } from "../Views/gameBoardView";
-import { questionSource } from "../apiHandling";
-import { GetPromise } from "../getPromise";
-import { dataDeliv } from "../dataDelivered";
-import { storeBoard } from "../AUTH/addToDB";
-import { getAllData, deleteGame } from "../AUTH/fetchFromDB";
+import { questionSource } from "../Model/API/apiHandling";
+import { GetPromise } from "../Model/API/getPromise";
+import { dataDeliv } from "../Model/API/dataDelivered";
+import { storeBoard } from "../Model/Firebase/addToDB";
+import {
+	getAllData,
+	deleteGame,
+	allUsers,
+} from "../Model/Firebase/fetchFromDB";
 import { useSelector } from "react-redux";
-import { useAuth } from "../AUTH/AuthProv";
-import { allUsers } from "../AUTH/fetchFromDB";
+import { useAuth } from "../Model/Firebase/AuthProv";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { increase1, increase2, change, name, name2 } from "../actions";
+import {
+	increase1,
+	increase2,
+	change,
+	name,
+	name2,
+} from "../Model/Redux/actions";
 
 export function GameBoard({ model }) {
 	//Create state for what is in which row
@@ -182,9 +191,7 @@ export function GameBoard({ model }) {
 					[newFinish.id]: newFinish,
 				},
 			};
-			//model.checkOrder(newState, "row1");
-			//model.checkOrder(newState, "row3");
-			//storeBoard(newData, model.counter);
+
 			updateData(newState);
 		}
 	};
@@ -219,7 +226,7 @@ export function GameBoard({ model }) {
 		<GameBoardView
 			onDragEnd={onDragEnd}
 			newData={newData}
-			checkOrder={model.checkOrder}
+			lockIn={model.lockIn}
 			updateData={updateData}
 			storeBoard={storeBoard}
 			counter={model.counter}

@@ -2,8 +2,8 @@ import React from "react";
 import { LoginAccountView } from "../Views/loginAccountView";
 
 import { useRef } from "react";
-import { useAuth } from "../AUTH/AuthProv";
-import { allUsers } from "../AUTH/fetchFromDB";
+import { useAuth } from "../Model/Firebase/AuthProv";
+import { allUsers } from "../Model/Firebase/fetchFromDB";
 export function LoginAccount() {
 	//loginuser
 	const logEmailRef = useRef();

@@ -1,13 +1,13 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
-import { getItemStyle, getListStyle } from "../boardStyle";
-import rules from "../images/rules.svg";
+import { getItemStyle, getListStyle } from "../Theme/boardStyle";
+import rules from "../Assets/rules.svg";
 
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
-	checkOrder,
+	lockIn,
 	updateData,
 	storeBoard,
 	counter,
@@ -47,8 +47,8 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												updateData(checkOrder(newData, "row1"));
-												updateData(checkOrder(newData, "row3"));
+												updateData(lockIn(newData, "row1"));
+												updateData(lockIn(newData, "row3"));
 
 												updateTurn(turn + 1);
 
