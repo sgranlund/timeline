@@ -34,7 +34,7 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 						<Card.Body>
 							<Form className="testPlayGame">
 								<Button id="sign" href="/loginAcc">
-									<label>Play Game</label>
+									<p className="PG">Play Game</p>
 								</Button>
 							</Form>
 						</Card.Body>
@@ -45,7 +45,8 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 					<img alt="moon" src={moon}></img>
 					{dataDeliv(data2) && (
 						<p className="text">
-							The year that the first moon landing is done {data2.number} is also
+							The year that the first moon landing is done {data2.number} is
+							also
 							{data2.text.substr(data2.text.indexOf(" ") + 3)}
 						</p>
 					)}

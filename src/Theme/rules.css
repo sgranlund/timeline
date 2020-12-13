@@ -4,7 +4,23 @@
 	padding-right: 30%;
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	color: white;
+}
+.left {
+	width: 90%;
+	padding-right: 10%;
+	text-align: justify;
+	text-justify: inter-word;
+}
+.right {
+	width: 90%;
+	text-align: justify;
+	text-justify: inter-word;
+}
+
+.rulesBackdrop {
+	height: 100%;
 }
 .Idea,
 .Course {
@@ -33,38 +49,35 @@ a.backButton:hover {
 	color: #000000;
 	background-color: #ffffff;
 }
-.bouncy {
-	animation: bouncy 5s infinite linear;
-	position: relative;
-}
-@keyframes bouncy {
-	0% {
-		top: 0em;
-	}
-	40% {
-		top: 0em;
-	}
-	43% {
-		top: -0.9em;
-	}
-	46% {
-		top: 0em;
-	}
-	48% {
-		top: -0.4em;
-	}
-	50% {
-		top: 0em;
-	}
-	100% {
-		top: 0em;
-	}
-}
+
 .divButton {
 	display: flex;
 	justify-content: center;
 }
+.divButton {
+	padding: 2%;
+}
+.backButton {
+	width: 200px;
+	height: 75px;
+	border-style: solid;
 
+	border-width: 2px;
+	position: relative;
+	color: white;
+}
+.backTo {
+	position: absolute;
+	margin: 0;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+.backButton:hover {
+	background-color: white;
+	border: #ffffff;
+	color: black;
+}
 @media screen and (max-width: 1500px) {
 	.bread {
 		text-align: start;
@@ -105,6 +118,7 @@ a.backButton:hover {
 		animation: bouncy 5s infinite linear;
 		position: relative;
 	}
+
 	@keyframes bouncy {
 		0% {
 			top: 0em;
