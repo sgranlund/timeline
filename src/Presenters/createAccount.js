@@ -1,7 +1,7 @@
 import React from "react";
 import { CreateAccountView } from "../Views/createAccountView";
 import { useRef } from "react";
-import { useAuth } from "../AUTH/AuthProv";
+import { useAuth } from "../Model/Firebase/AuthProv";
 
 export function CreateAccount() {
 	//createUser

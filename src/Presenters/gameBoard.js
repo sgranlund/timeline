@@ -1,18 +1,27 @@
 import React from "react";
 
 import { GameBoardView } from "../Views/gameBoardView";
-import { questionSource } from "../apiHandling";
-import { GetPromise } from "../getPromise";
-import { dataDeliv } from "../dataDelivered";
-import { storeBoard } from "../AUTH/addToDB";
-import { getAllData, deleteGame } from "../AUTH/fetchFromDB";
+import { questionSource } from "../Model/API/apiHandling";
+import { GetPromise } from "../Model/API/getPromise";
+import { dataDeliv } from "../Model/API/dataDelivered";
+import { storeBoard } from "../Model/Firebase/addToDB";
+import {
+	getAllData,
+	deleteGame,
+	allUsers,
+} from "../Model/Firebase/fetchFromDB";
 import { useSelector } from "react-redux";
-import { useAuth } from "../AUTH/AuthProv";
-import { allUsers } from "../AUTH/fetchFromDB";
+import { useAuth } from "../Model/Firebase/AuthProv";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { increase1, increase2, change, name, name2 } from "../actions";
+import {
+	increase1,
+	increase2,
+	change,
+	name,
+	name2,
+} from "../Model/Redux/actions";
 
 export function GameBoard({ model }) {
 	//Create state for what is in which row
@@ -31,6 +40,7 @@ export function GameBoard({ model }) {
 	const [userTurn, updateUserTurn] = React.useState("");
 	const [newCard, updateCard] = React.useState("");
 	React.useEffect(() => {
+		updatingWhoIsPlaying();
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
 			console.log(userInDB);
@@ -47,6 +57,7 @@ export function GameBoard({ model }) {
 					dispatch(increase2(data.pointsPlay2));
 					dispatch(name(data.name1));
 					dispatch(name2(data.name2));
+					updateTurn(data.turn);
 				});
 			}
 		});
@@ -181,9 +192,7 @@ export function GameBoard({ model }) {
 					[newFinish.id]: newFinish,
 				},
 			};
-			//model.checkOrder(newState, "row1");
-			//model.checkOrder(newState, "row3");
-			//storeBoard(newData, model.counter);
+
 			updateData(newState);
 		}
 	};
@@ -203,12 +212,21 @@ export function GameBoard({ model }) {
 	function playerTurn(rowId, turn) {
 		if (rowId === "row2") {
 			if (turn % 2 === 0) {
-				updateUserTurn("row3");
 				return "row3";
 			} else {
-				updateUserTurn("row1");
 				return "row1";
 			}
+		}
+	}
+
+	//Who's turn is it
+	function updatingWhoIsPlaying() {
+		if (turn % 2 === 0) {
+			console.log("row3");
+			updateUserTurn("row3");
+		} else {
+			console.log("row1");
+			updateUserTurn("row1");
 		}
 	}
 
@@ -216,7 +234,7 @@ export function GameBoard({ model }) {
 		<GameBoardView
 			onDragEnd={onDragEnd}
 			newData={newData}
-			checkOrder={model.checkOrder}
+			lockIn={model.lockIn}
 			updateData={updateData}
 			storeBoard={storeBoard}
 			counter={model.counter}
@@ -233,6 +251,7 @@ export function GameBoard({ model }) {
 			userTurn={userTurn}
 			updateUserTurn={updateUserTurn}
 			playerTurn={playerTurn}
+			updatingWhoIsPlaying={updatingWhoIsPlaying}
 		/>
 	);
 }

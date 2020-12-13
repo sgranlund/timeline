@@ -1,7 +1,7 @@
 import React from "react";
 import { TestView } from "../Views/testView";
-import { questionSource } from "../apiHandling";
-import { GetPromise } from "../getPromise";
+import { questionSource } from "../Model/API/apiHandling";
+import { GetPromise } from "../Model/API/getPromise";
 
 export function Test() {
 	const [promise1, setPromise1] = React.useState(null);
