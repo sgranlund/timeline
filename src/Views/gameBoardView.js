@@ -22,8 +22,8 @@ export const GameBoardView = ({
 	turn,
 	updateTurn,
 	userTurn,
-
 	playerTurn,
+	updatingWhoIsPlaying,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -49,9 +49,7 @@ export const GameBoardView = ({
 											onClick={() => {
 												updateData(lockIn(newData, "row1"));
 												updateData(lockIn(newData, "row3"));
-
 												updateTurn(turn + 1);
-
 												storeBoard(
 													newData,
 													counter,
@@ -64,12 +62,13 @@ export const GameBoardView = ({
 													pointsPlay2,
 													turn - 1
 												);
-
+												updatingWhoIsPlaying();
 												points();
 											}}
 										>
 											LOCK IN
 										</button>
+
 										{playerTurn(row.id, turn) === "row3" && (
 											<div className="turnDisp">
 												<p className="turn">{nameNr1}'s Turn</p>

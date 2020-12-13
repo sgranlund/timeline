@@ -40,6 +40,7 @@ export function GameBoard({ model }) {
 	const [userTurn, updateUserTurn] = React.useState("");
 	const [newCard, updateCard] = React.useState("");
 	React.useEffect(() => {
+		updatingWhoIsPlaying();
 		//Checks if the user has a ongoing game
 		allUsers(currentUser.uid).then((userInDB) => {
 			console.log(userInDB);
@@ -211,14 +212,21 @@ export function GameBoard({ model }) {
 	function playerTurn(rowId, turn) {
 		if (rowId === "row2") {
 			if (turn % 2 === 0) {
-				updateUserTurn("row3");
-
 				return "row3";
 			} else {
-				updateUserTurn("row1");
-
 				return "row1";
 			}
+		}
+	}
+
+	//Who's turn is it
+	function updatingWhoIsPlaying() {
+		if (turn % 2 === 0) {
+			console.log("row3");
+			updateUserTurn("row3");
+		} else {
+			console.log("row1");
+			updateUserTurn("row1");
 		}
 	}
 
@@ -243,6 +251,7 @@ export function GameBoard({ model }) {
 			userTurn={userTurn}
 			updateUserTurn={updateUserTurn}
 			playerTurn={playerTurn}
+			updatingWhoIsPlaying={updatingWhoIsPlaying}
 		/>
 	);
 }
