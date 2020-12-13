@@ -1,8 +1,5 @@
-import { change } from "../Model/Redux/actions";
-import { name } from "../Model/Redux/actions";
-import { name2 } from "../Model/Redux/actions";
+import { change, name, name2 } from "../Model/Redux/actions";
 import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../Assets/timeline.svg";
 import rules from "../Assets/rules.svg";

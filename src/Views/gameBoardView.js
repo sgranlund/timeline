@@ -105,9 +105,9 @@ export const GameBoardView = ({
 																	snapshot.isDragging,
 																	provided.draggableProps.style
 																)}
-															>
+															>	
 																<h3 className="cardTitle">This year...</h3>
-																{event.content}
+																{event.content} 
 															</div>
 														)}
 													</Draggable>

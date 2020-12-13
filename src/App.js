@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./Theme/gameBoard.css";
 import "./Theme/createGame.css";
 import "./Theme/rules.css";
+import { CreateGame } from "./Presenters/createGame";
+import { GameFinish } from "./Presenters/gameFinished";
+import { GameBoard } from "./Presenters/gameBoard";
+import { Rules } from "./Presenters/rules";
+import { Test } from "./Presenters/test";
+import "./Theme/slider.css"
 import "./Theme/main.css";
 import "./Theme/test.css";
 import "./Theme/landingPage.css";
