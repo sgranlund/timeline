@@ -23,39 +23,18 @@ export const GameFinishedView = ({
 			id="timelineHomeButton"
 			onClick={() => (window.location.pathname = "")}
 		/>
-		<div className="gameFinishedTitle">
-			<span>Congratulations</span>
-		</div>
+
 		<div className="result">
-			<span className="resultTitle"></span>
-			<ul class="c-rainbow">
-				<li class="c-rainbow__layer c-rainbow__layer--white">
-					{countWinner()}
-				</li>
-				<li class="c-rainbow__layer c-rainbow__layer--orange">
-					{countWinner()}
-				</li>
-				<li class="c-rainbow__layer c-rainbow__layer--red">{countWinner()}</li>
-				<li class="c-rainbow__layer c-rainbow__layer--violet">
-					{countWinner()}
-				</li>
-				<li class="c-rainbow__layer c-rainbow__layer--blue">{countWinner()}</li>
-				<li class="c-rainbow__layer c-rainbow__layer--green">
-					{countWinner()}
-				</li>
-				<li class="c-rainbow__layer c-rainbow__layer--yellow">
-					{countWinner()}
-				</li>
-			</ul>
-			{/* <span className="theWinner">{countWinner()}</span> */}
-			<span className="winnerIs">you won!</span>
+			<span className="gameFinishedTitle">Congratulations</span>
+			<span className="theWinner">{countWinner()}</span>
+			<span className="winnerIs">you're a real time wizard!</span>
 		</div>
 		<div className="score">
 			<span className="score1">
-				{name1} got {pointsPlay1} points
+				{name1} got {pointsPlay1} cards
 			</span>
 			<span className="score2">
-				{name2} got {pointsPlay2} points
+				{name2} got {pointsPlay2} cards
 			</span>
 		</div>
 		<div className="newGameButton">
