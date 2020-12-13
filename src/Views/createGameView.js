@@ -1,8 +1,5 @@
-import { change } from "../actions";
-import { name } from "../actions";
-import { name2 } from "../actions";
+import { change, name, name2 } from "../actions";
 import Slider from "rc-slider";
-import "rc-slider/assets/index.css";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 import rules from "../images/rules.svg";

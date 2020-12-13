@@ -14,6 +14,8 @@ import "./css/landingPage.css";
 import "./css/login.css";
 import "./css/gameFinish.css";
 import "./css/createUser.css";
+//import "rc-slider/assets/index.css";
+import "./css/slider.css"
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./AUTH/AuthProv";
 import { CreateAccount } from "./Presenters/createAccount";

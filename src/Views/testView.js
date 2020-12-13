@@ -1,8 +1,7 @@
 import abra from "../images/abra.jpg";
 import berlin from "../images/berlinmuren.jpg";
 import bonneyAnne from "../images/bonneyAnne.jpg";
-import iphone from "../images/iphone.jpg";
-import bulb from "../images/bulb.svg";
+import moon from "../images/moon.jpg";
 import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../images/timeline.svg";
 import { dataDeliv } from "../dataDelivered";
@@ -12,7 +11,9 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 			<div id="stars"></div>
 			<div id="stars2"></div>
 			<div id="stars3"></div>
-			<Logo id="timelineLogo" />
+			<div className="timelineDiv">
+				<Logo id="timelineLogo" />
+			</div>
 			<Logo
 				id="timelineHomeButton"
 				onClick={() => (window.location.pathname = "")}
@@ -41,10 +42,10 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 				</div>
 				<div className="attach">
 					<hr className="attachLineUppe" />
-					<img alt="iphone" src={iphone}></img>
+					<img alt="moon" src={moon}></img>
 					{dataDeliv(data2) && (
 						<p className="text">
-							The year that the Iphone is released {data2.number} is also
+							The year that the first moon landing is done {data2.number} is also
 							{data2.text.substr(data2.text.indexOf(" ") + 3)}
 						</p>
 					)}
