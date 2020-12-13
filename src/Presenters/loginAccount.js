@@ -41,10 +41,15 @@ export function LoginAccount() {
 	}, []);
 
 	function startGame(thisUser) {
-		if (thisUser !== null && allUsers(thisUser)) {
-			window.location.pathname = "/gameBoard";
-			return;
+		if (thisUser !== null) {
+			allUsers(currentUser.uid).then((userInDB) => {
+				if (userInDB) {
+					window.location.pathname = "/gameBoard";
+					return;
+				}
+			});
 		}
+
 		if (thisUser !== null) {
 			window.location.pathname = "/createGame";
 			return;
