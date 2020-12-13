@@ -1,4 +1,4 @@
-#Timeline
+## Timeline
 
 <h4>Website: <a href='http://timelinesebem.herokuapp.com/'>http://timelinesebem.herokuapp.com/</a></h4>
 
@@ -7,18 +7,19 @@ Timeline is a game that with inspiration from the game "När då då?" which bri
 
 ## Current features
 
-* Fetches events from the API <a href='http://numbersapi.com/'>NumbersAPI</a> and serves them as questions for the game.
-* You can play directly with a freind on the same computer
-* Saves your game if you don't have time to finish it but want to pick it up later
+- Fetches events from the API <a href='http://numbersapi.com/'>NumbersAPI</a> and serves them as questions for the game.
+- You can play directly with a freind on the same computer
+- Saves your game if you don't have time to finish it but want to pick it up later
 
 ## Planned features
 
-* Play against each other on seperate computers
+- Play against each other on seperate computers
 
 ## Structure
+
 The app is built with react and redux. The store is provided with react-redux. The app also uses react-router-dom for routing. It is written using TypeScript. Data is stored using firebase's firestore.
 
 The app files are split into six folders described below.
 ###TODO
 
------
+---

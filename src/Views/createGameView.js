@@ -1,8 +1,8 @@
-import { change, name, name2 } from "../actions";
+import { change, name, name2 } from "../Model/Redux/actions";
 import Slider from "rc-slider";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../images/timeline.svg";
-import rules from "../images/rules.svg";
+import { ReactComponent as Logo } from "../Assets/timeline.svg";
+import rules from "../Assets/rules.svg";
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 

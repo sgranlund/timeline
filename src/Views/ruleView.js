@@ -1,4 +1,4 @@
-import { ReactComponent as Logo } from "../images/timeline.svg";
+import { ReactComponent as Logo } from "../Assets/timeline.svg";
 
 export const RuleView = () => {
 	return (

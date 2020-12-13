@@ -1,13 +1,13 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { Link } from "react-router-dom";
-import { getItemStyle, getListStyle } from "../boardStyle";
-import rules from "../images/rules.svg";
+import { getItemStyle, getListStyle } from "../Theme/boardStyle";
+import rules from "../Assets/rules.svg";
 
 export const GameBoardView = ({
 	onDragEnd,
 	newData,
-	checkOrder,
+	lockIn,
 	updateData,
 	storeBoard,
 	counter,
@@ -22,8 +22,8 @@ export const GameBoardView = ({
 	turn,
 	updateTurn,
 	userTurn,
-
 	playerTurn,
+	updatingWhoIsPlaying,
 }) => {
 	return (
 		<div className="bigDiv">
@@ -47,8 +47,9 @@ export const GameBoardView = ({
 										<button
 											className="checkSortButton"
 											onClick={() => {
-												updateData(checkOrder(newData, "row1"));
-												updateData(checkOrder(newData, "row3"));
+												updateData(lockIn(newData, "row1"));
+												updateData(lockIn(newData, "row3"));
+												updateTurn(turn + 1);
 												storeBoard(
 													newData,
 													counter,
@@ -58,14 +59,16 @@ export const GameBoardView = ({
 													nameNr1,
 													nameNr2,
 													pointsPlay1,
-													pointsPlay2
+													pointsPlay2,
+													turn - 1
 												);
+												updatingWhoIsPlaying();
 												points();
-												updateTurn(turn + 1);
 											}}
 										>
 											LOCK IN
 										</button>
+
 										{playerTurn(row.id, turn) === "row3" && (
 											<div className="turnDisp">
 												<p className="turn">{nameNr1}'s Turn</p>

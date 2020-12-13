@@ -1,23 +1,23 @@
 import React from "react";
-import "./css/gameBoard.css";
-import "./css/createGame.css";
-import "./css/rules.css";
-import { LandingPage } from "./Presenters/landingPage";
+import "./Theme/gameBoard.css";
+import "./Theme/createGame.css";
+import "./Theme/rules.css";
 import { CreateGame } from "./Presenters/createGame";
 import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";
 import { Rules } from "./Presenters/rules";
 import { Test } from "./Presenters/test";
-import "./css/main.css";
-import "./css/test.css";
-import "./css/landingPage.css";
-import "./css/login.css";
-import "./css/gameFinish.css";
-import "./css/createUser.css";
-//import "rc-slider/assets/index.css";
+
 import "./css/slider.css"
+
+import "./Theme/main.css";
+import "./Theme/test.css";
+import "./Theme/landingPage.css";
+import "./Theme/login.css";
+import "./Theme/gameFinish.css";
+import "./Theme/createUser.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { AuthProvider } from "./AUTH/AuthProv";
+import { AuthProvider } from "./Model/Firebase/AuthProv";
 import { CreateAccount } from "./Presenters/createAccount";
 import { LoginAccount } from "./Presenters/loginAccount";
 
@@ -51,9 +51,7 @@ function App({ model }) {
 						<Route path="/loginAcc">
 							<LoginAccount />
 						</Route>
-						<Route path="/landingPage">
-							<LandingPage />
-						</Route>
+
 						<Route path="/">
 							<Test />
 						</Route>

@@ -1,10 +1,10 @@
-import abra from "../images/abra.jpg";
-import berlin from "../images/berlinmuren.jpg";
-import bonneyAnne from "../images/bonneyAnne.jpg";
-import moon from "../images/moon.jpg";
+import abra from "../Assets/abra.jpg";
+import berlin from "../Assets/berlinmuren.jpg";
+import bonneyAnne from "../Assets/bonneyAnne.jpg";
+import moon from "../Assets/moon.jpg";
 import { Form, Button, Card } from "react-bootstrap";
-import { ReactComponent as Logo } from "../images/timeline.svg";
-import { dataDeliv } from "../dataDelivered";
+import { ReactComponent as Logo } from "../Assets/timeline.svg";
+import { dataDeliv } from "../Model/API/dataDelivered";
 export const TestView = ({ data1, data2, data3, data4 }) => {
 	return (
 		<div className="apa">
