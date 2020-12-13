@@ -172,6 +172,16 @@ html {
 }
 
 @media screen and (max-width: 1500px) {
+	.timelineDiv {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 500px;
+		height: 100px;
+		background-color: #5cacac;
+		z-index: 2;
+	}
 	#timelineLogo {
 		position: absolute;
 		width: 450px;
@@ -180,7 +190,7 @@ html {
 		transform: translate(-50%, -50%);
 		animation: fill 0.5s ease forwards 3.5s;
 		background-color: #5cacac;
-		z-index: 2;
+		z-index: 3;
 	}
 	.uppe img,
 	.nere img {

@@ -11,7 +11,9 @@ export const TestView = ({ data1, data2, data3, data4 }) => {
 			<div id="stars"></div>
 			<div id="stars2"></div>
 			<div id="stars3"></div>
-			<Logo id="timelineLogo" />
+			<div className="timelineDiv">
+				<Logo id="timelineLogo" />
+			</div>
 			<Logo
 				id="timelineHomeButton"
 				onClick={() => (window.location.pathname = "")}
