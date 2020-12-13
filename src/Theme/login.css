@@ -184,3 +184,14 @@ input {
 .testPlayGame {
 	width: 270px;
 }
+
+@media screen and (max-width: 1500px) {
+	.testPlayGame {
+		position: absolute;
+		transform: translate(-50%, -50%);
+		top: 52%;
+		left: 50%;
+		width: 230px;
+		height: 230px;
+	}
+}
