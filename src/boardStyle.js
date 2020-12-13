@@ -1,18 +1,18 @@
 //---------------Styling start---------------//
-const grid = 8;
+const grid = 3;
 
 export const getItemStyle = (showcard, turn, isDragging, draggableStyle) => ({
 	// some basic styles to make the items look a bit nicer
 	userSelect: "none",
 
-	margin: `0 ${grid / 2}px 0 ${grid / 2}px`,
+	margin: `0 ${grid * 8}px 0 ${grid * 8}px`,
 	//fontSize: "11px",
 	fontFamily:
 		"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
 	// change background colour if dragging
 	borderColor: isDragging ? "lightgreen" : "black",
 	color: turn ? "#B8B8B8" : "black",
-	backgroundColor: showcard && !isDragging ? "black" : "white",
+	backgroundColor: showcard && !isDragging ? "black" : turn ? "gainsboro" : "white",
 	// styles we need to apply on draggables
 	...draggableStyle,
 });
