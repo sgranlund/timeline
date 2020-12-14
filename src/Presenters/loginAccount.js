@@ -1,10 +1,11 @@
 import React from "react";
 import { LoginAccountView } from "../Views/loginAccountView";
-
+import { useHistory } from "react-router-dom";
 import { useRef } from "react";
 import { useAuth } from "../Model/Firebase/AuthProv";
 import { allUsers } from "../Model/Firebase/fetchFromDB";
 export function LoginAccount() {
+	const hi = useHistory();
 	//loginuser
 	const logEmailRef = useRef();
 	const logPasswordRef = useRef();
@@ -43,10 +44,10 @@ export function LoginAccount() {
 		if (thisUser !== null) {
 			allUsers(currentUser.uid).then((userInDB) => {
 				if (userInDB) {
-					window.location.pathname = "/gameBoard";
+					hi.push("/gameBoard");
 					return;
 				} else {
-					window.location.pathname = "/createGame";
+					hi.push("/createGame");
 					return;
 				}
 			});

@@ -1,6 +1,6 @@
 import { ReactComponent as Logo } from "../Assets/timeline.svg";
 
-export const RuleView = () => {
+export const RuleView = ({ goBack }) => {
 	return (
 		<div className="rulesBackdrop">
 			<div id="stars"></div>
@@ -38,7 +38,7 @@ export const RuleView = () => {
 				</p>
 			</div>
 			<div className="divButton">
-				<div className="backButton" onClick={() => window.history.back()}>
+				<div className="backButton" onClick={()=>goBack()}>
 					<p className="backTo">Go Back!</p>
 				</div>
 			</div>
