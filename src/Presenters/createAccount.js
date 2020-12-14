@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { CreateAccountView } from "../Views/createAccountView";
 import { useRef } from "react";

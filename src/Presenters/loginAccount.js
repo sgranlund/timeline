@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from "react";
 import { LoginAccountView } from "../Views/loginAccountView";
 import { useHistory } from "react-router-dom";
