@@ -5,7 +5,7 @@ import "./Theme/createGame.css";
 import "./Theme/rules.css";
 import "./Theme/slider.css";
 import "./Theme/main.css";
-import "./Theme/test.css";
+import "./Theme/landingPage2.css";
 import "./Theme/landingPage.css";
 import "./Theme/login.css";
 import "./Theme/gameFinish.css";
@@ -15,7 +15,8 @@ import { CreateGame } from "./Presenters/createGame";
 import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";
 import { Rules } from "./Presenters/rules";
-import { Test } from "./Presenters/test";
+
+import { LandingPage } from "./Presenters/landingPage";
 import { CreateAccount } from "./Presenters/createAccount";
 import { LoginAccount } from "./Presenters/loginAccount";
 import { AuthProvider } from "./Model/Firebase/AuthProv";
@@ -49,7 +50,7 @@ function App({ model }) {
 						</Route>
 
 						<Route path="/">
-							<Test />
+							<LandingPage />
 						</Route>
 					</Switch>
 				</Router>

@@ -158,10 +158,9 @@
 		text-align: center;
 	}
 	::placeholder {
-		color: black;
+		color: beige;
 		font-size: 1em;
 		text-align: center;
-		font-family: "Permanent Marker", cursive;
 	}
 	.createRulesIMG {
 		height: 50px;

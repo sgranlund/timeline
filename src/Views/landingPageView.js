@@ -5,7 +5,7 @@ import moon from "../Assets/moon.jpg";
 import { Form, Button, Card } from "react-bootstrap";
 import { ReactComponent as Logo } from "../Assets/timeline.svg";
 import { dataDeliv } from "../Model/API/dataDelivered";
-export const TestView = ({ data1, data2, data3, data4 }) => {
+export const LandingPageView = ({ data1, data2, data3, data4 }) => {
 	return (
 		<div className="apa">
 			<div id="stars"></div>

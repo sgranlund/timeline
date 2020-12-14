@@ -1,9 +1,9 @@
 import React from "react";
-import { TestView } from "../Views/testView";
+import { LandingPageView } from "../Views/landingPageView";
 import { questionSource } from "../Model/API/apiHandling";
 import { GetPromise } from "../Model/API/getPromise";
 
-export function Test() {
+export function LandingPage() {
 	const [promise1, setPromise1] = React.useState(null);
 	const [promise2, setPromise2] = React.useState(null);
 	const [promise3, setPromise3] = React.useState(null);
@@ -22,5 +22,7 @@ export function Test() {
 	const [data3] = GetPromise(promise3);
 	const [data4] = GetPromise(promise4);
 
-	return <TestView data1={data1} data2={data2} data3={data3} data4={data4} />;
+	return (
+		<LandingPageView data1={data1} data2={data2} data3={data3} data4={data4} />
+	);
 }
