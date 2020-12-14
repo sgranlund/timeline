@@ -172,29 +172,9 @@ a.newButton:hover {
 
 @media screen and (max-width: 1500px) {
 	.result {
-		position: absolute;
-		transform: translate(-50%, -50%);
-		top: 40%;
-		left: 50%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-	.result {
-		position: absolute;
-		transform: translate(-50%, -50%);
 		top: 30%;
-		left: 50%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 	.newGameButton {
-		position: absolute;
-		transform: translate(-50%, -50%);
 		top: 95%;
-		left: 50%;
-		width: 50%;
-		height: 25%;
 	}
 }
