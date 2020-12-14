@@ -15,7 +15,7 @@ export const GameFinishedView = ({
 			<div className="before"></div>
 			<div className="after"></div>
 		</div>
-		<div class="fireworks2">
+		<div className="fireworks2">
 			<div className="before"></div>
 			<div className="after"></div>
 		</div>

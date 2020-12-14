@@ -39,7 +39,7 @@ export function GameBoard({ model }) {
 	const [newCard, updateCard] = React.useState("");
 	const [promise, setPromise] = React.useState(null);
 	//Pulls out the data from the promise
-	const [data, error] = GetPromise(promise);
+	const [data] = GetPromise(promise);
 	const history = useHistory();
 
 	const [loading, setLoad] = React.useState(false);

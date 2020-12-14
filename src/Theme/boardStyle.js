@@ -1,6 +1,4 @@
 //---------------Styling start---------------//
-const grid = 12.5;
-
 export const getItemStyle = (showcard, turn, isDragging, draggableStyle) => ({
 	// some basic styles to make the items look a bit nicer
 	userSelect: "none",
