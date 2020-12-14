@@ -2,8 +2,10 @@ import React from "react";
 import { CreateAccountView } from "../Views/createAccountView";
 import { useRef } from "react";
 import { useAuth } from "../Model/Firebase/AuthProv";
+import { useHistory } from "react-router-dom";
 
 export function CreateAccount() {
+	const hist = useHistory();
 	//createUser
 	const createEmailRef = useRef();
 	const createPasswordRef = useRef();
@@ -45,7 +47,7 @@ export function CreateAccount() {
 	}, []);
 	function startGame(thisUser) {
 		if (thisUser !== null) {
-			window.location.pathname = "/createGame";
+			hist.push("/createGame");
 			return;
 		} else {
 			return;
