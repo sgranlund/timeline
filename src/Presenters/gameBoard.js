@@ -72,7 +72,7 @@ export function GameBoard({ model }) {
 	React.useEffect(() => {
 		newData.rows.row1.title = nameNr1 + "'s timeline";
 		newData.rows.row3.title = nameNr2 + "'s timeline";
-	});
+	}, []);
 
 	//Fetches promise for the cards
 	React.useEffect(() => {
