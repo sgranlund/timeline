@@ -243,6 +243,8 @@ export function GameBoard({ model }) {
 
 		Points();
 	}
+
+	console.log(window.innerWidth);
 	function waitFirebase(data) {
 		return (
 			!data && <span className="loadWheel">Turning back time</span> // case 1

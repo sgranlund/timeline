@@ -77,7 +77,6 @@ export const GameBoardView = ({
 								<Droppable droppableId={row.id} direction="horizontal">
 									{(provided, snapshot) => (
 										<div
-											className={row.id}
 											ref={provided.innerRef}
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}
