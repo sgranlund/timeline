@@ -1,13 +1,48 @@
+.bigDiv {
+	height: 100%;
+}
 .row1,
 .row2,
 .row3 {
-	min-height: 260px;
-
+	height: 25%;
 	max-width: 100%;
 	position: relative;
 }
-.row2 {
-	justify-content: center;
+.rowEnclose {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.rowTitle h3 {
+	width: 200px;
+	text-align: center;
+	margin: 0%;
+}
+
+.row1 h2 {
+	width: 100%;
+	position: absolute;
+	top: 25%;
+	left: 0;
+}
+.row2 h2 {
+	display: none;
+}
+.row3 h2 {
+	width: 100%;
+	position: absolute;
+	top: 25%;
+	left: 0;
+}
+.row1 button {
+	height: 0;
+	display: none;
+}
+.row2 button {
+	height: 0;
+	display: none;
 }
 .eachElement {
 	border-style: solid;
@@ -17,13 +52,12 @@
 	font-size: 11px;
 	width: 7%;
 	z-index: 2;
+	margin: 0 5.3% 0 5.3%;
 }
-
-.bigDiv {
-	height: 100%;
-}
-.rowEnclose {
-	height: 100%;
+.row2 .eachElement {
+	position: absolute;
+	transform: translate(-100%);
+	left: 50%;
 }
 .cardTitle {
 	padding-top: 0px;
@@ -34,14 +68,12 @@
 	display: flex;
 	flex-direction: column-reverse;
 	align-items: center;
-	height: 10%;
+	height: 0;
 }
 .checkSortButton {
 	background-color: transparent;
-
 	border: 0.1em solid #ffffff;
 	border-radius: 0.12em;
-
 	font-weight: 900;
 	color: #ffffff;
 	text-align: center;
@@ -51,8 +83,6 @@
 	transform: translate(-50%, -50%);
 	top: -40%;
 	left: 20%;
-
-	/* default 0 */
 }
 .checkSortButton:focus {
 	outline: 0;
@@ -62,33 +92,6 @@
 	background-color: lightgreen;
 }
 
-.rowTitle h3 {
-	width: 200px;
-	text-align: center;
-	margin: 0%;
-}
-.row1 .row2 .row3 {
-	position: relative;
-}
-.row1 h2 {
-	width: 100%;
-	position: absolute;
-	top: 30%;
-	left: 0;
-}
-.row2 h2 {
-	width: 100%;
-	position: absolute;
-	top: 30%;
-	left: 0;
-	display: none;
-}
-.row3 h2 {
-	width: 100%;
-	position: absolute;
-	top: 30%;
-	left: 0;
-}
 h2 {
 	font-size: 44px;
 	margin-top: 30px;
@@ -117,14 +120,7 @@ h2 span {
 	background-color: rgb(92, 172, 172);
 	padding: 0 15px;
 }
-.row1 button {
-	height: 0;
-	display: none;
-}
-.row2 button {
-	height: 0;
-	display: none;
-}
+
 .turnParent {
 	width: 100%;
 	height: 100%;
@@ -164,8 +160,6 @@ h2 span {
 	width: 100%;
 	height: 0;
 	text-align: center;
-	/* animation-name: example;
-	animation-duration: 1s; */
 }
 @keyframes hide {
 	0% {
@@ -204,12 +198,61 @@ h2 span {
 	right: 5%;
 }
 
-@media screen and (max-width: 1500px) {
+.gameRulesIMG {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 48%;
+	left: 80%;
+}
+.gameRulesP {
+	position: absolute;
+	height: 50px;
+	z-index: 100;
+	transform: translate(-50%, -50%);
+	top: 62%;
+	left: 80%;
+	text-decoration: none;
+	color: white;
+}
+.loadWheel {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	font-size: 100px;
+	color: white;
+	top: 50%;
+	left: 50%;
+	z-index: 100;
+}
+
+.loadWheel:after {
+	content: " .";
+	animation: loadDots 0.5s steps(5, end) infinite;
+}
+
+@keyframes loadDots {
+	0%,
+	20% {
+		color: rgba(0, 0, 0, 0);
+		text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	40% {
+		color: white;
+		text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	60% {
+		text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0);
+	}
+	80%,
+	100% {
+		text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
+	}
+}
+@media screen and (max-width: 1500px), screen and (max-height: 800px) {
 	.row1,
 	.row2,
 	.row3 {
-		min-height: 215px;
-		max-height: 250px;
 		max-width: 100%;
 		position: relative;
 	}
@@ -230,8 +273,9 @@ h2 span {
 		border-radius: 5px;
 		padding-left: 6px;
 		font-size: 11px;
-		width: 11%;
+		width: 7%;
 		z-index: 2;
+		overflow-y: auto;
 	}
 
 	.bigDiv {
@@ -271,72 +315,28 @@ h2 span {
 		user-select: none;
 		color: white;
 	}
-	
+
 	.turn {
 		position: absolute;
 		transform: translate(-50%, -50%);
 		top: 20%;
 		left: 20%;
 		color: white;
-	
+
 		background-color: transparent;
 		font-size: 160%;
 		width: 100%;
 		height: 0;
 		text-align: center;
-		/* animation-name: example;
-		animation-duration: 1s; */
 	}
-}
-
-.gameRulesIMG {
-	position: absolute;
-	height: 50px;
-	z-index: 100;
-	transform: translate(-50%, -50%);
-	top: 48%;
-	left: 80%;
-}
-.gameRulesP {
-	position: absolute;
-	height: 50px;
-	z-index: 100;
-	transform: translate(-50%, -50%);
-	top: 60%;
-	left: 80%;
-	text-decoration: none;
-	color: white;
-}
-.loadWheel {
-	position: absolute;
-	transform: translate(-50%, -50%);
-	font-size: 100px;
-	color: white;
-	top: 50%;
-	left: 50%;
-	z-index: 100;
-}
-
-.loadWheel:after {
-	content: " .";
-	animation: loadDots 0.5s steps(5, end) infinite;
-}
-
-@keyframes loadDots {
-	0%,
-	20% {
-		color: rgba(0, 0, 0, 0);
-		text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
-	}
-	40% {
+	.gameRulesP {
+		position: absolute;
+		height: 50px;
+		z-index: 100;
+		transform: translate(-50%, -50%);
+		top: 68%;
+		left: 80%;
+		text-decoration: none;
 		color: white;
-		text-shadow: 0.25em 0 0 rgba(0, 0, 0, 0), 0.5em 0 0 rgba(0, 0, 0, 0);
-	}
-	60% {
-		text-shadow: 0.25em 0 0 white, 0.5em 0 0 rgba(0, 0, 0, 0);
-	}
-	80%,
-	100% {
-		text-shadow: 0.25em 0 0 white, 0.5em 0 0 white;
 	}
 }

@@ -77,12 +77,10 @@ export const GameBoardView = ({
 								<Droppable droppableId={row.id} direction="horizontal">
 									{(provided, snapshot) => (
 										<div
-											className={row.id}
 											ref={provided.innerRef}
 											{...provided.droppableProps}
 											style={getListStyle(snapshot.isDraggingOver)}
 										>
-											{console.log(userTurn)}
 											<h2 className="background">
 												<span>{row.title}</span>
 											</h2>
@@ -106,9 +104,9 @@ export const GameBoardView = ({
 																	snapshot.isDragging,
 																	provided.draggableProps.style
 																)}
-															>	
+															>
 																<h3 className="cardTitle">This year...</h3>
-																{event.content} 
+																{event.content}
 															</div>
 														)}
 													</Draggable>

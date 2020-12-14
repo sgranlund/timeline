@@ -10,7 +10,6 @@ export function CreateGame({ model }) {
 
 	function getYearSpan() {
 		model.getApiData(startYear, endYear);
-		console.log(startYear, endYear);
 	}
 
 	return (
