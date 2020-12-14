@@ -10,10 +10,8 @@ import store from "./Model/Redux/store";
 const model = new GameModel();
 
 ReactDOM.render(
-	<React.StrictMode>
 		<Provider store={store}>
 			<App model={model} />
-		</Provider>
-	</React.StrictMode>,
+		</Provider>,
 	document.getElementById("root")
 );
