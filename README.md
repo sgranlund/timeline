@@ -1,4 +1,4 @@
-## Timeline
+# Timeline
 
 <h4>Website: <a href='http://timelinesebem.herokuapp.com/'>http://timelinesebem.herokuapp.com/</a></h4>
 
@@ -21,19 +21,19 @@ The app is built with react and redux. The store is provided with react-redux. T
 
 The app files are split into five folders described below.
 
-# Assets
+### Assets
 
 For any assets used on the page such as images
 
-# Views
+### Views
 
 Groups all the views used in this project
 
-# Presenters
+### Presenters
 
 Groups all the presenters for the views
 
-# Model
+### Model
 
 - **model**
   Moel contains the core model for the gam
@@ -44,7 +44,7 @@ Groups all the presenters for the views
 - **Firebase**
   Contains for adding and fetching data fromn the realtime database in Firebase
 
-# Theme
+### Theme
 
 Contains all the styling files
 
