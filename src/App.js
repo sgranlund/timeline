@@ -5,8 +5,8 @@ import "./Theme/createGame.css";
 import "./Theme/rules.css";
 import "./Theme/slider.css";
 import "./Theme/main.css";
-import "./Theme/landingPage2.css";
 import "./Theme/landingPage.css";
+
 import "./Theme/login.css";
 import "./Theme/gameFinish.css";
 import "./Theme/createUser.css";
