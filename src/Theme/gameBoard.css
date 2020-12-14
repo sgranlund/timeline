@@ -26,6 +26,7 @@
 	position: absolute;
 	top: 25%;
 	left: 0;
+	user-select: none;
 }
 .row2 h2 {
 	display: none;
@@ -35,6 +36,7 @@
 	position: absolute;
 	top: 25%;
 	left: 0;
+	user-select: none;
 }
 .row1 button {
 	height: 0;
@@ -160,7 +162,9 @@ h2 span {
 	width: 100%;
 	height: 0;
 	text-align: center;
+	user-select: none;
 }
+
 @keyframes hide {
 	0% {
 		opacity: 0%;
@@ -205,6 +209,13 @@ h2 span {
 	transform: translate(-50%, -50%);
 	top: 48%;
 	left: 80%;
+	user-select: none;
+}
+.theButton a img {
+	user-select: none;
+}
+.theButton button {
+	user-select: none;
 }
 .gameRulesP {
 	position: absolute;
@@ -215,6 +226,7 @@ h2 span {
 	left: 80%;
 	text-decoration: none;
 	color: white;
+	user-select: none;
 }
 .loadWheel {
 	position: absolute;
