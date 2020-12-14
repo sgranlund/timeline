@@ -10,6 +10,7 @@ import "./Theme/landingPage.css";
 import "./Theme/login.css";
 import "./Theme/gameFinish.css";
 import "./Theme/createUser.css";
+import "./Theme/stars.css";
 import { CreateGame } from "./Presenters/createGame";
 import { GameFinish } from "./Presenters/gameFinished";
 import { GameBoard } from "./Presenters/gameBoard";

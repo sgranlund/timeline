@@ -60,6 +60,8 @@
 	position: absolute;
 	transform: translate(-100%);
 	left: 50%;
+	height: 30%;
+	overflow: hidden;
 }
 .cardTitle {
 	padding-top: 0px;
@@ -262,12 +264,6 @@ h2 span {
 	}
 }
 @media screen and (max-width: 1500px), screen and (max-height: 800px) {
-	.row1,
-	.row2,
-	.row3 {
-		max-width: 100%;
-		position: relative;
-	}
 	h2 {
 		font-size: 35px;
 		margin-top: 30px;
@@ -285,7 +281,8 @@ h2 span {
 		border-radius: 5px;
 		padding-left: 6px;
 		font-size: 11px;
-		width: 7%;
+		width: 9%;
+
 		z-index: 2;
 		overflow-y: auto;
 	}

@@ -23,7 +23,11 @@ export const LoginAccountView = ({
 				{currentUser ? (
 					<div className="playGame">
 						<h1>Logged in as {currentUser.email}</h1>
-						<Button id="play" onClick={() => startGame(currentUser)}>
+						<Button
+							className="bouncy"
+							id="play"
+							onClick={() => startGame(currentUser)}
+						>
 							Play Game!
 						</Button>
 					</div>
